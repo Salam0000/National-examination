@@ -1,1 +1,32 @@
-<p>login works!</p>
+<form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+    <div>
+        <mat-form-field>
+
+            <mat-icon>home</mat-icon>
+
+            <input matInput type="text" placeholder="اسم المستخدم" formControlName="username">
+
+        </mat-form-field>
+        <mat-error *ngIf="formLogin.get('username')?.errors?.['required']&& formLogin.get('username')?.touched">
+            Please enter password
+        </mat-error>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput type="password" placeholder="رمز الدخول" formControlName="password">
+            <mat-error *ngIf="formLogin.get('password')?.errors?.['required']&& formLogin.get('password')?.touched">
+                Please enter password
+            </mat-error>
+
+        </mat-form-field>
+    </div>
+    <div>
+        <button type="submit" mat-raised-button color="primary">
+            تسجيل الدخول
+        </button>
+    </div>
+    <div>
+        <span>اليس لديك حساب؟</span>
+        <a routerLink="/register">انشا حساب</a>
+    </div>
+</form>

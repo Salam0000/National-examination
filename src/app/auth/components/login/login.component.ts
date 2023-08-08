@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,5 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  formLogin!: FormGroup;
+  constructor(private formBulider: FormBuilder, private router: Router) { }
+
+  ngOnInit(): void {
+    this.formLogin = this.formBulider.group({
+      username: ["", Validators.required],
+      password: ["", Validators.required],
+
+    });
+  }
+  onSubmit() {
+    if (this.formLogin.valid) {
+      console.log(this.formLogin.value)
+      this.router.navigate(['/home']);
+
+    }
+  }
 
 }
