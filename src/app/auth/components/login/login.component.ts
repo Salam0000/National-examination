@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  // appearance: MatFormFieldAppearance = 'fill';
   formLogin!: FormGroup;
   constructor(private formBulider: FormBuilder, private router: Router) { }
 

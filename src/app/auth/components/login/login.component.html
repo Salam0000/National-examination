@@ -32,11 +32,11 @@
         <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
             <h1>تسجيل الدخول</h1><br>
             <label for="username">اسم المستخدم</label><br>
-            <div>
-                <mat-form-field>
+            
+            <div class="input-container">
+                <mat-form-field appearance="fill"  class="mat-form-field-custom" style="border: none;">
                     <mat-icon matPrefix>account_circle</mat-icon>
                     <input matInput type="text" placeholder="اسم المستخدم" formControlName="username" id="username">
-
                     <mat-error
                         *ngIf="formLogin.get('username')?.errors?.['required']&& formLogin.get('username')?.touched">
                         يرجى إدخال اسم المستخدم
@@ -45,8 +45,8 @@
             </div>
             <label for="key">رمز الدخول</label>
 
-            <div style="border: none;">
-                <mat-form-field style="border: none;">
+            <div class="input-container" style="border: none;">
+                <mat-form-field appearance="fill" class="mat-form-field-custom" style="border: none;">
                     <mat-icon matPrefix style="border: none;">key</mat-icon>
                     <input matInput type="password" placeholder="رمز الدخول" formControlName="password" id="key"
                         class="inputF" style="border: none;">
@@ -55,10 +55,7 @@
                         يرجى إدخال رمز الدخول
                     </mat-error>
                 </mat-form-field>
-
-
             </div>
-            <br>
             <br>
             <div>
                 <button type="submit">
@@ -67,12 +64,15 @@
             </div><br>
             <div class="question">
                 <span>ليس لديك حساب؟</span>
-                <a routerLink="register">انشئ حساب</a>
+                <a routerLink="/register">انشئ حساب</a>
             </div>
         </form>
+        <br>
+        <a href="">المتايعة كزائر</a>
     </div>
+
     <div class="imgDiv">
-        <img src="../../../assets/Login.svg">
+        <img src="../../../../assets/Login.svg">
     </div>
 
 

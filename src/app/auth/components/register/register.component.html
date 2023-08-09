@@ -1,59 +1,72 @@
-<form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
-    <label for="username">اسم المستخدم</label>
-    <div>
-        <mat-form-field>
-            <mat-icon matPrefix>account_circle</mat-icon>
-            <input matInput type="text" id="username" name="username" formControlName="username"
-                placeholder="اسم المستخدم">
-            <mat-error
-                *ngIf="formRegister.get('username')?.errors?.['required']&& formRegister.get('username')?.touched">
-                يرجى إدخال الاسم
-            </mat-error>
-        </mat-form-field>
+<div class="content">
+    <div class="box">
+        <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+            <h1>إنشاء حساب</h1>
+
+            <label for="username">اسم المستخدم</label>
+            <div>
+                <mat-form-field appearance="fill" style="border: none;">
+                    <mat-icon matPrefix style="border: none;">account_circle</mat-icon>
+                    <input matInput type="text" id="username" name="username" formControlName="username"
+                        placeholder="اسم المستخدم" style="border: none;">
+                    <mat-error
+                        *ngIf="formRegister.get('username')?.errors?.['required']&& formRegister.get('username')?.touched">
+                        يرجى إدخال الاسم
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <label for="phonenumber"> رقم الموبايل</label>
+            <div>
+                <mat-form-field appearance="fill" style="border: none;">
+                    <mat-icon matPrefix style="border: none;">phone</mat-icon>
+
+                    <input matInput type="text" id="phonenumber" name="phonenumber" formControlName="phonenumber"
+                        placeholder="رقم الموبايل" style="border: none;">
+                    <mat-error
+                        *ngIf="formRegister.get('phonenumber')?.errors?.['required']&& formRegister.get('phonenumber')?.touched">
+                        يرجى إدخال رقم الموبايل
+                    </mat-error>
+                    <mat-error *ngIf="formRegister.get('phonenumber')?.errors?.['pattern']">رقم الموبايل غير
+                        صالح</mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <!-- <mat-form-field>
+                    <mat-radio-group formControlName="specialization">
+                        <mat-radio-button value="الهندسة المعلوماتية">الهندسة المعلوماتية</mat-radio-button>
+                        <mat-radio-button value="الطب البشري">الطب البشري</mat-radio-button>
+                        <mat-radio-button value="الصيدلة">الصيدلة</mat-radio-button>
+                        <mat-radio-button value="طب الأسنان">طب الأسنان</mat-radio-button>
+                    </mat-radio-group>
+                </mat-form-field> -->
+
+            <div class="specialization">
+                <label>اختر الاختصاص:</label><br>
+                <input type="radio" formControlName="specialization" value="الهندسة المعلوماتية"> الهندسة المعلوماتية
+                <input type="radio" formControlName="specialization" value="التمريض"> التمريض
+                <input type="radio" formControlName="specialization" value="الطب البشري"> الطب البشري<br><br>
+                <input type="radio" formControlName="specialization" value="الصيدلة"> الصيدلة
+                <input type="radio" formControlName="specialization" value="طب الأسنان"> طب الأسنان
+                <input type="radio" formControlName="specialization" value="الهندسة المعمارية"> الهندسة المعمارية
+
+                <!-- <mat-error *ngIf="formRegister.get('specialization')?.errors?.['required']"> يرجى اختيار الإختصاص</mat-error> -->
+            </div>
+            <br>
+            <button type="submit" mat-raised-button>
+                إنشاء حساب
+            </button>
+            <br>
+            <div class="question">
+                <span> لديك حساب؟</span>
+                <a routerLink="/login">سجل الدخول</a>
+            </div>
+        </form>
+
+        <a href="">المتايعة كزائر</a>
     </div>
-
-    <label for="phonenumber"> رقم الموبايل</label>
-    <div>
-        <mat-form-field>
-            <mat-icon matPrefix>phone</mat-icon>
-
-            <input matInput type="text" id="phonenumber" name="phonenumber" formControlName="phonenumber"
-                placeholder="رقم الموبايل">
-            <mat-error
-                *ngIf="formRegister.get('phonenumber')?.errors?.['required']&& formRegister.get('phonenumber')?.touched">
-                يرجى إدخال رقم الموبايل
-            </mat-error>
-            <mat-error *ngIf="formRegister.get('phonenumber')?.errors?.['pattern']">رقم الموبايل غير صالح</mat-error>
-        </mat-form-field>
-    </div><br>
-
-
-    <!-- <mat-form-field>
-            <mat-radio-group formControlName="specialization">
-                <mat-radio-button value="الهندسة المعلوماتية">الهندسة المعلوماتية</mat-radio-button>
-                <mat-radio-button value="الطب البشري">الطب البشري</mat-radio-button>
-                <mat-radio-button value="الصيدلة">الصيدلة</mat-radio-button>
-                <mat-radio-button value="طب الأسنان">طب الأسنان</mat-radio-button>
-            </mat-radio-group>
-        </mat-form-field> -->
-
-    <div class="specialization">
-        <label>الاختصاص:</label><br>
-        <input type="radio" formControlName="specialization" value="الهندسة المعلوماتية"> الهندسة المعلوماتية
-        <input type="radio" formControlName="specialization" value="الهندسة المعلوماتية"> الهندسة المعمارية
-        <input type="radio" formControlName="specialization" value="الطب البشري"> الطب البشري<br>
-        <input type="radio" formControlName="specialization" value="الصيدلة"> الصيدلة
-        <input type="radio" formControlName="specialization" value="طب الأسنان"> طب الأسنان
-        <input type="radio" formControlName="specialization" value="طب الأسنان"> التمريض
-        <!-- <mat-error *ngIf="formRegister.get('specialization')?.errors?.['required']"> يرجى اختيار الإختصاص</mat-error> -->
+    <div class="imgDiv">
+        <img src="../../../../assets/signup.svg" alt="">
     </div>
-    <div>
-        <button type="submit" mat-raised-button color="primary">
-            إنشاء حساب
-        </button>
-    </div>
-    <div>
-        <span> لديك حساب؟</span>
-        <a routerLink="/login">سجل الدخول</a>
-    </div>
-</form>
+</div>

@@ -1,0 +1,98 @@
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    height: 100vh;
+}
+
+.box {
+    background-color: var(--dark-purple-color);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box a {
+    color: var(--black-color);
+}
+
+form {
+    margin-top: 20px;
+    width: 480px;
+    height: 550px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 60px;
+    border: 3px dashed var(--dark-purple-color);
+    /* border-spacing: 40px 20px; */
+    /* offset-distance: 9px; */
+    border-width: 3px;
+    border-radius: 3px;
+    position: relative;
+}
+
+/* form::after {
+    content: "";
+    width: 600px;
+    height: 500px;
+    position: absolute;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    border: 10px dashed white;
+    border-width: 3px;
+    border-radius: 3px;
+} */
+
+form h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+form button {
+    width: 100%;
+    background-color: var(--dark-purple-color);
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    border: none;
+    margin: 8px 0px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.question {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.question span,
+.question a {
+    font-size: 18px;
+}
+
+.question a {
+    text-decoration: none;
+    color: var(--dark-purple-color);
+}
+
+
+.imgDiv {
+    height: 100%;
+    width: 100%;
+}
+
+.imgDiv img {
+    height: 100%;
+    width: 100%;
+}

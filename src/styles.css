@@ -3,18 +3,17 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    
-
 }
 
 :root {
     --dark-purple-color: #6F2877;
     --medieum-purple-color: #923F98;
-    --light-purple-color: #000000;
+    --light-purple-color: #B989BD;
     --dark-blue-color: #20C4F4;
     --light-blue-color: #B9E5FB;
     --gray-color: #464547;
     --white-color: #FFFFFF;
+    --black-color: #000000;
 }
 
 html,
@@ -24,7 +23,25 @@ body {
 
 body {
     margin: 0;
-    
 }
-
-
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: rgb(250, 239, 241);
+  }
+  
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+    background-color: rgb(250, 239, 241);
+    border-bottom-color: rgb(250, 239, 241);
+  
+  }
+  
+  .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+    border-bottom-color: rgb(250, 239, 241);
+  }
+  
+  .mdc-text-field--invalid:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before {
+    border-bottom-color: rgb(250, 239, 241);
+  }
+  
+  .mdc-text-field--invalid:not(.mdc-text-field--disabled):hover .mdc-line-ripple::after {
+    border-bottom-color: rgb(250, 239, 241);
+  }
