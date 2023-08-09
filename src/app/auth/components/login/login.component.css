@@ -1,0 +1,98 @@
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    height: 650px;
+}
+
+.imgDiv {
+    height: 100%;
+    display: flex;
+    margin: auto;
+}
+
+.imgDiv img {
+    width: 600px;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.box {
+    background-color: #6F2877;
+    height: 100%;
+    /* padding: 60px; */
+    display: flex;
+}
+
+form {
+    width: 600px;
+    height: 500px;
+    background-color: white;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border: 3px dashed #6F2877;
+    /* border-spacing: 40px;
+    border-collapse: separate; */
+    border-width: 3px;
+    /* margin-top: 50%;
+    transform: translateY(-50%); */
+    border-radius: 3px;
+}
+
+form h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+label {
+    font-size: 20px;
+}
+
+button {
+    width: 450px;
+    background-color: #6F2877;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    border: none;
+}
+
+form label {
+    margin-right: 40px;
+}
+
+form div {
+    margin-right: 40px;
+}
+
+.question {
+    display: flex;
+}
+
+.question span,
+.question a {
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #6F2877;
+}
+
+
+
+.question span {
+    margin-right: 120px;
+}
+
+mat-form-field {
+    width: 450px;
+    border: none;
+    background-color: rgb(250, 239, 241);
+}
+
+input {
+    border: none;
+}
