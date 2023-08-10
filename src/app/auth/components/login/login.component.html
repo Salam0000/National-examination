@@ -35,7 +35,7 @@
             
             <div class="input-container">
                 <mat-form-field appearance="fill"  class="mat-form-field-custom" style="border: none;">
-                    <mat-icon matPrefix>account_circle</mat-icon>
+                    <mat-icon matPrefix>person</mat-icon>
                     <input matInput type="text" placeholder="اسم المستخدم" formControlName="username" id="username">
                     <mat-error
                         *ngIf="formLogin.get('username')?.errors?.['required']&& formLogin.get('username')?.touched">
