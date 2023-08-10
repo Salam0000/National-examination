@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthModule } from './auth/auth.module';
+import { HomeModule } from './home/home.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AuthModule } from './auth/auth.module';
     MatInputModule,
     MatButtonModule,
     MatIconModule, 
-    AuthModule
+    AuthModule,
+    HomeModule,
+    SharedModule
   ],
   providers: [
   ],

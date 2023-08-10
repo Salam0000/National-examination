@@ -1,0 +1,51 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    height: 75vh;
+    background-color: green;
+}
+
+.right_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+}
+
+.right_column button {
+    width: 100%;
+    background-color: var(--dark-purple-color);
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+.left_column {
+    /* width: 100%; */
+    /* height: 100%; */
+    padding: 50px;
+}
+
+.image_container {
+    border-radius: 10px;
+    background-color: red;
+}
+
+.image_container img {
+    height: 100%;
+    width: 100%;
+}
+
+.indicators_row {
+    background-color: blue;
+}
+
+.carouselExampleIndicators .active {
+    color: var(--dark-purple-color)!important;
+}
