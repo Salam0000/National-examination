@@ -1,47 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root {
-    --dark-purple-color: #6F2877;
-    --medieum-purple-color: #923F98;
-    --light-purple-color: #B989BD;
-    --dark-blue-color: #20C4F4;
-    --light-blue-color: #B9E5FB;
-    --gray-color: #464547;
-    --white-color: #FFFFFF;
-    --black-color: #000000;
+  --dark-purple-color: #6F2877;
+  --medieum-purple-color: #923F98;
+  --light-purple-color: #B989BD;
+  --dark-blue-color: #20C4F4;
+  --light-blue-color: #B9E5FB;
+  --gray-color: #464547;
+  --white-color: #FFFFFF;
+  --black-color: #000000;
 }
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: rgb(250, 239, 241);
-  }
-  
-  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
-    background-color: rgb(250, 239, 241);
-    border-bottom-color: rgb(250, 239, 241);
-  
-  }
-  
-  .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
-    border-bottom-color: rgb(250, 239, 241);
-  }
-  
-  .mdc-text-field--invalid:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before {
-    border-bottom-color: rgb(250, 239, 241);
-  }
-  
-  .mdc-text-field--invalid:not(.mdc-text-field--disabled):hover .mdc-line-ripple::after {
-    border-bottom-color: rgb(250, 239, 241);
-  }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+  /* background-color: rgb(250, 239, 241); */
+  border-bottom-color: rgb(250, 239, 241);
+
+}
+
+.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+  border-bottom-color: rgb(250, 239, 241);
+}
+
+.mdc-text-field--invalid:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before {
+  border-bottom-color: rgb(250, 239, 241);
+}
+
+.mdc-text-field--invalid:not(.mdc-text-field--disabled):hover .mdc-line-ripple::after {
+  border-bottom-color: rgb(250, 239, 241);
+}
+
+@font-face {
+  font-family: 'Alexandria-Blcak';
+  src: url('../src/fonts/Alexandria-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Alexandria-Medium';
+  src: url('../src/fonts/Alexandria-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Alexandria-Regular';
+  src: url('../src/fonts/Alexandria-Regular.ttf') format('truetype');
+}
+
+* {
+  font-family: 'Alexandria-Regular', sans-serif;
+}

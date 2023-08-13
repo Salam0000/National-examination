@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   formRegister!: FormGroup;
-  constructor(private formBulider: FormBuilder, private router: Router) { }
+  constructor(private formBulider: FormBuilder, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.formRegister = this.formBulider.group({
@@ -20,11 +21,30 @@ export class RegisterComponent implements OnInit {
     })
   }
   onSubmit() {
-    console.log(this.formRegister.value)
-
     if (this.formRegister.valid) {
-      this.router.navigate(['/login'])
+      console.log(this.formRegister.value)
+      const data = this.formRegister.value;
+      let model = new FormData();
+      model.append('name', this.formRegister.value.username)
+      model.append('mobile_phone', this.formRegister.value.phonenumber)
+      model.append('specialization_id', this.formRegister.value.specialization)
+      console.log('model' + model)
+      this.authService.register(model).subscribe(
+        (result) => {
+          console.log(result);
+          if (result.status) {
+            this.router.navigate(['/login']);
+          } else {
+            alert(result.message);
+          }
+        },
+        (err) => { console.log(err); }
+      );
+    } else {
+      alert('الرجاء أدخل جميع الحقول');
     }
+
+
   }
 
 

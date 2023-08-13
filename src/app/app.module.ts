@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,7 @@ import { SharedModule } from './shared/shared.module';
     MatButtonModule,
     MatIconModule, 
     AuthModule,
-    HomeModule,
-    SharedModule
+ 
   ],
   providers: [
   ],

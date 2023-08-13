@@ -1,0 +1,161 @@
+nav {
+    padding: 10px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    color: black;
+}
+
+li {
+    padding: 1rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.nav {
+    flex-wrap: nowrap;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.logo img {
+    width: 100px;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.login-button {
+    background-color: #fff;
+    color: #923F98;
+    padding: 10px 20px;
+    border: 1px solid #923F98;
+    border-radius: 5px;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.icon-home {
+    display: none;
+}
+
+@media (max-width: 576px) {
+    .logo img {
+        display: none;
+    }
+
+    .menu li:not(:first-child) {
+        display: none;
+
+    }
+
+    .menu li:first-child {
+        padding: 10px;
+    }
+
+    .login-button {
+        display: none;
+    }
+
+    .icon-home {
+        display: block;
+        font-size: 20px;
+        color: aliceblue;
+
+    }
+
+    svg {
+        height: 100%;
+        top: 0px;
+    }
+}
+
+.wave-header {
+    height: 175px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+svg {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    top: -50px;
+}
+
+@media (max-width: 1100px) {
+    svg {
+        top: -40px;
+    }
+}
+
+@media (max-width: 1000px) {
+    svg {
+        top: -30px;
+    }
+
+    nav {
+        padding: 4px;
+    }
+}
+
+@media (max-width: 900px) {
+    svg {
+        top: -20px;
+    }
+
+    nav {
+        padding: 2px;
+    }
+}
+
+@media (max-width: 800px) {
+    svg {
+        top: -10px
+    }
+
+    nav {
+        padding: 0px;
+    }
+}
+
+@media (max-width: 700px) {
+    svg {
+        top: 0px;
+
+    }
+
+    nav {
+        padding: 0px;
+    }
+
+    .menu li {
+        margin-right: 5px;
+    }
+
+    .login-button {
+        padding: 5px 10px;
+    }
+
+}

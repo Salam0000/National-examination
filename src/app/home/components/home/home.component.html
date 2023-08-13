@@ -1,34 +1,29 @@
+<app-header></app-header>
 <div class="container">
     <div class="right_column">
-        <h1>
-            طريقك الأسهل لإجتياز الفحص الوطني الموحد
-        </h1>
-        <span class="description">
-            أصبح بإمكانك الحصول على اسئلة الامتحان الوطني بكل سهولة
-            من مكان واحد فقط “اطلع - اختبر - احصل على النتيجة
-        </span>
-        <button class="btn btn-success">
+        <div class="data">
+            <h1>
+                طريقك الأسهل لإجتياز الفحص الوطني الموحد
+            </h1>
+            <span class="description">
+                أصبح بإمكانك الحصول على اسئلة الامتحان الوطني بكل سهولة
+                من مكان واحد فقط “اطلع - اختبر - احصل على النتيجة
+            </span>
+        </div>
+        <button>
             ابدأ الأن
         </button>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <input type="radio">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <app-carousel></app-carousel>
+</div>
+<div class="second_section_holder">
+    <div class="main_title">الإختصاصات</div>
+    <div class="second_section">
+        <div *ngFor="let i of [0,1,2,3,5,8,9]" class="second_section_container">
+            <div class="image_container">
+                <img src="../../../../assets/Login.svg" class="w-100 h-100" alt="...">
+            </div>
+            <h3>التمريض</h3>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="../../../../assets/Login.svg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="../../../../assets/signup.svg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="../../../../assets/Login.svg" class="d-block w-100" alt="...">
-          </div>
-        </div>
-      </div>
-
+    </div>
 </div>
