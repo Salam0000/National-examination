@@ -24,9 +24,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule, 
+    MatIconModule,
     AuthModule,
- 
+    SharedModule,
+    HomeModule
+
+
   ],
   providers: [
   ],
