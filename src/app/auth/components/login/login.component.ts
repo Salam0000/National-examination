@@ -30,7 +30,7 @@ export class LoginComponent {
       this.authService.login(model).subscribe((result) => {
         console.log(result);
         if (result.status) {
-          localStorage.setItem('token',result.token)
+          localStorage.setItem('token', result.token)
           this.router.navigate(['/home']);
         } else {
           alert(result.message + result.status);

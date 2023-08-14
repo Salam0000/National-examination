@@ -21,17 +21,17 @@
     <nav class="header">
         <div class="container nav">
             <div class="header">
-                <i class='bx bxs-home icon-home'></i>
+
                 <div class="logo">
                     <img src="../../../assets/logo darebni.svg" alt="Logo">
                 </div>
                 <ul class="menu ">
-                    <li><a routerLink="/home">الرئيسية</a></li>
+                    <li><i class='bx bxs-home icon-home'></i><a routerLink="/home">الرئيسية</a></li>
                     <li><a routerLink="/">الاختصاصات</a></li>
                     <li><a routerLink="/">من نحن</a></li>
                 </ul>
             </div>
-            <button class="login-button">تسجيل الدخول</button>
+            <button class="login-button" (click)="goToLogin()">تسجيل الدخول</button>
         </div>
     </nav>
 

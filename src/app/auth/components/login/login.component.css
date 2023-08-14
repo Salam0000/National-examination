@@ -154,3 +154,10 @@ mat-form-field {
         margin-top: 8px;
     }
 }
+.question a{
+    font-size: 14px;
+}
+.question span{
+
+    font-size: 14px;
+}

@@ -2,13 +2,6 @@ nav {
     padding: 10px;
 }
 
-ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-start;
-    color: black;
-}
-
 li {
     padding: 1rem;
 }
@@ -39,13 +32,14 @@ li {
 .menu li a {
     text-decoration: none;
     color: black;
+    font-size: 14px;;
 
 }
 
 .login-button {
-    background-color: #fff;
+    background-color:aliceblue;
     color: #923F98;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: 1px solid #923F98;
     border-radius: 5px;
 }
@@ -69,10 +63,13 @@ li {
 
     }
 
-    .menu li:first-child {
-        padding: 10px;
-    }
+.menu li:first-child{
+display: flex;
+justify-content: flex-end;
+align-items: center;
+padding: 1rem;
 
+}
     .login-button {
         display: none;
     }
@@ -80,18 +77,20 @@ li {
     .icon-home {
         display: block;
         font-size: 20px;
-        color: aliceblue;
+        color: antiquewhite;
+        padding-left: 1rem;
 
     }
-
     svg {
-        height: 100%;
         top: 0px;
+    }
+    .menu li a{
+        color: antiquewhite;
     }
 }
 
 .wave-header {
-    height: 175px;
+    /* height: 175px; */
     width: 100%;
     position: relative;
     z-index: 2;
@@ -101,61 +100,64 @@ svg {
     position: absolute;
     z-index: -1;
     right: 0;
-    top: -50px;
+    top: -40px;
 }
 
 @media (max-width: 1100px) {
     svg {
-        top: -40px;
+        top: -20px;
     }
 }
 
-@media (max-width: 1000px) {
-    svg {
-        top: -30px;
-    }
-
-    nav {
-        padding: 4px;
-    }
-}
-
-@media (max-width: 900px) {
+/* @media (max-width: 1000px) {
     svg {
         top: -20px;
     }
+     nav {
+        padding: 3px;
+    }
+} */
+
+@media (max-width: 1000px) {
+    svg {
+        top: 0px;
+    }
 
     nav {
-        padding: 2px;
+        padding: 10px;
+    }
+    .menu li a{
+    font-size: 12px;
+}
+li{
+    padding: 5px;
+}
+
+    .login-button {
+        padding: 5px 10px;
     }
 }
+
 
 @media (max-width: 800px) {
-    svg {
-        top: -10px
-    }
-
-    nav {
-        padding: 0px;
-    }
-}
-
-@media (max-width: 700px) {
     svg {
         top: 0px;
 
     }
+nav{
+    padding: 2px;
+}
 
-    nav {
-        padding: 0px;
-    }
-
-    .menu li {
-        margin-right: 5px;
-    }
+.menu li a{
+    font-size: 12px;
+}
+li{
+    padding: 5px;
+}
 
     .login-button {
-        padding: 5px 10px;
+        padding: 5px 10x;
+        font-size: 12px;
     }
 
 }
