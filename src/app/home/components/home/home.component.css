@@ -85,12 +85,20 @@
 
     app-carousel {
         grid-row: 1/2;
-        height: 75vh;
+        height: 40vh;
+    }
+
+    .second_section {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 576px) {
     .right_column {
         display: none;
+    }
+
+    .second_section {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

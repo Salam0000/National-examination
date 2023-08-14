@@ -1,0 +1,26 @@
+.left_column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.carousel-indicators .custom_indicator {
+    /* background-color: var(--gray-color) !important; */
+    width: 15px;
+    height: 15px;
+    border-radius: 20%;
+    border: 1px solid var(--dark-purple-color);
+}
+
+.active.custom_indicator {
+    background-color: var(--dark-purple-color) !important;
+}
+
+.image_container {
+    border-radius: 10px;
+}
+
+.image_container img {
+    height: 100%;
+    width: 100%;
+}

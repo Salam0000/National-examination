@@ -27,11 +27,15 @@
                 </div>
                 <ul class="menu ">
                     <li><a routerLink="/home">الرئيسية</a></li>
-                    <li><a routerLink="/">الاختصاصات</a></li>
+                    <li><a routerLink="/specializationSelection">الاختصاصات</a></li>
                     <li><a routerLink="/">من نحن</a></li>
                 </ul>
             </div>
-            <button class="login-button">تسجيل الدخول</button>
+            <div class="profile" *ngIf="token!=''">
+                <i class='bx bx-user'></i>
+                <span>الملف الشخصي</span>
+            </div>
+            <button *ngIf="token==''" class="login-button">تسجيل الدخول</button>
         </div>
     </nav>
 

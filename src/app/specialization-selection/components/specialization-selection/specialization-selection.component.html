@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="container">
+    <app-carousel [adverts]="getTotalAdverts()"></app-carousel>
+</div>
+<div class="button_row">
+    <button>الدورات</button>
+    <button>بنك الأسئلة</button>
+</div>
+<div class="second_section_holder">
+    <div class="main_title">التصنيفات</div>
+    <div class="second_section">
+        <button *ngFor="let i of [0,1,2,3,5,8,9]" class="second_section_container">
+            <h1>التمريض</h1>
+        </button>
+        <!-- <div *ngFor="let specialization of specializations" class="second_section_container">
+            <h1>{{specialization.title}}</h1>
+        </div> -->
+    </div>
+</div>
