@@ -1,0 +1,138 @@
+.wave-background {
+    position: relative;
+}
+
+.wave-background svg,
+.wave-background ul {
+    position: absolute;
+}
+
+.wave-background ul {
+    top: 100px;
+    font-size: 1.5rem;
+    padding: 60px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+}
+
+@media (maxwidth:1075px) {
+    .wave-background ul {
+        top: 40px;
+        font-size: 3rem;
+        padding: 60px;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        gap: 5rem;
+    }
+}
+
+.wave-background .logo img {
+    position: absolute;
+    width: 150px;
+    left: 80px;
+    top: 150px;
+}
+
+/* .condition {
+     justify-content: space-between;
+ } */
+
+.wave-background .box {
+    position: absolute;
+    top: 160px;
+    font-size: 1.5rem;
+    padding: 60px;
+    display: flex;
+    gap: 4rem;
+}
+
+.wave-background .box .icons {
+    display: flex;
+    gap: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: initial;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5rem;
+}
+
+.content .box1 {
+    background-color: #eee;
+    width: 100%;
+    height: inherit;
+    position: relative;
+    top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    column-gap: 3rem;
+    padding: 3rem;
+}
+
+.content .box1 .imgDiv {
+    position: relative;
+    width: 200px;
+}
+
+.content .box1 .imgDiv img {
+    position: absolute;
+    /* height: 300px; */
+    top: 0;
+    /* right: 0;*/
+    left: 0;
+    width: 100%;
+}
+
+.content .box1 .useable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .box1 .useable p {
+    font-size: 18px;
+}
+
+.content .box1 .useable img {
+    width: 150px;
+}
+
+.mobileIcons {
+    width: 100%;
+    background-color: white;
+    display: none;
+}
+
+@media (max-width:768px) {
+    .mobileIcons {
+        display: block;
+        bottom: 0;
+        top: 100vh;
+        height: inherit;
+    }
+
+    .wave-background {
+        display: none;
+    }
+
+    .content {
+        display: none;
+    }
+}
+
+.mobileIcons ul {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: space-between;
+}
