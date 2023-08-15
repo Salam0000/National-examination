@@ -53,6 +53,11 @@ li {
     display: none;
 }
 
+.profile {
+    display: flex;
+    gap: 8px;
+}
+
 @media (max-width: 576px) {
     .logo img {
         display: none;

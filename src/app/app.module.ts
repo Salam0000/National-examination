@@ -11,11 +11,13 @@ import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SpecializationSelectionModule } from './specialization-selection/specialization-selection.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     AuthModule,
     SharedModule,
-    HomeModule
+
+    HomeModule,
+    SpecializationSelectionModule,
+
   ],
   providers: [
   ],
