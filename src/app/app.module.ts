@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SpecializationSelectionModule } from './specialization-selection/specialization-selection.module';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -28,11 +29,9 @@ import { SpecializationSelectionModule } from './specialization-selection/specia
     MatIconModule,
     AuthModule,
     SharedModule,
-
     HomeModule,
     SpecializationSelectionModule,
-
-
+    ProfileModule,
   ],
   providers: [
   ],
