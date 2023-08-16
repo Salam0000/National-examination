@@ -4,7 +4,8 @@
     position: relative;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
+    padding-bottom: 3rem;
 }
 
 .wave-background svg {
