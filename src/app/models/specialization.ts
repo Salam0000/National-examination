@@ -1,5 +1,6 @@
 export class Specialization {
     id!: number;
     image!: string ;
-    title!: string ;
+    specialization_name!: string ;
+    collage_id!: string ;
 }

@@ -35,7 +35,7 @@
                 <i class='bx bx-user'></i>
                 <span>الملف الشخصي</span>
             </div>
-            <button *ngIf="token==''" class="login-button">تسجيل الدخول</button>
+            <button *ngIf="token==''" class="login-button" (click)="moveToLogin()">تسجيل الدخول</button>
 
         </div>
     </nav>

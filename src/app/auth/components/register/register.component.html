@@ -48,12 +48,16 @@
 
             <div class="specialization">
                 <label>اختر الاختصاص:</label><br>
-                <input type="radio" formControlName="specialization" value="6"> الهندسة المعلوماتية
+                <input type="radio" formControlName="specialization"
+                    *ngFor="let specialization of specializations;index as i"
+                    value="{{specialization.id}}">
+                    <!-- {{specialization.specialization_name}} -->
+                <!-- <input type="radio" formControlName="specialization" value="6"> الهندسة المعلوماتية
                 <input type="radio" formControlName="specialization" value="1"> التمريض
                 <input type="radio" formControlName="specialization" value="2"> الطب البشري<br><br>
                 <input type="radio" formControlName="specialization" value="3"> الصيدلة
                 <input type="radio" formControlName="specialization" value="4"> طب الأسنان
-                <input type="radio" formControlName="specialization" value="5"> الهندسة المعمارية
+                <input type="radio" formControlName="specialization" value="5"> الهندسة المعمارية -->
 
                 <!-- <mat-error *ngIf="formRegister.get('specialization')?.errors?.['required']"> يرجى اختيار الإختصاص</mat-error> -->
             </div>

@@ -32,12 +32,13 @@ li {
 .menu li a {
     text-decoration: none;
     color: black;
-    font-size: 14px;;
+    font-size: 14px;
+    ;
 
 }
 
 .login-button {
-    background-color:aliceblue;
+    background-color: aliceblue;
     color: #923F98;
     padding: 8px 16px;
     border: 1px solid #923F98;
@@ -59,6 +60,9 @@ li {
 }
 
 @media (max-width: 576px) {
+    .profile{
+        font-size: 10px;
+    }
     .logo img {
         display: none;
     }
@@ -68,13 +72,14 @@ li {
 
     }
 
-.menu li:first-child{
-display: flex;
-justify-content: flex-end;
-align-items: center;
-padding: 1rem;
+    .menu li:first-child {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 1rem;
 
-}
+    }
+
     .login-button {
         display: none;
     }
@@ -86,10 +91,12 @@ padding: 1rem;
         padding-left: 1rem;
 
     }
+
     svg {
         top: 0px;
     }
-    .menu li a{
+
+    .menu li a {
         color: antiquewhite;
     }
 }
@@ -131,12 +138,14 @@ svg {
     nav {
         padding: 10px;
     }
-    .menu li a{
-    font-size: 12px;
-}
-li{
-    padding: 5px;
-}
+
+    .menu li a {
+        font-size: 12px;
+    }
+
+    li {
+        padding: 5px;
+    }
 
     .login-button {
         padding: 5px 10px;
@@ -149,16 +158,18 @@ li{
         top: 0px;
 
     }
-nav{
-    padding: 2px;
-}
 
-.menu li a{
-    font-size: 12px;
-}
-li{
-    padding: 5px;
-}
+    nav {
+        padding: 2px;
+    }
+
+    .menu li a {
+        font-size: 12px;
+    }
+
+    li {
+        padding: 5px;
+    }
 
     .login-button {
         padding: 5px 10x;

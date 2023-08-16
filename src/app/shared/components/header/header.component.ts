@@ -10,11 +10,13 @@ export class HeaderComponent {
 
   token: string = '';
 
-  constructor() { }
+  constructor(private rout: Router) { }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token') == null ? '' : localStorage.getItem('token')!;
     console.log(this.token);
-
+  }
+  moveToLogin() {
+    this.rout.navigate(['/login']);
   }
 }

@@ -1,26 +1,29 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Advert } from '../../models/advert';
-import { Specialization } from '../../models/specialization';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
-  url: string = 'http://192.168.31.74:8000/api';
+  url: string = 'https://6d90-5-0-32-200.ngrok-free.app/api';
 
   constructor(private http: HttpClient) { }
 
-  getAllAdverts(): Observable<Advert[]> {
+  getAllAdverts() {
     let token = localStorage.getItem('token');
-    const header = new HttpHeaders().set('authentication', token ?? '');
-    return this.http.get<Advert[]>(this.url + '', { headers: header });
+    const header = new HttpHeaders().set('Token', token ?? '');
+    return this.http.get(this.url + '', { headers: header });
   }
 
-  getAllSpecializations(): Observable<Specialization[]> {
+  getAllSpecializations() {
     let token = localStorage.getItem('token');
-    const header = new HttpHeaders().set('authentication', token ?? '');
-    return this.http.get<Specialization[]>(this.url + '', { headers: header });
+    const header = new HttpHeaders().set('Token', token ?? '');
+    return this.http.post(this.url + '/Specialization/all', { headers: header });
+  }
+
+  getAllCollages() {
+    let token = localStorage.getItem('token');
+    const header = new HttpHeaders().set('Token', token ?? '');
+    return this.http.get(this.url + '/Colleges/all', { headers: header });
   }
 }
