@@ -1,30 +1,3 @@
-<!-- <div class="profile">
-    <h1>تعديل المعلومات الشخصية</h1>
-    <div class="avatar">
-        <img src="../../../assets/User-100.png" alt="">
-        <h3>اسم المستخدم</h3>
-    </div>
-    <div class="fields">
-        <div class="username">
-            <label for="username">اسم المستخدم</label>
-            <div class="container-input">
-                <input type="text" placeholder="اسم المستخدم">
-                <img src="../../../assets/ic_text_field_user.svg" class="icon1" alt="">
-                <img src="../../../assets/ic_edit.svg" class="icon2" alt="">
-            </div>
-        </div>
-        <div class="phonenumber">
-            <label for="number">رقم الموبايل</label>
-            <div class="container-input">
-                <input type="text" placeholder="رقم الموبايل">
-                <img src="../../../assets/ic_text_field_phone.svg" class="icon1" alt="">
-                <img src="../../../assets/ic_edit.svg" class="icon2" alt="">
-            </div>
-        </div>
-        <button type="button">حفظ التغييرات</button>
-        <a routerLink="/home">إلغاء</a>
-    </div>
-</div> -->
 <div class="profile">
     <h2>تعديل المعلومات الشخصية</h2>
     <div class="avatar">
@@ -40,11 +13,7 @@
                 <img src="../../../../assets/ic_text_field_user.svg" class="icon1" alt="">
                 <img src="../../../../assets/ic_edit.svg" class="icon2" alt="">
             </div>
-            <!-- <small *ngIf="personalInfoForm.get('username')?.invalid && personalInfoForm.get('username')?.touched">
-                يجب إدخال اسم المستخدم
-            </small> -->
         </div>
-
         <div class="phonenumber">
             <label for="mobileNumber">رقم الموبايل:</label>
             <div class="container-input">
@@ -52,15 +21,10 @@
                 <img src="../../../../assets/ic_text_field_phone.svg" class="icon1" alt="">
                 <img src="../../../../assets/ic_edit.svg" class="icon2" alt="">
             </div>
-            <!-- <small
-                *ngIf="personalInfoForm.get('mobileNumber')?.errors?.['required'] && personalInfoForm.get('mobileNumber')?.touched">
-                يجب إدخال رقم الموبايل
-            </small>
-            <small *ngIf="personalInfoForm.get('mobileNumber')?.errors?.['pattern']">
-                يرجى إدخال رقم صالح
-            </small> -->
         </div>
 
-        <button type="submit" [disabled]="personalInfoForm.invalid">حفظ التعديلات</button>
+        <button type="submit" [disabled]="personalInfoForm.invalid">
+            حفظ التغييرات </button>
+        <a routerLink="/home">إلغاء</a>
     </form>
 </div>

@@ -177,3 +177,6 @@ svg {
     }
 
 }
+.profile span{
+    cursor: pointer;
+}

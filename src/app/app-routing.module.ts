@@ -16,7 +16,7 @@ const routes: Routes = [
   // { path: 'specializationSelection', component: SpecializationSelectionComponent },
   // { path: 'home', component: HomeComponent },
   // { path: '**', component: PageNotFoundComponent },
-  { path: 'profile', component: ProfileComponent }
+  // { path: 'profile', component: ProfileComponent }
 
 ];
 

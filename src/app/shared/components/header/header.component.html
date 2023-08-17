@@ -33,7 +33,7 @@
             </div>
             <div class="profile" *ngIf="token!=''">
                 <i class='bx bx-user'></i>
-                <span>الملف الشخصي</span>
+                <span (click)="GoToProfile()">الملف الشخصي</span>
             </div>
             <button *ngIf="token==''" class="login-button" (click)="moveToLogin()">تسجيل الدخول</button>
 
