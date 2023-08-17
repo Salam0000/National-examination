@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
       (result: any) => {
         console.log(result);
         if (result.code == 200) {
-          this.specializations = result.data[0];
+          this.specializations = result.data;
         }
       },
       (error) => {

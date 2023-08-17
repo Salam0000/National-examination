@@ -47,12 +47,12 @@ export class LoginComponent {
       let model = new FormData();
       model.append('name', this.formLogin.value.username);
       model.append('login_code', this.formLogin.value.password);
-      this.authService.login(model).subscribe((result: any) => {  
+      this.authService.login(model).subscribe((result: any) => {
         // console.log(result.statusCode)
         if (result.code == 200) {
           localStorage.setItem('token', result.data.token)
           this.router.navigate(['/home']);
-          
+
         } else if (result.code == 422) {
           let errorMessage = "";
           for (const key in result.errors) {
@@ -60,8 +60,11 @@ export class LoginComponent {
               errorMessage += `${key}: ${result.errors[key].join(" ")}\n`;
             }
           }
+          console.log(errorMessage)
           alert(errorMessage);
         } else if (result.code == 401) {
+          alert(result.message);
+        } else if (result.code == 400) {
           alert(result.message);
         }
       });

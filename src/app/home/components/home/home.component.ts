@@ -12,7 +12,7 @@ import { Collage } from 'src/app/models/collage';
 })
 export class HomeComponent {
   constructor(private homeService: HomeService, private router: Router) { }
-  url: string = 'https://6d90-5-0-32-200.ngrok-free.app/';
+  url: string = 'http://192.168.31.74:8000/';
   adverts: Advert[] = [];
   collages: Collage[] = [];
   specializations: Specialization[] = [];
@@ -33,7 +33,7 @@ export class HomeComponent {
       (result: any) => {
         console.log(result);
         if (result.code == 200) {
-          this.specializations = result.data[0];
+          this.specializations = result.data;
         }
       },
       (error) => {
