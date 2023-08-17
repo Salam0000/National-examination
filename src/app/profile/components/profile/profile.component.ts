@@ -16,6 +16,8 @@ export class ProfileComponent {
       username: ['', Validators.required],
       mobileNumber: ['', [Validators.required, Validators.pattern('^09[0-9]{8}$')]]
     });
+
+
   }
 
   saveChanges() {
