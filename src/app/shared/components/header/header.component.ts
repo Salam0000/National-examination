@@ -19,4 +19,7 @@ export class HeaderComponent {
   moveToLogin() {
     this.rout.navigate(['/login']);
   }
+  GoToProfile() {
+    this.rout.navigate(['/profile']);
+  }
 }

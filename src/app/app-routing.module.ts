@@ -6,6 +6,7 @@ import { RegisterComponent } from './auth/components/register/register.component
 
 import { SpecializationSelectionComponent } from './specialization-selection/components/specialization-selection/specialization-selection.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProfileComponent } from './profile/components/profile/profile.component';
 
 const routes: Routes = [
   // { path: 'home', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   // { path: 'specializationSelection', component: SpecializationSelectionComponent },
   // { path: 'home', component: HomeComponent },
   // { path: '**', component: PageNotFoundComponent },
+  { path: 'profile', component: ProfileComponent }
 
 ];
 

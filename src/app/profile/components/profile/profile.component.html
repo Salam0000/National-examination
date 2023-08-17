@@ -40,9 +40,9 @@
                 <img src="../../../../assets/ic_text_field_user.svg" class="icon1" alt="">
                 <img src="../../../../assets/ic_edit.svg" class="icon2" alt="">
             </div>
-            <small *ngIf="personalInfoForm.get('username')?.invalid && personalInfoForm.get('username')?.touched">
+            <!-- <small *ngIf="personalInfoForm.get('username')?.invalid && personalInfoForm.get('username')?.touched">
                 يجب إدخال اسم المستخدم
-            </small>
+            </small> -->
         </div>
 
         <div class="phonenumber">
@@ -52,13 +52,13 @@
                 <img src="../../../../assets/ic_text_field_phone.svg" class="icon1" alt="">
                 <img src="../../../../assets/ic_edit.svg" class="icon2" alt="">
             </div>
-            <small
+            <!-- <small
                 *ngIf="personalInfoForm.get('mobileNumber')?.errors?.['required'] && personalInfoForm.get('mobileNumber')?.touched">
                 يجب إدخال رقم الموبايل
             </small>
             <small *ngIf="personalInfoForm.get('mobileNumber')?.errors?.['pattern']">
                 يرجى إدخال رقم صالح
-            </small>
+            </small> -->
         </div>
 
         <button type="submit" [disabled]="personalInfoForm.invalid">حفظ التعديلات</button>
