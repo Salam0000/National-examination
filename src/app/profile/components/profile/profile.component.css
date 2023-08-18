@@ -1,11 +1,11 @@
 .profile {
-    width: 50%;
+    width: 40%;
     height: 90vh;
     border: 3px dashed #6F2877;
     /* background-color: red; */
     /* padding: 2rem; */
-    margin:10px auto;
-    
+    margin: 10px auto;
+
 }
 
 
@@ -18,7 +18,8 @@
     text-align: center;
 }
 
-.username,.phonenumber {
+.username,
+.phonenumber {
     width: 80%;
 }
 
@@ -38,6 +39,7 @@
     font-size: 14px;
     padding-right: 3rem;
 }
+
 .container-input .icon1,
 .container-input .icon2 {
     position: absolute;
@@ -45,7 +47,7 @@
     transform: translateY(-50%);
     /* padding-left: 1rem; */
     /* padding-right: 1rem; */
-    padding:1rem;
+    padding: 1rem;
 }
 
 .container-input .icon1 {
@@ -56,15 +58,14 @@
     left: 0;
 }
 
-label
- {
+label {
     font-size: 1rem;
     padding-bottom: 10px;
 }
 
 .fields {
     width: 100%;
-    margin:0 auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -91,6 +92,12 @@ label
 }
 
 
-small{
+small {
     color: red;
+}
+
+@media (max-width: 576px) {
+    .profile {
+        width: 80%;
+    }
 }

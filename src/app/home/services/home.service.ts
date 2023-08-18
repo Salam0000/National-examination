@@ -16,7 +16,20 @@ export class HomeService {
 
   getAllSpecializations() {
     let token = localStorage.getItem('token');
-    const header = new HttpHeaders().set('Token', token ?? '');
+    // const header = new HttpHeaders().set('Token', token ?? '');
+    // const header = new HttpHeaders().set('Access-Control-Allow-Origin', 'https://693a-5-155-189-52.ngrok-free.app/api/Specialization/all');
+    const header = new HttpHeaders()
+      .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers', 'Accept,authorization,Authorization, Content-Type')
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Accept', '*')
+      .set('Content-Type', 'application/json')
+
+    // .set('Access-Control-Allow-Credentials', true);
+    // .set('Token', token!)
+    // .set('Host', enviroment.baseApi)
+    // .set('Origin', 'http://localhost:4200');
+    // const header = new HttpHeaders().set('Host', '');
     return this.http.get(enviroment.baseApi + '/Specialization/all', { headers: header });
   }
 

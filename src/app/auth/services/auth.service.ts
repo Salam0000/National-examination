@@ -9,22 +9,19 @@ import { enviroment } from 'src/app/enviroment';
 export class AuthService {
   constructor(private http: HttpClient) { }
   register(model: any) {
-    return this.http.post
-      (
-        enviroment.baseApi + '/register',
-        model
-      );
+    return this.http.post(enviroment.baseApi + '/register', model);
   }
   getAllSpecializations() {
     // let token = localStorage.getItem('token');
-    const header = new HttpHeaders().set('Accept', '*/*');
+    // const header = new HttpHeaders().set('Accept', '*/*');
     return this.http.get(enviroment.baseApi + '/Specialization/all');
   }
   login(model: any) {
-    return this.http.post
-      (
-        enviroment.baseApi + '/login',
-        model
-      );
+    return this.http.post(enviroment.baseApi + '/login', model);
+  }
+  logout(model: any) {
+    let token = localStorage.getItem('token');
+    const header = new HttpHeaders().set('token', token!);
+    return this.http.post(enviroment.baseApi + '/UserProfile/logout', model, { headers: header });
   }
 }
