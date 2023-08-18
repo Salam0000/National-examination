@@ -19,9 +19,9 @@ export class AuthService {
   login(model: any) {
     return this.http.post(enviroment.baseApi + '/login', model);
   }
-  logout(model: any) {
+  logout() {
     let token = localStorage.getItem('token');
-    const header = new HttpHeaders().set('token', token!);
-    return this.http.post(enviroment.baseApi + '/UserProfile/logout', model, { headers: header });
+    const header = new HttpHeaders().set('Token', token!);
+    return this.http.post(enviroment.baseApi + '/UserProfile/logout',  { headers: header });
   }
 }

@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SpecializationSelectionModule } from './specialization-selection/specialization-selection.module';
 import { ProfileModule } from './profile/profile.module';
+import { QuizModule } from './quiz/quiz.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ProfileModule } from './profile/profile.module';
     HomeModule,
     SpecializationSelectionModule,
     ProfileModule,
+    QuizModule,
   ],
   providers: [
   ],

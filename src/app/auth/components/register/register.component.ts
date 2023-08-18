@@ -61,8 +61,10 @@ export class RegisterComponent implements OnInit {
               }
             }
             alert(errorMessage);
-          } else if (result.code == 401) {
+          } else if (result.code == 401 || result.code == 400 || result.code == 500) {
             alert(result.message);
+          } else {
+            alert("عذرا, حدث خطأ غير معروف");
           }
         },
         (err) => { console.log(err); }

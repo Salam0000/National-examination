@@ -37,8 +37,7 @@ export class LoginComponent {
     // this.checkInternetConnection();
     this.formLogin = this.formBulider.group({
       username: ["", Validators.required],
-      password: ["", Validators.required],
-
+      password: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
   onSubmit() {
@@ -52,8 +51,8 @@ export class LoginComponent {
         if (result.code == 200) {
           localStorage.setItem('token', result.data.token)
           this.router.navigate(['/home']);
-
         } else if (result.code == 422) {
+          // alert('الرجاء التحقق من صحة المعلومات');
           let errorMessage = "";
           for (const key in result.errors) {
             if (result.errors.hasOwnProperty(key)) {
@@ -62,51 +61,12 @@ export class LoginComponent {
           }
           console.log(errorMessage)
           alert(errorMessage);
-        } else if (result.code == 401) {
+        } else if (result.code == 401 || result.code == 400 || result.code == 500) {
           alert(result.message);
-        } else if (result.code == 400) {
-          alert(result.message);
+        } else {
+          alert("عذرا, حدث خطأ غير معروف");
         }
       });
-      // const status = result.headers.get('status');
-      // console.log(status)
-      // this.authService.login(model).subscribe((result) => {
-      //   // const statusCode = result.headers.get('X-Status');
-      //   // console.log('Status Code:', statusCode);
-      //   // alert(statusCode)
-      //   console.log(result.status);
-      //   console.log(result);
-      //   console.log(result.ok);
-      //   console.log(result.headers);
-      //   console.log(result.body);
-      //   if (result.status == 200) {
-      //     localStorage.setItem('token', result.body.data[0].token)
-      //     this.router.navigate(['/home']);
-      //   } else if (result.status == 422) {
-      //     let errorMessage = "";
-      //     for (const key in result.body.errors) {
-      //       if (result.body.errors.hasOwnProperty(key)) {
-      //         errorMessage += `${key}: ${result.body.errors[key].join(" ")}\n`;
-      //       }
-      //     }
-      //     alert('الرجاء التحقق من صحة المعلومات');
-      //   }
-      // });
-      // this.authService.login(model).subscribe((result) => {
-      //   console.log(result);
-      //   if (typeof result.status == "boolean" && result.status == true) {
-      //     localStorage.setItem('token', result.token)
-      //     this.router.navigate(['/home']);
-      //   } else if (typeof result.status == "number" && result.status == 422) {
-      //     let errorMessage = "";
-      //     for (const key in result.errors) {
-      //       if (result.errors.hasOwnProperty(key)) {
-      //         errorMessage += `${key}: ${result.errors[key].join(" ")}\n`;
-      //       }
-      //     }
-      //     alert('الرجاء التحقق من صحة المعلومات');
-      //   }
-      // });
     } else {
       alert('الرجاء أدخل جميع الحقول');
     }
