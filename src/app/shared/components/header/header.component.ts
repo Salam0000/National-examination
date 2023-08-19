@@ -19,6 +19,9 @@ export class HeaderComponent {
   moveToLogin() {
     this.rout.navigate(['/login']);
   }
+  moveToHome() {
+    this.rout.navigate(['/home']);
+  }
   GoToProfile() {
     this.rout.navigate(['/profile']);
   }

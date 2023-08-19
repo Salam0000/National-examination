@@ -1,5 +1,5 @@
 export const enviroment = {
-    baseApi: 'https://693a-5-155-189-52.ngrok-free.app/api',
-    base: 'https://693a-5-155-189-52.ngrok-free.app/api',
+    baseApi: 'https://3ceb-188-133-50-194.ngrok-free.app/api',
+    base: 'https://3ceb-188-133-50-194.ngrok-free.app/',
     production: true
 }
