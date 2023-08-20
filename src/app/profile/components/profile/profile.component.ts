@@ -23,8 +23,8 @@ export class ProfileComponent {
       console.log(result);
       if (result.code == 200) {
         this.personalInfoForm.setValue({
-          formControlName1: result.data.name,
-          formControlName2: result.data.mobile_phone,
+          username: result.data.name,
+          mobileNumber: result.data.mobile_phone,
         });
       }
     },
@@ -37,7 +37,7 @@ export class ProfileComponent {
 
   saveChanges() {
     if (this.personalInfoForm.valid) {
-
+      this.profileSevice.UpdateProfile()
       console.log(this.personalInfoForm.value);
     }
   }

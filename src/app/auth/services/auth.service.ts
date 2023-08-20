@@ -14,10 +14,10 @@ export class AuthService {
   getAllSpecializations() {
     // let token = localStorage.getItem('token');
     // const header = new HttpHeaders().set('Accept', '*/*');
-    const header = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-      .set('Access-Control-Allow-Headers', 'Accept,authorization,Authorization, Content-Type');
-    return this.http.get(enviroment.baseApi + '/Specialization/all', { headers: header });
+    // const header = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
+    //   .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    //   .set('Access-Control-Allow-Headers', 'Accept,authorization,Authorization, Content-Type');
+    return this.http.get(enviroment.baseApi + '/Specialization/all');
   }
   login(model: any) {
     return this.http.post(enviroment.baseApi + '/login', model);

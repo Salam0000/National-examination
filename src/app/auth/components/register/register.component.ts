@@ -23,14 +23,15 @@ export class RegisterComponent implements OnInit {
       (result: any) => {
         console.log(result);
         if (result.code == 200) {
-          // this.specializations = result.data;
+          this.specializations = result.data;
         }
+        this.isFetching = false;
       },
       (error) => {
         alert(error.message);
+        this.isFetching = false;
       }
     );
-    this.isFetching = false;
 
     this.formRegister = this.formBulider.group({
       username: ["", Validators.required],

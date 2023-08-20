@@ -1,4 +1,6 @@
-<div *ngIf="isFetching" class="loader"></div>
+<div class="loader_container" *ngIf="isFetching">
+    <div class="loader"></div>
+</div>
 <div *ngIf="!isFetching" class="isFetching">
     <div class="title">
         <i class='bx bx-chevron-right-square back' routerLink="/login"></i>
@@ -49,7 +51,11 @@
                     </mat-form-field> -->
 
                 <div class="specializations">
-                    <div class="row" *ngFor="let specialization of specializations; index as i">
+                    <div *ngFor="let specialization of specializations; index as i">
+                        <input type="radio" formControlName="specialization" [value]="specialization.id">
+                        {{specialization.specialization_name}}
+                    </div>
+                    <!-- <div class="row" *ngFor="let specialization of specializations; index as i">
                         <ng-container *ngIf="i % 3 === 0">
                             <div class="col">
                                 <input type="radio" formControlName="specialization" [value]="specialization.id">
@@ -68,7 +74,7 @@
                                 {{specialization.specialization_name}}
                             </div>
                         </ng-container>
-                    </div>
+                    </div> -->
                 </div>
                 <br>
                 <button type="submit" mat-raised-button>

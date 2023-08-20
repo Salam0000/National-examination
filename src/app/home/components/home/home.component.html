@@ -1,4 +1,6 @@
-<div class="loader" *ngIf="isFetching"></div>
+<div class="loader_container" *ngIf="isFetching">
+    <div class="loader"></div>
+</div>
 <div class="isFetching" *ngIf="!isFetching">
     <app-header></app-header>
     <div class="container">
@@ -20,7 +22,10 @@
     </div>
     <div class="second_section_holder">
         <div class="main_title">الإختصاصات</div>
-        <div class="second_section">
+        <div class="zero_length" *ngIf="specializations.length==0">
+            لا يوجد اختصاصات
+        </div>
+        <div class="second_section" *ngIf="specializations.length>0">
             <!-- <div *ngFor="let i of [0,1,2,3,5,8,9]" class="second_section_container">
             <div class="image_container" (click)="moveToSpecilazation()">
                 <img src="../../../../assets/Login.svg" class="w-100 h-100" alt="...">
@@ -29,7 +34,7 @@
         </div> -->
             <div *ngFor="let specialization of specializations" class="second_section_container">
                 <div class="image_container">
-                    <img src="{{url + specialization.image}}" class="w-100 h-100" alt="عذرا حدث خطأ ما">
+                    <img src="{{specialization.image}}" class="w-100 h-100" alt="عذرا حدث خطأ ما">
                 </div>
                 <h3>{{specialization.specialization_name}}</h3>
             </div>

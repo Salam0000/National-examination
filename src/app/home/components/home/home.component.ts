@@ -34,13 +34,14 @@ export class HomeComponent {
         console.log(result);
         if (result.code == 200) {
           this.specializations = result.data;
+          this.isFetching = false;
         }
       },
       (error) => {
         alert(error.message);
+        this.isFetching = false;
       }
     );
-    this.isFetching = false;
   }
 
   getTotalAdverts() {
