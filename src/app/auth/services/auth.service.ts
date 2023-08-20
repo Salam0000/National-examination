@@ -14,7 +14,10 @@ export class AuthService {
   getAllSpecializations() {
     // let token = localStorage.getItem('token');
     // const header = new HttpHeaders().set('Accept', '*/*');
-    return this.http.get(enviroment.baseApi + '/Specialization/all');
+    const header = new HttpHeaders().set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers', 'Accept,authorization,Authorization, Content-Type');
+    return this.http.get(enviroment.baseApi + '/Specialization/all', { headers: header });
   }
   login(model: any) {
     return this.http.post(enviroment.baseApi + '/login', model);
@@ -22,6 +25,6 @@ export class AuthService {
   logout() {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders().set('Token', token!);
-    return this.http.post(enviroment.baseApi + '/UserProfile/logout',  { headers: header });
+    return this.http.post(enviroment.baseApi + '/UserProfile/logout', { headers: header });
   }
 }

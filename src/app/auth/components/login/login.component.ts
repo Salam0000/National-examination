@@ -53,14 +53,14 @@ export class LoginComponent {
           this.router.navigate(['/home']);
         } else if (result.code == 422) {
           // alert('الرجاء التحقق من صحة المعلومات');
-          let errorMessage = "";
-          for (const key in result.errors) {
-            if (result.errors.hasOwnProperty(key)) {
-              errorMessage += `${key}: ${result.errors[key].join(" ")}\n`;
-            }
-          }
-          console.log(errorMessage)
-          alert(errorMessage);
+          // let errorMessage = "";
+          // for (const key in result.errors) {
+          //   if (result.errors.hasOwnProperty(key)) {
+          //     errorMessage += `${key}: ${result.errors[key].join(" ")}\n`;
+          //   }
+          // }
+          console.log(result.errors)
+          alert(result.error);
         } else if (result.code == 401 || result.code == 400 || result.code == 500) {
           alert(result.message);
         } else {

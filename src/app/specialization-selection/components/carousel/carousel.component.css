@@ -58,6 +58,7 @@
         grid-row: 1/2;
         width: 75%;
         height: 75%;
+        background-color: red;
     }
 
     form h1 {

@@ -14,6 +14,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
   imports: [
     CommonModule,
     SharedModule,
+  ], exports: [
+    SpecializationSelectionComponent
   ]
 })
 export class SpecializationSelectionModule { }

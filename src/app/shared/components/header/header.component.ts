@@ -22,6 +22,9 @@ export class HeaderComponent {
   moveToHome() {
     this.rout.navigate(['/home']);
   }
+  moveToٍpecialization() {
+    this.rout.navigate(['/specialization']);
+  }
   GoToProfile() {
     this.rout.navigate(['/profile']);
   }
