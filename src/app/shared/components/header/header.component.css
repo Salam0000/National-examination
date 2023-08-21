@@ -123,14 +123,6 @@ svg {
     }
 }
 
-/* @media (max-width: 1000px) {
-    svg {
-        top: -20px;
-    }
-     nav {
-        padding: 3px;
-    }
-} */
 
 @media (max-width: 1000px) {
     svg {
