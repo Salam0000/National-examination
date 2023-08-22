@@ -93,6 +93,14 @@
 .second_section_container H3 {
     font-size: 1rem;
 }
+.box-rectangle{
+    margin-bottom: 2rem;
+}
+@media (max-width:576px) {
+    .box-rectangle{
+        display: none;
+    } 
+}
 
 @media (max-width: 1000px) {
     .container {
