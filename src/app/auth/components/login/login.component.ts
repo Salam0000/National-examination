@@ -49,7 +49,7 @@ export class LoginComponent {
       this.authService.login(model).subscribe((result: any) => {
         // console.log(result.statusCode)
         if (result.code == 200) {
-          localStorage.setItem('token', result.data.token)
+          localStorage.setItem('token', result.data)
           this.router.navigate(['/home']);
         } else if (result.code == 422) {
           // alert('الرجاء التحقق من صحة المعلومات');

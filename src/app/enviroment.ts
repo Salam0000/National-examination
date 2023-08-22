@@ -1,5 +1,6 @@
 export const enviroment = {
-    baseApi: 'https://192.168.31.75:8000/api',
-    base: 'https://192.168.31.75:8000/',
+    baseApi: 'https://darrebniproject.000webhostapp.com/api/Darrebni',
+    base: 'https://laraveldarrebni.000webhostapp.com/',
+    // https://darrebniproject.000webhostapp.com/api/Darrebni
     production: true
 }

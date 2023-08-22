@@ -10,21 +10,26 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
   getProfile() {
+    // let token = localStorage.getItem('token');
+
     let token = localStorage.getItem('token');
+    // const header = new HttpHeaders()
+    //   .set('Token', token ?? '')
+    // const header = new HttpHeaders({
+    //   'type': `Bearer Token`,
+    //   'Token': `${token}`,
+    // })
     const header = new HttpHeaders({
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
-      'Access-Control-Allow-Origin': '*',
     })
     return this.http.get(enviroment.baseApi + '/UserProfile/Info', { headers: header });
   }
 
-  UpdateProfile() {
+  UpdateProfile(model: any) {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders()
-      .set('Token', token ?? '')
-      .set('Access-Control-Allow-Origin', '*');
-    return this.http.put(enviroment.baseApi + '/UserProfile/update', { headers: header });
+      .set('Token', token ?? '');
+    return this.http.put(enviroment.baseApi + '/UserProfile/update', model, { headers: header });
   }
 
   deleteProfile() {

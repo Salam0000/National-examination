@@ -37,7 +37,25 @@ export class ProfileComponent {
 
   saveChanges() {
     if (this.personalInfoForm.valid) {
-      this.profileSevice.UpdateProfile()
+      this.isFetching = true;
+      let model = new FormData();
+      model.append('name', this.personalInfoForm.value.username);
+      model.append('mobile_phone', this.personalInfoForm.value.mobileNumber);
+      this.profileSevice.UpdateProfile(model).subscribe(
+        (result: any) => {
+          console.log(result);
+          if (result.code == 200) {
+            alert('تم تعديل البروفايل بنجاح')
+          } else {
+            alert('عذرا حدث خطأ ما')
+          }
+          this.isFetching = false;
+        },
+        (error) => {
+          alert(error.message);
+          this.isFetching = false;
+        }
+      );
       console.log(this.personalInfoForm.value);
     }
   }
