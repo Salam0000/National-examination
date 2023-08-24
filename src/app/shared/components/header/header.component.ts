@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,22 +11,35 @@ export class HeaderComponent {
 
   token: string = '';
 
-  constructor(private rout: Router) { }
+  constructor(private route: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token') == null ? '' : localStorage.getItem('token')!;
     console.log(this.token);
   }
   moveToLogin() {
-    this.rout.navigate(['/login']);
+    this.route.navigate(['/login']);
   }
   moveToHome() {
-    this.rout.navigate(['/home']);
+    this.route.navigate(['/home']);
   }
   moveToٍpecialization() {
-    this.rout.navigate(['/specialization']);
+    this.route.navigate(['/specialization']);
   }
   GoToProfile() {
-    this.rout.navigate(['/profile']);
+    this.route.navigate(['/profile']);
+  }
+  logout() {
+    this.authService.logout().subscribe(
+      (result: any) => {
+        if (result.code == 200) {
+          alert('تم تسجيل الخروج بنجاح');
+          localStorage.removeItem('token');
+          this.route.navigate(['/login']);
+        }
+        console.log(result);
+      },
+      (error) => { console.log(error); }
+    )
   }
 }

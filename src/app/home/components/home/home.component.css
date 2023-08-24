@@ -68,8 +68,8 @@
     background-color: var(--section-background);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* padding: 100px 100px; */
     width: 80%;
+    margin: auto;
     gap: 50px;
 }
 

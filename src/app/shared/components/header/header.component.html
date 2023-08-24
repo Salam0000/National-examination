@@ -15,6 +15,7 @@
             <div class="profile" *ngIf="token!=''">
                 <i class='bx bx-user'></i>
                 <span (click)="GoToProfile()">الملف الشخصي</span>
+                <i class='bx bx-log-out' (click)="logout()"></i>
             </div>
             <button *ngIf="token==''" class="login-button" (click)="moveToLogin()">تسجيل الدخول</button>
 
