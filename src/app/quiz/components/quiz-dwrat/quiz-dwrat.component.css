@@ -1,0 +1,40 @@
+.back {
+    display: flex;
+    gap: 1rem;
+}
+
+.container .back .icondiv {
+    width: 1rem;
+}
+
+.container .back .icondiv a img {
+    width: 100%;
+}
+
+.container .container2 {
+    width: 80%;
+    margin: auto;
+}
+
+.container .container2 .question {
+    justify-content: space-between;
+    background-color: #B989BD;
+    padding: 00.5rem;
+}
+
+.container .container2 .question .ref {
+    gap: 0.5rem;
+}
+
+.container .container2 .question span {
+    font-size: 1rem;
+}
+
+@media (max-width:576px) {
+    .back {
+        display: none;
+    }
+    .container .container2 .question {
+        width: 90%;
+    }
+}

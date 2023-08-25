@@ -13,23 +13,30 @@ import { enviroment } from 'src/app/enviroment';
 })
 export class HomeComponent {
   constructor(private homeService: HomeService, private router: Router) { }
-  url: string = 'https://darrebniproject.000webhostapp.com/';
+  url: string = '';
   adverts: Advert[] = [];
   collages: Collage[] = [];
   specializations: Specialization[] = [];
+  specializationsId!: string;
   isFetching: boolean = false;
+  isButton: boolean = false;
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.isFetching = true;
-    // this.homeService.getAllCollages().subscribe(
-    //   (result: any) => {
-    //     this.collages = result.data;
-    //     console.log(result);
-    //   },
-    //   (error) => {
-    //     alert(error.message);
-    //   }
-    // );
+    this.specializationsId = localStorage.getItem('specialization_id') ?? '';
+    this.homeService.checkButtons().subscribe((result: any) => {
+      this.isButton = result.data;
+    })
+    this.url = enviroment.base;
+    this.homeService.getAllAdverts().subscribe(
+      (result: any) => {
+        this.adverts = result.data;
+        console.log(result.data);
+      },
+      (error) => {
+        alert(error.message);
+      }
+    );
     this.homeService.getAllSpecializations().subscribe(
       (result: any) => {
         console.log(result);
@@ -46,13 +53,18 @@ export class HomeComponent {
   }
 
   getTotalAdverts() {
+    console.log(this.adverts);
     return this.adverts;
   }
 
-  moveToSpecilazation() {
-    this.router.navigate(['/specialization']);
+  moveToSpecilazationById(uuid: number) {
+    this.router.navigate([`/specialization/${uuid}`]);
   }
 
+  moveToSpecilazationByType(type: string) {
+    this.router.navigate([`/specialization/${type}`]);
+  }
+  
   // notification
   // Notification.requestPermission(function(permission) {
   //   if (permission == 'granted') {

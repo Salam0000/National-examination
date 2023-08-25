@@ -11,6 +11,10 @@
             <i class='bx bx-star'></i>
             <i class='bx bx-book-bookmark'></i>
         </div>
-        <button>التالي</button>
+        <div class="button_row">
+            <button (click)="paginate('-')">السابق</button>
+            <button (click)="paginate('+')">التالي</button>
+        </div>
+
     </div>
 </div>

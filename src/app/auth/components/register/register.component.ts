@@ -54,7 +54,10 @@ export class RegisterComponent implements OnInit {
           if (result.code == 200) {
             this.router.navigate(['/login']);
             alert("تم إنشاء الحساب بنجاح");
-          } else if (result.code == 422) {
+          } 
+        },
+        (result) => {
+          if (result.code == 422) {
             let errorMessage = "";
             for (const key in result.errors) {
               if (result.errors.hasOwnProperty(key)) {
@@ -67,8 +70,8 @@ export class RegisterComponent implements OnInit {
           } else {
             alert("عذرا, حدث خطأ غير معروف");
           }
-        },
-        (err) => { console.log(err); }
+          console.log(result);
+        }
       );
     } else {
       alert('الرجاء أدخل جميع الحقول');

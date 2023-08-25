@@ -96,6 +96,10 @@ small {
     color: red;
 }
 
+a {
+    cursor: pointer;
+}
+
 @media (max-width: 576px) {
     .profile {
         width: 80%;

@@ -1,27 +1,35 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Advert } from 'src/app/models/advert';
-import { Specialization } from 'src/app/models/specialization';
+import { enviroment } from 'src/app/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpecializationSelectionService {
 
-  url: string = 'http://192.168.31.74:8000/api';
-
   constructor(private http: HttpClient) { }
 
-  getAllAdverts(): Observable<Advert[]> {
+  getAllAdverts() {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders().set('authentication', token ?? '');
-    return this.http.get<Advert[]>(this.url + '', { headers: header });
+    return this.http.get(enviroment.baseApi + 'Sliders/getAll', { headers: header });
   }
 
-  getAllSpecializations(): Observable<Specialization[]> {
+  getAllSpecializationsBytype(type: string) {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders().set('authentication', token ?? '');
-    return this.http.get<Specialization[]>(this.url + '', { headers: header });
+    return this.http.get(enviroment.baseApi + `/Specialization/filters/type=${type}`, { headers: header });
+  }
+
+  getAllSpecializationsByid(id: number) {
+    let token = localStorage.getItem('token');
+    const header = new HttpHeaders().set('authentication', token ?? '');
+    return this.http.get(enviroment.baseApi + `/Specialization/filters/collage=${id}`, { headers: header });
+  }
+
+  checkButtons() {
+    let token = localStorage.getItem('token');
+    const header = new HttpHeaders().set('authentication', token ?? '');
+    return this.http.get(enviroment.baseApi + `/Specialization/checkButtons`, { headers: header });
   }
 }
