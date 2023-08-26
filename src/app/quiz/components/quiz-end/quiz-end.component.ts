@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./quiz-end.component.css']
 })
 export class QuizEndComponent {
-
+  isFetching: boolean = false;
 }

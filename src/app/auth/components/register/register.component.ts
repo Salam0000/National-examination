@@ -76,8 +76,6 @@ export class RegisterComponent implements OnInit {
     } else {
       alert('الرجاء أدخل جميع الحقول');
     }
-
-
   }
 
 

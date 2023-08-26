@@ -1,20 +1,39 @@
-<div class="container">
-    <h1>1.</h1>
-    <div class="question">vjkbvbfd ?</div>
-    <div class="answer">,ls;dfkbnlfdbnldfknblfdbd,</div>
-    <div class="answer">,ls;d,</div>
-    <div class="answer">,lsfbkldfnblfdknb;d,</div>
-    <div class="answer">,ls;d,</div>
-    <div class="last_row">
-        <div class="last_row_icons">
-            <i class='bx bx-check-circle'></i>
-            <i class='bx bx-star'></i>
-            <i class='bx bx-book-bookmark'></i>
-        </div>
-        <div class="button_row">
-            <button (click)="paginate('-')">السابق</button>
-            <button (click)="paginate('+')">التالي</button>
+<div class="loader_container" *ngIf="isFetching">
+    <div class="loader"></div>
+</div>
+<div class="isFetching" *ngIf="!isFetching">
+    <app-header></app-header>
+    <div class="container" *ngFor="let quiz of paginateData()">
+        <h1>{{quiz.id}}.</h1>
+        <div class="question">{{quiz.questionText}}</div>
+        <div class="options" *ngFor="let option of quiz!.options">
+            <div class="answer" [id]="'option'+option.correct" [ngClass]="{'correct':checkAnswer(option)}"
+                [ngClass]="{'false':!checkAnswer(option)}">
+                <span>
+                    <input [value]="'option'+option.id" type="radio" name="option"
+                        (click)="addQuizToLocalStorage(quiz.id,option)" [checked]="checkLH(option)">
+                </span>
+                <span>
+                    {{option.text}}
+                </span>
+            </div>
         </div>
 
+        <div class="last_row">
+            <div class="last_row_icons">
+                <i class='bx bxs-check-circle check_circle' (click)="correctAnswer(quiz)"></i>
+                <i class='bx bx-star'></i>
+                <i class='bx bx-book-bookmark'></i>
+            </div>
+            <div class="button_row">
+                <button (click)="previousPage()">السابق</button>
+                <button (click)="nextPage()">التالي</button>
+            </div>
+
+        </div>
     </div>
+    <div class="end">
+        <button (click)="moveToQuizEnd()">إنهاء الاختبار</button>
+    </div>
+    <!-- <app-footer></app-footer> -->
 </div>

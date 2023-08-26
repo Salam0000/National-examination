@@ -14,4 +14,12 @@ export class QuizService {
     const header = new HttpHeaders().set('authentication', token ?? '');
     return this.http.get(enviroment.baseApi + `quiz/?perPage=${limit}&pageNumber=${currentPageOrder}`, { headers: header });
   }
+
+  getAllQuizes() {
+    let token = localStorage.getItem('token');
+    const header = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.get(enviroment.baseApi + '/Quizs/getAll', { headers: header });
+  }
 }

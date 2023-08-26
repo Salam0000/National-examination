@@ -79,6 +79,7 @@
 }
 
 .second_section_container {
+    cursor: pointer;
     border: none;
     padding: 50px 0px;
     height: 200px;

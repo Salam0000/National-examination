@@ -15,26 +15,24 @@ export class QuizStartComponent {
 
   constructor(private route: ActivatedRoute, private router: Router, private homeService: HomeService) { }
 
-  ngOnInit(): void {
-    this.isFetching = true;
-    this.specializationsId = this.route.snapshot.params['id'];
-    this.homeService.getAllSpecializations().subscribe(
-      (result: any) => {
-        console.log(result);
-        if (result.code == 200) {
-          // this.specializations = result.data;
-          this.specialization = result.data.find((e: any) => e.id == this.specializationsId);
-          this.isFetching = false;
-        }
-      },
-      (error) => {
-        alert(error.message);
-        this.isFetching = false;
-      }
-    );
-
-    // find return one element where as filter return an array
-  }
+  // ngOnInit(): void {
+  //   this.isFetching = true;
+  //   this.specializationsId = this.route.snapshot.params['id'];
+  //   this.homeService.getAllSpecializations().subscribe(
+  //     (result: any) => {
+  //       console.log(result);
+  //       if (result.code == 200) {
+  //         // this.specializations = result.data;
+  //         this.specialization = result.data.find((e: any) => e.id == this.specializationsId);
+  //         this.isFetching = false;
+  //       }
+  //     },
+  //     (error) => {
+  //       alert(error.message);
+  //       this.isFetching = false;
+  //     }
+  //   );
+  // }
 
   moveToQuizById(uuid: number) {
     console.log('quiz')

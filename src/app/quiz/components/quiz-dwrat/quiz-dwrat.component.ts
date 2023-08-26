@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./quiz-dwrat.component.css']
 })
 export class QuizDwratComponent {
+  isFetching: boolean = false;
+  
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   moveToQuizById(uuid: number) {

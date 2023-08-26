@@ -2,6 +2,10 @@
     gap: 1rem;
 }
 
+.container {
+    margin-top: 50px;
+}
+
 .container .back .iconDiv {
     width: 1rem;
 }
@@ -48,6 +52,10 @@ ul li {
     color: #B989BD;
 }
 
+.bottom {
+    margin-top: 200px;
+}
+
 @media (max-width:995px) {
     .question {
         width: 45%;
@@ -58,9 +66,11 @@ ul li {
     .steps {
         width: 100%;
     }
+
     .container2 button {
         width: 40%;
     }
+
     .question {
         background-color: red;
         width: 60%;

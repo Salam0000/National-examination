@@ -1,3 +1,7 @@
+.container {
+    margin-top: 50px;
+}
+
 .container2 {
     width: 60%;
     margin: auto;
@@ -107,6 +111,7 @@
     .container {
         display: none;
     }
+
     .mobile {
         display: block;
     }

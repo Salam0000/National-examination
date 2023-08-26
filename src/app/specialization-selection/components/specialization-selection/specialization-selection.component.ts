@@ -20,47 +20,47 @@ export class SpecializationSelectionComponent {
   specializationId!: number;
   specializationType!: string;
 
-  ngOnInit(): void {
-    this.isFetching = true;
-    this.specializationId = this.route.snapshot.params['id'];
-    this.specializationType = this.route.snapshot.params['type'];
-    this.specializationSelectionService.getAllAdverts().subscribe(
-      (result: any) => {
-        this.adverts = result;
-        console.log(result);
-      },
-      (error) => {
-        alert(error.message);
-      }
-    );
-    this.specializationSelectionService.checkButtons().subscribe(
-      (result: any) => {
-        if (result.data == true) {
-          this.specializationSelectionService.getAllSpecializationsBytype(this.specializationType).subscribe(
-            (result: any) => {
-              console.log(result);
-            },
-            (error) => {
-              alert(error.message);
-            }
-          );
-        } else {
-          this.specializationSelectionService.getAllSpecializationsByid(this.specializationId).subscribe(
-            (result: any) => {
-              console.log(result);
-            },
-            (error) => {
-              alert(error.message);
-            }
-          );
-        }
-      },
-      (error) => {
-        alert(error.message);
-      })
+  // ngOnInit(): void {
+  //   this.isFetching = true;
+  //   this.specializationId = this.route.snapshot.params['id'];
+  //   this.specializationType = this.route.snapshot.params['type'];
+  //   this.specializationSelectionService.getAllAdverts().subscribe(
+  //     (result: any) => {
+  //       this.adverts = result;
+  //       console.log(result);
+  //     },
+  //     (error) => {
+  //       alert(error.message);
+  //     }
+  //   );
+  //   this.specializationSelectionService.checkButtons().subscribe(
+  //     (result: any) => {
+  //       if (result.data == true) {
+  //         this.specializationSelectionService.getAllSpecializationsBytype(this.specializationType).subscribe(
+  //           (result: any) => {
+  //             console.log(result);
+  //           },
+  //           (error) => {
+  //             alert(error.message);
+  //           }
+  //         );
+  //       } else {
+  //         this.specializationSelectionService.getAllSpecializationsByid(this.specializationId).subscribe(
+  //           (result: any) => {
+  //             console.log(result);
+  //           },
+  //           (error) => {
+  //             alert(error.message);
+  //           }
+  //         );
+  //       }
+  //     },
+  //     (error) => {
+  //       alert(error.message);
+  //     })
 
-    this.isFetching = false;
-  }
+  //   this.isFetching = false;
+  // }
 
   getTotalAdverts() {
     return this.adverts;

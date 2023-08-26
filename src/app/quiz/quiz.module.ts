@@ -4,6 +4,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizStartComponent } from './components/quiz-start/quiz-start.component';
 import { QuizEndComponent } from './components/quiz-end/quiz-end.component';
 import { QuizDwratComponent } from './components/quiz-dwrat/quiz-dwrat.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { QuizDwratComponent } from './components/quiz-dwrat/quiz-dwrat.component
     QuizDwratComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
   ]
   , exports: [
     QuizComponent,
