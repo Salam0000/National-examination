@@ -14,11 +14,11 @@
                     من مكان واحد فقط “اطلع - اختبر - احصل على النتيجة
                 </span>
             </div>
-            <button>
+            <button routerLink="/QuizStart">
                 ابدأ الأن
             </button>
         </div>
-        <app-carousel [adverts]="getTotalAdverts()"></app-carousel>
+        <app-carousel *ngIf="adverts.length>0" [adverts]="getTotalAdverts()"></app-carousel>
     </div>
     <div class="second_section_holder">
         <div class="main_title">الإختصاصات</div>
@@ -27,17 +27,24 @@
         </div>
         <div class="second_section" *ngIf="specializations.length>0">
             <!-- <div *ngFor="let i of [0,1,2,3,5,8,9]" class="second_section_container">
-            <div class="image_container" (click)="moveToSpecilazation()">
-                <img src="../../../../assets/Login.svg" class="w-100 h-100" alt="...">
-            </div>
-            <h3>التمريض</h3>
-        </div> -->
-            <div *ngFor="let specialization of specializations" class="second_section_container">
+                <div class="image_container" (click)="moveToSpecilazationById(1)">
+                    <img src="../../../../assets/Login.svg" class="w-100 h-100" alt="...">
+                </div>
+                <h3>التمريض</h3>
+            </div> -->
+            <button *ngFor="let specialization of specializations" class="second_section_container"
+                (click)="moveToSpecilazationById(specialization.uuid)">
                 <div class="image_container">
                     <img src="{{url + specialization.image}}" class="w-100 h-100" alt="عذرا حدث خطأ ما">
                 </div>
-                <h3>{{specialization.specialization_name}}</h3>
-            </div>
+                <h3 [ngClass]="{'choose':specialization.id.toString()===specializationsId}">
+                    {{specialization.specialization_name}}</h3>
+
+            </button>
+        </div>
+        <div class="button_row" *ngIf="isButton">
+            <button (click)="moveToSpecilazationByType('graduate')">تخرج</button>
+            <button (click)="moveToSpecilazationByType('master')">ماستر</button>
         </div>
     </div>
     <div class="box-rectangle">

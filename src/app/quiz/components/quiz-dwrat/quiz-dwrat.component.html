@@ -1,0 +1,35 @@
+<div class="loader_container" *ngIf="isFetching">
+    <div class="loader"></div>
+</div>
+<div class="isFetching" *ngIf="!isFetching">
+    <app-header></app-header>
+    <div class="container">
+        <div class="back">
+            <div class="icondiv">
+                <a routerLink="specializationSelection"><img src="../../../assets/ic_arrow_back.svg" alt=""></a>
+
+            </div>
+
+            <h4>العودة</h4>
+
+        </div>
+        <div class="container2">
+            <div class="question d-flex">
+                <div class="ref d-flex">
+                    <img src="../../../assets/ic_book.svg">
+                    <span>دورة تشرين 2023</span>
+
+
+                </div>
+                <div class="arrow">
+                    <a><img src="../../../assets/ic_arrow.svg"></a>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+   
+    <!-- <app-footer></app-footer> -->
+</div>

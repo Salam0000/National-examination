@@ -24,7 +24,9 @@ export class AuthService {
   }
   logout() {
     let token = localStorage.getItem('token');
-    const header = new HttpHeaders().set('Token', token!);
-    return this.http.post(enviroment.baseApi + '/auth//UserProfile/logout', { headers: header });
+    const header = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.post(enviroment.baseApi + '/auth/UserProfile/logout', { headers: header });
   }
 }

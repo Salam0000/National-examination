@@ -1,0 +1,79 @@
+.back {
+    gap: 1rem;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.container .back .iconDiv {
+    width: 1rem;
+}
+
+.container .back .iconDiv a img {
+    width: 100%;
+}
+
+.container2 {
+    margin: auto;
+    width: 70%;
+}
+
+.question {
+    width: 30%;
+    justify-content: space-between;
+}
+
+.number {
+    gap: 0.2rem;
+}
+
+.directions {
+    text-align: center;
+}
+
+.container2 button {
+    width: 20%;
+    text-align: center;
+    color: white;
+    background-color: #6F2877;
+    border-radius: 3px;
+    border: none;
+    padding: 0.5rem;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li {
+    color: #B989BD;
+}
+
+.bottom {
+    margin-top: 200px;
+}
+
+@media (max-width:995px) {
+    .question {
+        width: 45%;
+    }
+}
+
+@media (max-width:576px) {
+    .steps {
+        width: 100%;
+    }
+
+    .container2 button {
+        width: 40%;
+    }
+
+    .question {
+        background-color: red;
+        width: 60%;
+        gap: 0.5rem;
+    }
+}

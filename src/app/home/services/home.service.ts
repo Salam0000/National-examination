@@ -10,29 +10,40 @@ export class HomeService {
 
   getAllAdverts() {
     let token = localStorage.getItem('token');
-    const header = new HttpHeaders().set('Token', token ?? '');
-    return this.http.get(enviroment.baseApi + '', { headers: header });
+    const header = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.get(enviroment.baseApi + '/Sliders/getAll', { headers: header });
   }
 
   getAllSpecializations() {
-    // let token = localStorage.getItem('token');
-    // const header = new HttpHeaders().set('Token', token ?? '');
-    // const header = new HttpHeaders().set('Access-Control-Allow-Origin', 'https://693a-5-155-189-52.ngrok-free.app/api/Specialization/all');
-    // const header = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
-    // .set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    // .set('Access-Control-Allow-Headers', 'Accept,authorization,Authorization, Content-Type')
-    // .set('Accept', '*')
-    // .set('Content-Type', 'application/json')
-    // .set('Access-Control-Allow-Credentials', true);
-    // .set('Token', token!)
-    // .set('Host', enviroment.baseApi)
-    // .set('Origin', 'http://localhost:4200');
-    // const header = new HttpHeaders().set('Host', '');
     return this.http.get(enviroment.baseApi + '/Specialization/allSpecialization');
   }
 
   getAllCollages() {
-    const header = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
+    let token = localStorage.getItem('token');
+    const header = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
     return this.http.get(enviroment.baseApi + '/Colleges/all', { headers: header });
   }
+
+  getAllSpecializationsBytype(type: string) {
+    let token = localStorage.getItem('token');
+    const header = new HttpHeaders().set('authentication', token ?? '');
+    return this.http.get(enviroment.baseApi + `/Specialization/filters/type=${type}`, { headers: header });
+  }
+
+  getAllSpecializationsByid(id: number) {
+    let token = localStorage.getItem('token');
+    const header = new HttpHeaders().set('authentication', token ?? '');
+    return this.http.get(enviroment.baseApi + `/Specialization/filters/collage=${id}`, { headers: header });
+  }
+
+  checkButtons() {
+    let token = localStorage.getItem('token');
+    const header = new HttpHeaders().set('authentication', token ?? '');
+    return this.http.get(enviroment.baseApi + `/Specialization/checkButtons`, { headers: header });
+  }
+
 }

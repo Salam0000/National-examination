@@ -36,12 +36,16 @@ export class HeaderComponent {
 
   }
   logout() {
+   
     this.authService.logout().subscribe(
       (result: any) => {
+      
         if (result.code == 200) {
           alert('تم تسجيل الخروج بنجاح');
           localStorage.removeItem('token');
           this.route.navigate(['/login']);
+        } else {
+          alert(result.message);
         }
         console.log(result);
       },
