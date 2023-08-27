@@ -7,7 +7,7 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="custom_indicator"
             aria-label="Slide 3"></button> -->
         <button *ngFor="let advert of adverts;let i=index" type="button" data-bs-target="#carouselExampleIndicators"
-            attr.slide-to='{{i}}' class="custom_indicator" attr.aria-label="Slide {{i+1}}"></button>
+            attr.data-bs-slide-to='{{i}}' class="custom_indicator" attr.aria-label="Slide {{i+1}}"></button>
 
     </div>
     <div class="carousel-inner">

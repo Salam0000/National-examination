@@ -16,12 +16,4 @@
     background-color: var(--dark-purple-color) !important;
 }
 
-.image_container {
-   background-color: red;
-    border-radius: 10px;
-}
-
-.image_container img {
-    height: 100%;
-    width: 100%;
-}
+/* */

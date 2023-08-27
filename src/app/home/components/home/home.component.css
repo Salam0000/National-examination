@@ -125,7 +125,9 @@
     font-weight: bold;
     text-decoration: underline;
 }
-
+/* .container div {
+    margin: 50px;
+} */
 @media (max-width:576px) {
     .box-rectangle {
         display: none;

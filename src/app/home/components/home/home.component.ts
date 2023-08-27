@@ -22,36 +22,36 @@ export class HomeComponent {
   isFetching: boolean = false;
   isButton: boolean = false;
 
-  ngOnInit(): void { 
-    this.isFetching = true;
-    this.specializationsId = localStorage.getItem('specialization_id') ?? '';
-    this.homeService.checkButtons().subscribe((result: any) => {
-      this.isButton = result.data;
-    })
-    this.url = enviroment.base;
-    this.homeService.getAllAdverts().subscribe(
-      (result: any) => {
-        this.adverts = result.data;
-        console.log(result.data);
-      },
-      (error) => {
-        alert(error.message);
-      }
-    );
-    this.homeService.getAllSpecializations().subscribe(
-      (result: any) => {
-        console.log(result);
-        if (result.code == 200) {
-          this.specializations = result.data;
-          this.isFetching = false;
-        }
-      },
-      (error) => {
-        alert(error.message);
-        this.isFetching = false;
-      }
-    );
-  }
+  // ngOnInit(): void { 
+  //   this.isFetching = true;
+  //   this.specializationsId = localStorage.getItem('specialization_id') ?? '';
+  //   this.homeService.checkButtons().subscribe((result: any) => {
+  //     this.isButton = result.data;
+  //   })
+  //   this.url = enviroment.base;
+  //   this.homeService.getAllAdverts().subscribe(
+  //     (result: any) => {
+  //       this.adverts = result.data;
+  //       console.log(result.data);
+  //     },
+  //     (error) => {
+  //       alert(error.message);
+  //     }
+  //   );
+  //   this.homeService.getAllSpecializations().subscribe(
+  //     (result: any) => {
+  //       console.log(result);
+  //       if (result.code == 200) {
+  //         this.specializations = result.data;
+  //         this.isFetching = false;
+  //       }
+  //     },
+  //     (error) => {
+  //       alert(error.message);
+  //       this.isFetching = false;
+  //     }
+  //   );
+  // }
 
   getTotalAdverts() {
     console.log(this.adverts);

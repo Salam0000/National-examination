@@ -1,71 +1,47 @@
 <div class="loader_container" *ngIf="isFetching">
     <div class="loader"></div>
 </div>
-<div *ngIf="!isFetching">
-    <div class="profile">
-        <h2>تعديل المعلومات الشخصية</h2>
-        <div class="avatar">
-            <img src="../../../../assets/avatar.jpg" alt="">
-            <h3>اسم المستخدم</h3>
-        </div>
-        <form [formGroup]="personalInfoForm" (ngSubmit)="saveChanges()" class="fields">
-            <div class="username">
-                <label for="username">اسم المستخدم:</label>
-                <div class="container-input">
-                    <input type="text" id="username" formControlName="username" placeholder="اسم المستخدم"
-                        [disabled]="!isEditing1">
-                    <img src="../../../../assets/ic_text_field_user.svg" class="icon1" alt="">
-                    <img src="../../../../assets/ic_edit.svg" class="icon2" (click)="toggleEditing1('username')" alt="">
-                </div>
+<div class="profile" *ngIf="!isFetching">
+    <h2>تعديل المعلومات الشخصية</h2>
+    <div class="avatar">
+        <img src="../../../../assets/avatar.jpg" alt="">
+        <h3>اسم المستخدم</h3>
+    </div>
+    <form [formGroup]="personalInfoForm" (ngSubmit)="saveChanges()" class="fields">
+        <div class="username">
+            <label for="username">اسم المستخدم:</label>
+            <div class="container-input">
+                <input type="text" id="username" formControlName="username" placeholder="اسم المستخدم"
+                    [disabled]="!isEditing1">
+                <img src="../../../../assets/ic_text_field_user.svg" class="icon1" alt="">
+                <img src="../../../../assets/ic_edit.svg" class="icon2" (click)="toggleEditing1('username')" alt="">
             </div>
-            <div class="phonenumber">
-                <label for="mobileNumber">رقم الموبايل:</label>
-                <div class="container-input">
-                    <input type="text" id="mobileNumber" formControlName="mobileNumber" placeholder="رقم الموبايل"
-                        [disabled]="!isEditing2">
-                    <img src="../../../../assets/ic_text_field_phone.svg" class="icon1" alt="">
-                    <img src="../../../../assets/ic_edit.svg" class="icon2" (click)="toggleEditing2('mobileNumber')"
-                        alt="">
-                    <form [formGroup]="personalInfoForm" (ngSubmit)="saveChanges()" class="fields">
-                        <div class="username">
-                            <label for="username">اسم المستخدم:</label>
-                            <div class="container-input">
-                                <input type="text" id="username" formControlName="username" placeholder="اسم المستخدم"
-                                    [disabled]="!isEditing1">
-                                <img src="../../../../assets/ic_text_field_user.svg" class="icon1" alt="">
-                                <img src="../../../../assets/ic_edit.svg" class="icon2" alt=""
-                                    (click)="toggleEditing1('username')">
-                            </div>
-                            <small
-                                *ngIf="personalInfoForm.get('username')?.errors?.['required']&& personalInfoForm.get('username')?.touched">
-                                يرجى إدخال الاسم
-                            </small>
-                        </div>
-                        <div class="phonenumber">
-                            <label for="mobileNumber">رقم الموبايل:</label>
-                            <div class="container-input">
-                                <input type="text" id="mobileNumber" formControlName="mobileNumber"
-                                    placeholder="رقم الموبايل" [disabled]="!isEditing2">
-                                <img src="../../../../assets/ic_text_field_phone.svg" class="icon1" alt="">
-                                <img src="../../../../assets/ic_edit.svg" class="icon2" alt=""
-                                    (click)="toggleEditing2('mobileNumber')">
-                            </div>
-                            <small
-                                *ngIf="personalInfoForm.get('mobileNumber')?.errors?.['required']&& personalInfoForm.get('mobileNumber')?.touched">
-                                يرجى إدخال رقم الموبايل
-                            </small>
-                            <small *ngIf="personalInfoForm.get('mobileNumber')?.errors?.['pattern']">رقم الموبايل غير
-                                صالح</small>
-
-                        </div>
-
-
-                        <button type="submit">
-                            حفظ التغييرات </button>
-                        <a routerLink="/home">إلغاء</a>
-                    </form>
-                    <button mat-icon-button class="close-button" (click)="closePopup()">
-                        <mat-icon class="close-icon">cancel</mat-icon>
-                    </button>
-
-                </div>
+            <small
+                *ngIf="personalInfoForm.get('username')?.errors?.['required']&& personalInfoForm.get('username')?.touched">
+                يرجى إدخال الاسم
+            </small>
+        </div>
+        <div class="phonenumber">
+            <label for="mobileNumber">رقم الموبايل:</label>
+            <div class="container-input">
+                <input type="text" id="mobileNumber" formControlName="mobileNumber" placeholder="رقم الموبايل"
+                    [disabled]="!isEditing2">
+                <img src="../../../../assets/ic_text_field_phone.svg" class="icon1" alt="">
+                <img src="../../../../assets/ic_edit.svg" class="icon2" (click)="toggleEditing2('mobileNumber')" alt="">
+            </div>
+            <small
+                *ngIf="personalInfoForm.get('mobileNumber')?.errors?.['required']&& personalInfoForm.get('mobileNumber')?.touched">
+                يرجى إدخال رقم الموبايل
+            </small>
+            <small *ngIf="personalInfoForm.get('mobileNumber')?.errors?.['pattern']">رقم الموبايل غير
+                صالح
+            </small>
+        </div>
+        <button type="submit">
+            حفظ التغييرات </button>
+        <a routerLink="/home">إلغاء</a>
+    </form>
+    <button mat-icon-button class="close-button" (click)="closePopup()">
+        <mat-icon class="close-icon">cancel</mat-icon>
+    </button>
+</div>

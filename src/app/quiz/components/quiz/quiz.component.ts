@@ -21,22 +21,22 @@ export class QuizComponent {
 
   constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService) { }
 
-  ngOnInit(): void {
-    this.isFetching = true;
-    this.quizService.getAllQuizes().subscribe(
-      (result: any) => {
-        console.log(result);
-        if (result.code == 200) {
-          this.quizes = result.data;
-          this.isFetching = false;
-        }
-      },
-      (error) => {
-        alert(error.message);
-        this.isFetching = false;
-      }
-    );
-  }
+  // ngOnInit(): void {
+  //   this.isFetching = true;
+  //   this.quizService.getAllQuizes().subscribe(
+  //     (result: any) => {
+  //       console.log(result);
+  //       if (result.code == 200) {
+  //         this.quizes = result.data;
+  //         this.isFetching = false;
+  //       }
+  //     },
+  //     (error) => {
+  //       alert(error.message);
+  //       this.isFetching = false;
+  //     }
+  //   );
+  // }
 
   currentPage = 1;
   itemsPerPage = 1;
@@ -300,15 +300,19 @@ export class QuizComponent {
     }
   }
   checkLH(option: any) {
-    let quiz = this.quizesInLocalHost.find((element: any) => {
-      return element.id == this.currentPage
-    });
-    if (option.id == quiz?.option.id) {
-      return true;
+    if ('quizes' in localStorage) {
+      this.quizesInLocalHost = JSON.parse(localStorage.getItem('quizes')!);
+      let quiz = this.quizesInLocalHost.find((element: any) => {
+        return element.id == this.currentPage
+      });
+      if (option.id == quiz?.option.id) {
+        return true;
+      }
+      else {
+        return false
+      }
     }
-    else {
-      return false
-    }
+    return false;
   }
   previousPage() {
     if (this.currentPage > 1) {
@@ -339,99 +343,32 @@ export class QuizComponent {
     }
   }
   correctAnswer(quiz?: any) {
+
     console.log(this.selectOption);
-    // document.querySelectorAll('.answer').forEach(e => e.setAttribute("style", "border-color:black;"));
-    document.getElementsByClassName("correct")[0]?.setAttribute("style", "border-color:black;");
-    document.getElementsByClassName("false")[0]?.setAttribute("style", "border-color:black;");
-    this.isCorrect = false;
-    // this.selectOption = undefined;
+    quiz?.options.forEach((e: any) => document.getElementById(`option${e.id}`)?.setAttribute("style", "border-color:black;"));
     let existIndex = this.quizesInLocalHost.findIndex((element) => {
       return element.id == quiz.id;
     });
     let correctOption = quiz.options.find((element: any) => {
       return element.correct == true
     });
+    document.getElementById(`option${correctOption.id}`)?.setAttribute("style", "border-color:#20C4F4;");
     if (existIndex != -1) {
-      // let correctOption = quiz.options.find((element: any) => {
-      //   return element.correct == true
-      // });
-      // console.log(correctOption);
-      let existOptionIndex = this.quizesInLocalHost.findIndex((element) => {
-        return element.option.id == correctOption.id;
+      this.quizesInLocalHost.forEach(element => {
+        if (element.option.id != correctOption.id && quiz.id == element.id) {
+          document.getElementById(`option${element.option.id}`)?.setAttribute("style", "border-color:red;");
+        }
       });
-      console.log(existOptionIndex);
-      if (existOptionIndex != -1) {
-        this.isCorrect = true;
-      }
     }
-    let htmlElement = document.getElementsByClassName("correct");
-    let htmlElementFalse = document.getElementsByClassName("false");
-    // if (htmlElement.length > 0 && this.isCorrect == true) {
-    htmlElement[0]?.setAttribute("style", "border-color:#20C4F4;");
-    if (this.selectOption != undefined && this.isCorrect == false) {
-      htmlElementFalse[0]?.setAttribute("style", "border-color:red;");
-    }
-    document.getElementById(`optiontrue`)!.setAttribute("style", "border-color:#20C4F4;");
-
-
-
-    // } else {
-    //   document.getElementById(`option${this.selectOption.id}`)!.setAttribute("style", "border-color:red;");
-    //   document.getElementById(`option${correctOption.id}`)!.setAttribute("style", "border-color:#20C4F4;");
-    // }
-
   }
   checkAnswer(option?: any) {
-    // console.log(option)
-    // if (option != 'undefined') {
     if (option.correct == true) {
       return true;
-    } else if (option.correct == false && this.selectOption != 'undefined') {
-      // console.log(this.selectOption)
-      if (this.selectOption?.id == option?.id) {
-        return false;
-      }
+    } else if (option.correct == false && this.selectOption != 'undefined' && this.selectOption?.id == option?.id) {
+      return false;
     }
-    // }
-    return
-    // document.querySelectorAll('.answer').forEach(e => e.classList.remove("choose"));
-    // console.log('option');
-    // console.log(option);
-    // let existIndex = this.quizesInLocalHost.findIndex((element) => {
-    //   return element.id == option.id;
-    // });
-    // if (existIndex != -1) {
-    //   let existOptionIndex = this.quizesInLocalHost.findIndex((element) => {
-    //     return element.option.id == option.id;
-    //   });
-    //   console.log(existOptionIndex);
-    //   if (existOptionIndex != -1 && option.correct == true) {
-    //     return true;
-    //   } else {
-    //     return false
-    //   }
-    // }
-    // return false;
+    return null;
   }
-  // paginate(operator: string) {
-  //   this.isFetching = true;
-  //   if (operator == '+') {
-  //     this.currentPageOrder++;
-  //   } else {
-  //     this.currentPageOrder--;
-  //   }
-  //   this.quizService.paginate(this.limit, this.currentPageOrder).subscribe(
-  //     (result: any) => {
-  //       this.quiz = result.data;
-  //       console.log(result.data);
-  //       this.isFetching = false;
-  //     },
-  //     (error) => {
-  //       alert(error.message);
-  //       this.isFetching = false;
-  //     }
-  //   );
-  // }
 
   moveToQuizEnd() {
     // console.log('quiz')

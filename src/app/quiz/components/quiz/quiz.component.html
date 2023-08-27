@@ -7,8 +7,7 @@
         <h1>{{quiz.id}}.</h1>
         <div class="question">{{quiz.questionText}}</div>
         <div class="options" *ngFor="let option of quiz!.options">
-            <div class="answer" [id]="'option'+option.correct" [ngClass]="{'correct':checkAnswer(option)}"
-                [ngClass]="{'false':!checkAnswer(option)}">
+            <div class="answer" [id]="'option'+option.id">
                 <span>
                     <input [value]="'option'+option.id" type="radio" name="option"
                         (click)="addQuizToLocalStorage(quiz.id,option)" [checked]="checkLH(option)">
