@@ -6,6 +6,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -16,10 +17,11 @@ import { HomeRoutingModule } from './home-routing.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule, MatDialogModule
   ],
   exports: [
     // CarouselComponent
+    HomeComponent
   ]
 })
 export class HomeModule { }

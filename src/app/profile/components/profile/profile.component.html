@@ -9,22 +9,27 @@
         <div class="username">
             <label for="username">اسم المستخدم:</label>
             <div class="container-input">
-                <input type="text" id="username" formControlName="username" placeholder="اسم المستخدم">
+                <input type="text" id="username" formControlName="username" placeholder="اسم المستخدم"
+                    [disabled]="!isEditing1">
                 <img src="../../../../assets/ic_text_field_user.svg" class="icon1" alt="">
-                <img src="../../../../assets/ic_edit.svg" class="icon2" alt="">
+                <img src="../../../../assets/ic_edit.svg" class="icon2" (click)="toggleEditing1('username')" alt="">
             </div>
         </div>
         <div class="phonenumber">
             <label for="mobileNumber">رقم الموبايل:</label>
             <div class="container-input">
-                <input type="text" id="mobileNumber" formControlName="mobileNumber" placeholder="رقم الموبايل">
+                <input type="text" id="mobileNumber" formControlName="mobileNumber" placeholder="رقم الموبايل"
+                    [disabled]="!isEditing2">
                 <img src="../../../../assets/ic_text_field_phone.svg" class="icon1" alt="">
-                <img src="../../../../assets/ic_edit.svg" class="icon2" alt="">
+                <img src="../../../../assets/ic_edit.svg" class="icon2" (click)="toggleEditing2('mobileNumber')" alt="">
             </div>
         </div>
 
-        <button type="submit" [disabled]="personalInfoForm.invalid">
+        <button type="submit">
             حفظ التغييرات </button>
         <a routerLink="/home">إلغاء</a>
     </form>
+    <button mat-icon-button class="close-button" (click)="closePopup()">
+        <mat-icon class="close-icon">cancel</mat-icon>
+    </button>
 </div>

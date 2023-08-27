@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Collage } from 'src/app/models/collage';
 import { enviroment } from 'src/app/enviroment';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -70,4 +71,5 @@ export class HomeComponent {
   //   }
 
   // });
+
 }

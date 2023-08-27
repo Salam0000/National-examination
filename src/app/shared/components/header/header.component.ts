@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { ProfileComponent } from 'src/app/profile/components/profile/profile.component';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,7 @@ export class HeaderComponent {
 
   token: string = '';
 
-  constructor(private route: Router, private authService: AuthService) { }
+  constructor(private route: Router, private authService: AuthService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token') == null ? '' : localStorage.getItem('token')!;
@@ -27,7 +29,11 @@ export class HeaderComponent {
     this.route.navigate(['/specialization']);
   }
   GoToProfile() {
-    this.route.navigate(['/profile']);
+    this.dialog.open(ProfileComponent, {
+      width: '70%',
+      height: '93vh'
+    })
+
   }
   logout() {
     this.authService.logout().subscribe(
