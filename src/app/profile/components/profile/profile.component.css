@@ -1,5 +1,5 @@
 .profile {
-    width: 50%;
+    width: 60%;
     height: 95%;
     border: 3px dashed #6F2877;
     margin: 12px auto;
@@ -13,6 +13,16 @@
 
 .avatar {
     text-align: center;
+}
+.avatar span{
+    /* position: absolute; */
+    /* left: 0;
+    bottom: 0; */
+    font-size: 2rem;
+}
+.avatar img{
+width: 50px;
+height: 50px
 }
 
 .username,

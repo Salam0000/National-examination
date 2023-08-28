@@ -9,7 +9,8 @@
 <div class="second_section_holder">
     <div class="main_title">التصنيفات</div>
     <div class="second_section">
-        <button *ngFor="let Classification of Classifications;let i=index" class="second_section_container" (click)="showPopUp()">
+        <button *ngFor="let Classification of Classifications;let i=index" class="second_section_container"
+            (click)="showPopUp()">
             <h1>{{Classification.name}}</h1>
         </button>
         <!-- <div *ngFor="let Classification of Classifications" class="second_section_container">
@@ -17,3 +18,4 @@
         </div> -->
     </div>
 </div>
+<app-footer></app-footer>

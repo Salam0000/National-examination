@@ -92,5 +92,16 @@ export class ProfileComponent {
   closePopup() {
     this.dialog.closeAll();
   }
+  selectedImage: any
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
 
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e: any) => {
+        this.selectedImage = e.target.result;
+      };
+    }
+  }
 }

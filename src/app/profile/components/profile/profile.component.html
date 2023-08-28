@@ -3,10 +3,17 @@
 </div>
 <div class="profile" *ngIf="!isFetching">
     <h2>تعديل المعلومات الشخصية</h2>
-    <div class="avatar">
+    <!-- <div class="avatar">
         <img src="../../../../assets/avatar.jpg" alt="">
         <h3>اسم المستخدم</h3>
+    </div> -->
+    <div class="avatar">
+        <span class="add-icon" (click)="fileInput.click()">+</span>
+        <img [src]="selectedImage ? selectedImage : '../../../../assets/avatar.jpg'" alt="">
+        <h3>اسم المستخدم</h3>
     </div>
+    <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
+
     <form [formGroup]="personalInfoForm" (ngSubmit)="saveChanges()" class="fields">
         <div class="username">
             <label for="username">اسم المستخدم:</label>
@@ -39,9 +46,9 @@
         </div>
         <button type="submit">
             حفظ التغييرات </button>
-        <a routerLink="/home">إلغاء</a>
+        <a (click)="closePopup()">إلغاء</a>
     </form>
-    <button mat-icon-button class="close-button" (click)="closePopup()">
-        <mat-icon class="close-icon">cancel</mat-icon>
-    </button>
+    <!-- <button mat-icon-button class="close-button" (click)="closePopup()"> -->
+    <!-- <mat-icon class="close-icon" >cancel</mat-icon> -->
+    <!-- </button> -->
 </div>
