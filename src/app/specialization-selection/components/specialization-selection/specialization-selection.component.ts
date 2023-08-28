@@ -16,7 +16,6 @@ export class SpecializationSelectionComponent {
   constructor(private specializationSelectionService: SpecializationSelectionService, private route: ActivatedRoute, private router: Router, private dialog: MatDialog) { }
 
   adverts: Advert[] = [];
-  // specializations: Specialization[] = [];
   Classifications: Classification[] = [];
   isFetching: boolean = false;
   specializationId!: number;
@@ -29,20 +28,18 @@ export class SpecializationSelectionComponent {
     this.specializationSelectionService.getAllAdverts().subscribe(
       (result: any) => {
         this.adverts = result.data.sliders.splice(0, 3);
-        console.log(result);
       },
-      (error) => {
-        alert(error.message);
+      (_) => {
+        alert('الرجاء التحقق من سلامة الاتصال لديك');
       }
     );
     this.specializationSelectionService.getAllClassifications().subscribe(
       (result: any) => {
         this.Classifications = result.data.specializations;
-        console.log(result);
         this.isFetching = false;
       },
-      (error) => {
-        alert(error.message);
+      (_) => {
+        alert('الرجاء التحقق من سلامة الاتصال لديك');
         this.isFetching = false;
       }
     );
@@ -79,7 +76,6 @@ export class SpecializationSelectionComponent {
     this.router.navigate([`/QuizDwrat`]);
   }
   moveToQuizStart() {
-    console.log('quiz')
     this.router.navigate([`/QuizStart/بنك الأسئلة`]);
   }
   showPopUp() {

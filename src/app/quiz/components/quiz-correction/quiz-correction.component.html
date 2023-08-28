@@ -1,17 +1,13 @@
-<div class="loader_container" *ngIf="isFetching">
-    <div class="loader"></div>
-</div>
-<div class="isFetching" *ngIf="!isFetching">
+<div class="isFetching">
     <app-header></app-header>
     <div class="container" *ngFor="let quiz of paginateData();let i=index">
         <h1>{{currentPage}}.</h1>
-        <div class="question">{{quiz.content}}</div>
-        <div class="options" *ngFor="let option of quiz!.answers">
+        <div class="question">{{quiz.quiz.content}}</div>
+        <div class="options" *ngFor="let option of quiz.quiz!.answers">
             <div class="answer" [id]="'option'+option.uuid">
                 <span>
-                    <!-- [attr.disabled]="isChecked == true" -->
-                    <input [value]="'option'+option.uuid" type="radio" name="option"
-                        (click)="addQuizToLocalStorage(quiz.uuid,quiz,option)" [checked]="checkLH(quiz.uuid,option)">
+                    <input disabled="true" [value]="'option'+option.uuid" type="radio"
+                        [checked]="colorTheAnswer(option.uuid)">
                 </span>
                 <span>
                     {{option.content}}
@@ -21,7 +17,7 @@
 
         <div class="last_row">
             <div class="last_row_icons">
-                <i class='bx bxs-check-circle check_circle' (click)="correctAnswer(quiz)"></i>
+                <i class='bx bxs-check-circle check_circle'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-book-bookmark'></i>
             </div>
@@ -31,9 +27,6 @@
             </div>
 
         </div>
-    </div>
-    <div class="end">
-        <button *ngIf="lastPage==currentPage" (click)="moveToQuizEnd()">إنهاء الاختبار</button>
     </div>
     <!-- <app-footer></app-footer> -->
 </div>

@@ -6,31 +6,30 @@ import { enviroment } from 'src/app/enviroment';
   providedIn: 'root'
 })
 export class ProfileService {
-
-  constructor(private http: HttpClient) { }
+  token?: string;
+  constructor(private http: HttpClient) {
+    this.token = localStorage.getItem('token') ?? undefined;
+  }
 
   getProfile() {
-    let token = localStorage.getItem('token');
     const header = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer ${this.token}`,
     });
     return this.http.get(enviroment.baseApi + 'my-profile', { headers: header });
   }
 
   UpdateProfile(model: any) {
-    let token = localStorage.getItem('token');
     const header = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.put(enviroment.baseApi + '/UserProfile/update', model, { headers: header });
+    return this.http.post(enviroment.baseApi + 'profile/update', model, { headers: header });
   }
 
-  deleteProfile() {
-    let token = localStorage.getItem('token');
+  UpdatePhoto(model: any) {
     const header = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.delete(enviroment.baseApi + '/UserProfile/delete', { headers: header });
+    return this.http.post(enviroment.baseApi + 'profile/update-photo', model, { headers: header });
   }
 
 }

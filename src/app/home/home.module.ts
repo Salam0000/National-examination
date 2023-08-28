@@ -20,7 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     SharedModule, MatDialogModule
   ],
   exports: [
-    // CarouselComponent
+    CarouselComponent,
     HomeComponent
   ]
 })

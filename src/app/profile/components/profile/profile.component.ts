@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileService } from '../../services/profile.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ export class ProfileComponent {
   isFetching = false;
   isEditing1: boolean = false;
   isEditing2: boolean = false;
-
+  currentUser!: User;
 
   constructor(private formBuilder: FormBuilder, private profileSevice: ProfileService, private dialog: MatDialog) { }
 
@@ -25,22 +26,21 @@ export class ProfileComponent {
       mobileNumber: [{ value: '', disabled: true }, [Validators.required, Validators.pattern('^09[0-9]{8}$')]]
     });
     this.profileSevice.getProfile().subscribe((result: any) => {
-      console.log(result);
       if (result.statuscode == 200) {
+        this.currentUser = result.data.profile;
+        this.selectedImage = this.currentUser.photo;
         this.personalInfoForm.setValue({
-          username: result.data.profile.name,
-          mobileNumber: result.data.profile.phone,
+          username: this.currentUser.name,
+          mobileNumber: this.currentUser.phone,
         });
       }
       this.isFetching = false;
     },
-      (error) => {
-        alert(error.message);
+      (_) => {
+        alert('الرجاء التحقق من سلامة الاتصال لديك');
         this.isFetching = false;
       });
-
   }
-
   saveChanges() {
     if (this.personalInfoForm.valid) {
       this.isFetching = true;
@@ -54,26 +54,22 @@ export class ProfileComponent {
       // }
       this.profileSevice.UpdateProfile(model).subscribe(
         (result: any) => {
-          console.log(result);
           if (result.statuscode == 200) {
-            console.log(result.data)
             alert('تم تعديل البروفايل بنجاح');
           } else {
             alert('عذرا حدث خطأ ما');
           }
           this.isFetching = false;
         },
-        (error) => {
-          alert(error.message);
+        (_) => {
+          alert('الرجاء التحقق من سلامة الاتصال لديك');
           this.isFetching = false;
         }
       );
-      console.log(this.personalInfoForm.value);
     }
   }
   toggleEditing1(name: string) {
     this.isEditing1 = !this.isEditing1;
-    console.log(this.isEditing1)
     if (!this.isEditing1) {
       this.personalInfoForm.get(name)?.disable()
     } else {
@@ -82,7 +78,6 @@ export class ProfileComponent {
   }
   toggleEditing2(name: string) {
     this.isEditing2 = !this.isEditing2;
-    console.log(this.isEditing2)
     if (!this.isEditing2) {
       this.personalInfoForm.get(name)?.disable()
     } else {
@@ -95,12 +90,37 @@ export class ProfileComponent {
   selectedImage: any
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
-
     if (file) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e: any) => {
-        this.selectedImage = e.target.result;
+        // this.selectedImage = e.target.result;
+        this.isFetching = true;
+        let model = new FormData();
+        model.append('photo2', e.target.result);
+        this.profileSevice.UpdatePhoto(model).subscribe((result: any) => {
+          if (result.statuscode == 200) {
+            alert('تمت إضافة الصورة بنجاح');
+            this.isFetching = false;
+          } else if (result.statuscode == 422) {
+            alert('الرجاء التحقق من صحة المعلومات');
+            let errorMessage = "";
+            for (const key in result.errors) {
+              if (result.errors.hasOwnProperty(key)) {
+                errorMessage += `${key}: ${result.errors[key].join(" ")}\n`;
+              }
+            }
+            alert(errorMessage);
+          } else if (result.statuscode == 401 || result.statuscode == 409 || result.statuscode == 400 || result.statuscode == 500) {
+            alert(result.message);
+          } else {
+            alert("عذرا, حدث خطأ غير معروف");
+          }
+        },
+          (_) => {
+            alert('الرجاء التحقق من سلامة الاتصال لديك');
+            this.isFetching = false;
+          });
       };
     }
   }

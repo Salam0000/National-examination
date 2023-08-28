@@ -10,7 +10,7 @@
     <div class="avatar">
         <span class="add-icon" (click)="fileInput.click()">+</span>
         <img [src]="selectedImage ? selectedImage : '../../../../assets/avatar.jpg'" alt="">
-        <h3>اسم المستخدم</h3>
+        <h3>{{currentUser.name ? currentUser.name:'اسم المستخدم'}}</h3>
     </div>
     <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
 

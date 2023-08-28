@@ -7,8 +7,7 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="custom_indicator"
             aria-label="Slide 3"></button> -->
         <button *ngFor="let advert of adverts;let i=index" type="button" data-bs-target="#carouselExampleIndicators"
-            class="custom_indicator" attr.data-bs-slide-to='{{i}}' class="custom_indicator"
-            attr.aria-label="Slide {{i+1}}">
+            class="custom_indicator" class="custom_indicator buttons" [id]="'button'+i" (click)="paginate(i)">
         </button>
     </div>
     <div class="carousel-inner center">
@@ -21,7 +20,7 @@
         <div class="carousel-item image_container">
             <img src="../../../../assets/Login.svg" class="d-block w-100" alt="...">
         </div> -->
-        <div [ngClass]="{'active': i == 0 }" *ngFor="let advert of adverts;let i=index"
+        <div [ngClass]="{'active': i == 0 }" *ngFor="let advert of adverts;let i=index" [id]="'image'+i"
             class="carousel-item image_container">
             <img [src]="advert.image_url" class="d-block w-100" alt="...">
         </div>

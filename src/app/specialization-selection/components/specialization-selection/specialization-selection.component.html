@@ -8,14 +8,20 @@
 </div>
 <div class="second_section_holder">
     <div class="main_title">التصنيفات</div>
-    <div class="second_section">
+    <div class="zero_length" *ngIf="Classifications.length==0">
+        لا يوجد تصنيفات
+    </div>
+    <!-- <ng-container class="second_section">
+        <button *ngFor="let Classification of [0,9,8,7,6];let i=index" class="second_section_container"
+            (click)="showPopUp()">
+            <h1>{{Classification}}</h1>
+        </button>
+    </ng-container> -->
+    <ng-container class="second_section" *ngIf="Classifications.length>=0">
         <button *ngFor="let Classification of Classifications;let i=index" class="second_section_container"
             (click)="showPopUp()">
             <h1>{{Classification.name}}</h1>
         </button>
-        <!-- <div *ngFor="let Classification of Classifications" class="second_section_container">
-            <h1>{{Classification.title}}</h1>
-        </div> -->
-    </div>
+    </ng-container>
 </div>
 <app-footer></app-footer>

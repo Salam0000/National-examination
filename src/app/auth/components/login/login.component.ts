@@ -18,22 +18,21 @@ export class LoginComponent {
 
   constructor(private formBulider: FormBuilder, private router: Router, private authService: AuthService, private http: HttpClient) { }
 
-  checkInternetConnection() {
-    // this.isOnline = navigator.onLine;
-    this.http.get('https://www.google.co.uk/').subscribe(
-      () => {
-        this.isOnline = true;
-        console.log(this.isOnline);
-      },
-      () => {
-        this.isOnline = false;
-        console.log(this.isOnline);
+  // checkInternetConnection() {
+  //   // this.isOnline = navigator.onLine;
+  //   this.http.get('https://www.google.co.uk/').subscribe(
+  //     () => {
+  //       this.isOnline = true;
+  //       console.log(this.isOnline);
+  //     },
+  //     () => {
+  //       this.isOnline = false;
+  //       console.log(this.isOnline);
 
-      }
-    );
-    console.log('online' + this.isOnline);
-  }
-
+  //     }
+  //   );
+  //   console.log('online' + this.isOnline);
+  // }
   ngOnInit(): void {
     // this.checkInternetConnection();
     this.formLogin = this.formBulider.group({
@@ -43,12 +42,10 @@ export class LoginComponent {
   }
   onSubmit() {
     if (this.formLogin.valid) {
-      console.log(this.formLogin.value)
       let model = new FormData();
       model.append('name', this.formLogin.value.username);
       model.append('code', this.formLogin.value.password);
       this.authService.login(model).subscribe((result: any) => {
-        // console.log(result.statusCode)
         if (result.statuscode == 200) {
           localStorage.setItem('token', result.data.token);
           localStorage.setItem('college', JSON.stringify(result.data.college));
@@ -56,27 +53,25 @@ export class LoginComponent {
           localStorage.setItem('specialization_id', result.data.college.id);
           this.router.navigate(['/home']);
         } else if (result.statuscode == 422) {
-          // alert('الرجاء التحقق من صحة المعلومات');
-          // let errorMessage = "";
-          // for (const key in result.errors) {
-          //   if (result.errors.hasOwnProperty(key)) {
-          //     errorMessage += `${key}: ${result.errors[key].join(" ")}\n`;
-          //   }
-          // }
-          // console.log(result.errors)
-          // alert(result.error);
-        } else if (result.statuscode == 401 || result.statuscode == 400 || result.statuscode == 500) {
+          alert('الرجاء التحقق من صحة المعلومات');
+          let errorMessage = "";
+          for (const key in result.errors) {
+            if (result.errors.hasOwnProperty(key)) {
+              errorMessage += `${key}: ${result.errors[key].join(" ")}\n`;
+            }
+          }
+          alert(errorMessage);
+        } else if (result.statuscode == 401 || result.statuscode == 409 || result.statuscode == 400 || result.statuscode == 500) {
           alert(result.message);
         } else {
           alert("عذرا, حدث خطأ غير معروف");
         }
       }
-        , (error) => {
-          console.log(error)
+        , (_) => {
+          alert('الرجاء التحقق من سلامة الاتصال لديك');
         });
     } else {
       alert('الرجاء أدخل جميع الحقول');
     }
   }
-
 }

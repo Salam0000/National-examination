@@ -15,6 +15,16 @@
     height: 100%;
 }
 
+.imageNotFound {
+    width: 80%;
+    height: 80%;
+}
+
+.imageNotFound img {
+    width: 100%;
+    height: 100%;
+}
+
 .right_column {
     display: flex;
     flex-direction: column;
@@ -74,7 +84,7 @@
 }
 
 .zero_length {
-    height: 200px;
+    /* height: 200px; */
     margin: auto 50px;
 }
 
@@ -125,14 +135,6 @@
     font-weight: bold;
     text-decoration: underline;
 }
-/* .container div {
-    margin: 50px;
-} */
-@media (max-width:576px) {
-    .box-rectangle {
-        display: none;
-    }
-}
 
 @media (max-width: 1000px) {
     .container {
@@ -141,7 +143,15 @@
 }
 
 @media (max-width: 767px) {
+    .imageNotFound {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .container {
+        margin-top: 0;
         grid-template-columns: 1fr;
     }
 
@@ -166,6 +176,9 @@
 }
 
 @media (max-width: 576px) {
+    .box-rectangle {
+        display: none;
+    }
 
     body,
     h1 {
@@ -177,14 +190,6 @@
         margin: auto;
         text-align: center;
         margin-top: 20px;
-    }
-
-    app-carousel {
-        margin: auto;
-        height: 100%;
-        padding-bottom: 0;
-        margin-bottom: 0;
-        width: 80%;
     }
 
     .right_column {
@@ -204,21 +209,14 @@
         margin-top: 0px;
     }
 
-    .container {
-        width: 100%;
-        margin-top: 20px;
-        height: 50vh;
-    }
 }
 
 
 @media (max-width: 486px) {
-    .container {
-        height: 50vh;
+    .imageNotFound {
+        margin-top: 20px;
     }
-}
 
-@media (max-width: 340px) {
     .container {
         height: 40vh;
     }

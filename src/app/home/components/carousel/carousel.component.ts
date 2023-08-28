@@ -11,13 +11,15 @@ export class CarouselComponent {
   @Input('adverts') adverts: Advert[] = [];
 
   ngOnInit() {
-    console.log('advert');
-    console.log(this.adverts);
-    // for (let advert in this.adverts) {
-    //   console.log(advert.image_url);
-    // }
-    for (let index = 0; index < this.adverts.length; index++) {
-      console.log(this.adverts[index].image_url);
-    }
+    document.getElementById('image0')?.setAttribute("style", "background-color:#6F2877;");
+  }
+  paginate(id: number) {
+    let buttons = document.querySelectorAll('.buttons');
+    buttons.forEach(e => e.setAttribute("style", "background-color:transparent;"));
+    document.getElementById(`button${id}`)?.setAttribute("style", "background-color:#6F2877;");
+    let images = document.querySelectorAll('.image_container');
+    images.forEach(e => e.classList.remove("active"));
+    document.getElementById(`image${id}`)?.classList.add("active");
   }
 }
+

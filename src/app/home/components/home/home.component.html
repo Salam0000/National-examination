@@ -3,7 +3,7 @@
 </div>
 <div class="isFetching" *ngIf="!isFetching">
     <app-header></app-header>
-    <div class="container">
+    <div class="container" id="container">
         <div class="right_column">
             <div class="data">
                 <h1>
@@ -14,15 +14,15 @@
                     من مكان واحد فقط “اطلع - اختبر - احصل على النتيجة
                 </span>
             </div>
-            <button routerLink="/QuizStart/بنك الأسئلة">
+            <button (click)="moveToQuizStart()">
                 ابدأ الأن
             </button>
         </div>
-        <!-- <div *ngIf="adverts.length==0">
+        <div class="imageNotFound" *ngIf="adverts.length==0">
                 <img src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png"
                     class="w-100 h-100" alt="عذرا حدث خطأ ما">
-            </div> -->
-        <app-carousel *ngIf="adverts.length>0" [adverts]="getTotalAdverts()"></app-carousel>
+            </div>
+        <app-carousel *ngIf="adverts.length>0" [adverts]="getTotalAdverts()" id="carousel"></app-carousel>
     </div>
     <div class="second_section_holder">
         <div class="main_title">الإختصاصات</div>

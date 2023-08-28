@@ -32,14 +32,11 @@ export class HeaderComponent {
     this.dialog.open(ProfileComponent, {
       width: '70%',
       height: '93vh'
-    })
-
+    });
   }
   logout() {
-
     this.authService.logout().subscribe(
       (result: any) => {
-
         if (result.statuscode == 200) {
           alert('تم تسجيل الخروج بنجاح');
           localStorage.removeItem('token');
@@ -47,9 +44,10 @@ export class HeaderComponent {
         } else {
           alert(result.message);
         }
-        console.log(result);
       },
-      (error) => { console.log(error); }
+      (_) => {
+        alert('الرجاء التحقق من سلامة الاتصال لديك');
+      }
     )
   }
 }

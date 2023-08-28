@@ -21,18 +21,16 @@ export class RegisterComponent implements OnInit {
     this.isFetching = true;
     this.authService.getAllSpecializations().subscribe(
       (result: any) => {
-        console.log(result);
         if (result.statuscode == 200) {
           this.specializations = result.data.colleges;
         }
         this.isFetching = false;
       },
-      (error) => {
-        alert(error.message);
+      (_) => {
+        alert('عذرا, حدث خطأ في جلب المعلومات يرجى إعادة المحاولة');
         this.isFetching = false;
       }
     );
-
     this.formRegister = this.formBulider.group({
       username: ["", Validators.required],
       phonenumber: ["", [Validators.required, Validators.pattern('^09[0-9]{8}$')]],
@@ -41,22 +39,17 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit() {
     if (this.formRegister.valid) {
-      console.log(this.formRegister.value)
       const data = this.formRegister.value;
       let model = new FormData();
       model.append('name', this.formRegister.value.username)
       model.append('phone', this.formRegister.value.phonenumber)
       model.append('college_id', this.formRegister.value.specialization)
-      console.log(model)
       this.authService.register(model).subscribe(
         (result: any) => {
           if (result.statuscode == 200) {
             this.router.navigate(['/login']);
             alert("تم إنشاء الحساب بنجاح");
-          } 
-        },
-        (result) => {
-          if (result.statuscode == 422) {
+          } else if (result.statuscode == 422) {
             let errorMessage = "";
             for (const key in result.errors) {
               if (result.errors.hasOwnProperty(key)) {
@@ -64,11 +57,14 @@ export class RegisterComponent implements OnInit {
               }
             }
             alert(errorMessage);
-          } else if (result.statuscode == 401 || result.statuscode == 400 || result.statuscode == 500) {
+          } else if (result.statuscode == 401 || result.statuscode == 400 || result.statuscode == 409 || result.statuscode == 500) {
             alert(result.message);
           } else {
             alert("عذرا, حدث خطأ غير معروف");
           }
+        },
+        (_) => {
+          alert('الرجاء التحقق من سلامة الاتصال لديك');
         }
       );
     } else {

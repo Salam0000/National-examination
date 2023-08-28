@@ -5,7 +5,6 @@ import { Specialization } from 'src/app/models/specialization';
 import { Router } from '@angular/router';
 import { Collage } from 'src/app/models/collage';
 import { enviroment } from 'src/app/enviroment';
-import { Token } from '@angular/compiler';
 
 
 @Component({
@@ -32,38 +31,52 @@ export class HomeComponent {
     this.url = enviroment.base;
     this.homeService.getAllAdverts().subscribe(
       (result: any) => {
-        this.adverts = result.data.sliders.splice(0, 3);
-        console.log(this.adverts);
-        this.isFetching = false;
+        if (result.statuscode == 200) {
+          this.adverts = result.data.sliders.splice(0, 3);
+          // this.adverts = result.data.sliders;
+          if (this.adverts.length == 0) {
+            document.getElementById("carousel")?.setAttribute("style", "display:none;");
+            document.getElementById("container")?.setAttribute("style", "display: block");
+            document.getElementById("container")?.setAttribute("style", "grid-template-columns: repeat(1, 80%)");
+          }
+          this.isFetching = false;
+        } else {
+          alert(result.message);
+          this.isFetching = false;
+        }
       },
-      (error) => {
-        alert(error.message);
+      (_) => {
+        alert('الرجاء التحقق من سلامة الاتصال لديك');
         this.isFetching = false;
       }
     );
     this.homeService.getAllSpecializations().subscribe(
       (result: any) => {
-        console.log(result);
         if (result.statuscode == 200) {
           this.specializations = result.data.colleges;
           this.isFetching = false;
+        } else {
+          alert(result.message);
+          this.isFetching = false;
         }
       },
-      (error) => {
-        alert(error.message);
+      (_) => {
+        alert('الرجاء التحقق من سلامة الاتصال لديك');
         this.isFetching = false;
       }
     );
   }
-
   getTotalAdverts() {
-    console.log(this.adverts);
     return this.adverts;
   }
-
+  moveToQuizStart() {
+    if ('token' in localStorage) {
+      this.router.navigate(["/QuizStart/بنك الأسئلة"]);
+    } else {
+      alert('يرجى تسجيل الدخول')
+    }
+  }
   moveToSpecilazationById(uuid: number) {
-    let token = localStorage.getItem('token');
-    let college = localStorage.getItem('college');
     if ('token' in localStorage) {
       if ('college' in localStorage && JSON.parse(localStorage.getItem('college')!)!.uuid == uuid) {
         this.router.navigate([`/specialization/${uuid}`]);
@@ -74,7 +87,6 @@ export class HomeComponent {
       alert('يرجى تسجيل الدخول')
     }
   }
-
   moveToSpecilazationByType(type: string) {
     this.router.navigate([`/specialization/${type}`]);
   }
