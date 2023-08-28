@@ -1,8 +1,7 @@
-export class Collage {
-    uuid!: number;
+export class Dwrat {
     id!: number;
+    uuid!: number;
     name!: string;
-    logo!: string;
     created_at!: string;
     updated_at!: string;
 }

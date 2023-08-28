@@ -1,4 +1,4 @@
-<div id="carouselExampleIndicators" class="carousel slide left_column">
+<div *ngIf="adverts.length > 0" id="carouselExampleIndicators" class="carousel slide left_column">
     <div class="carousel-indicators">
         <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
             class="active custom_indicator" aria-current="true" aria-label="Slide 1"></button>
@@ -7,7 +7,8 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="custom_indicator"
             aria-label="Slide 3"></button> -->
         <button *ngFor="let advert of adverts;let i=index" type="button" data-bs-target="#carouselExampleIndicators"
-            attr.data-bs-slide-to='{{i}}' class="custom_indicator" attr.aria-label="Slide {{i+1}}"></button>
+            class="custom_indicator"  attr.data-bs-slide-to='{{i}}' class="custom_indicator" attr.aria-label="Slide {{i+1}}">
+        </button>
 
     </div>
     <div class="carousel-inner">
@@ -20,8 +21,9 @@
         <div class="carousel-item image_container">
             <img src="../../../../assets/Login.svg" class="d-block w-100" alt="...">
         </div> -->
-        <div *ngFor="let advert of adverts" class="carousel-item image_container">
-            <img src="{{advert.image_url}}" class="d-block w-100" alt="...">
+        <div [ngClass]="{'active': i == 0 }" *ngFor="let advert of adverts;let i=index"
+            class="carousel-item image_container">
+            <img [src]="advert.image_url" class="d-block w-100" alt="...">
         </div>
     </div>
 </div>

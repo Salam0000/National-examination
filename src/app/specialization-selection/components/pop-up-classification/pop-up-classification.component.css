@@ -1,0 +1,39 @@
+.container {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: dashed 3px #6F2877;
+    height: 70%;
+}
+
+.container button {
+    width: 30%;
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.container .btn1 {
+    background-color: #B9E5FB;
+}
+
+.container .btn2 {
+    background-color: #6F2877;
+}
+
+@media (max-width:576px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        top: 1rem;
+    }
+    .container button {
+        width: 80%;
+    }
+}

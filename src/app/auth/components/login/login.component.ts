@@ -4,6 +4,7 @@ import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { Collage } from 'src/app/models/collage';
 
 @Component({
   selector: 'app-login',
@@ -45,14 +46,16 @@ export class LoginComponent {
       console.log(this.formLogin.value)
       let model = new FormData();
       model.append('name', this.formLogin.value.username);
-      model.append('login_code', this.formLogin.value.password);
+      model.append('code', this.formLogin.value.password);
       this.authService.login(model).subscribe((result: any) => {
         // console.log(result.statusCode)
-        if (result.code == 200) {
-          localStorage.setItem('token', result.data.token)
-          localStorage.setItem('specialization_id', result.data.specialization_id)
+        if (result.statuscode == 200) {
+          localStorage.setItem('token', result.data.token);
+          localStorage.setItem('college', JSON.stringify(result.data.college));
+          localStorage.setItem('user', JSON.stringify(result.data.user));
+          localStorage.setItem('specialization_id', result.data.college.id);
           this.router.navigate(['/home']);
-        } else if (result.code == 422) {
+        } else if (result.statuscode == 422) {
           // alert('الرجاء التحقق من صحة المعلومات');
           // let errorMessage = "";
           // for (const key in result.errors) {
@@ -60,9 +63,9 @@ export class LoginComponent {
           //     errorMessage += `${key}: ${result.errors[key].join(" ")}\n`;
           //   }
           // }
-          console.log(result.errors)
-          alert(result.error);
-        } else if (result.code == 401 || result.code == 400 || result.code == 500) {
+          // console.log(result.errors)
+          // alert(result.error);
+        } else if (result.statuscode == 401 || result.statuscode == 400 || result.statuscode == 500) {
           alert(result.message);
         } else {
           alert("عذرا, حدث خطأ غير معروف");

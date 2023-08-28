@@ -1,9 +1,11 @@
+import { Collage } from "./collage";
+
 export class Specialization {
     id!: number;
     uuid!: number;
-    image!: string;
-    specialization_name!: string;
-    collage_id!: string;
+    logo!: string;
+    name!: string;
+    collage!: Collage;
     created_at!: string;
     updated_at!: string;
 }

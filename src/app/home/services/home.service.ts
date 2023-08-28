@@ -13,11 +13,11 @@ export class HomeService {
     const header = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
-    return this.http.get(enviroment.baseApi + '/Sliders/getAll', { headers: header });
+    return this.http.get(enviroment.baseApi + 'slider/all');
   }
 
   getAllSpecializations() {
-    return this.http.get(enviroment.baseApi + '/Specialization/allSpecialization');
+    return this.http.get(enviroment.baseApi + 'college/all');
   }
 
   getAllCollages() {

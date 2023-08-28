@@ -22,8 +22,8 @@ export class RegisterComponent implements OnInit {
     this.authService.getAllSpecializations().subscribe(
       (result: any) => {
         console.log(result);
-        if (result.code == 200) {
-          this.specializations = result.data;
+        if (result.statuscode == 200) {
+          this.specializations = result.data.colleges;
         }
         this.isFetching = false;
       },
@@ -45,19 +45,18 @@ export class RegisterComponent implements OnInit {
       const data = this.formRegister.value;
       let model = new FormData();
       model.append('name', this.formRegister.value.username)
-      model.append('mobile_phone', this.formRegister.value.phonenumber)
-      model.append('specialization_id', this.formRegister.value.specialization)
+      model.append('phone', this.formRegister.value.phonenumber)
+      model.append('college_id', this.formRegister.value.specialization)
       console.log(model)
       this.authService.register(model).subscribe(
         (result: any) => {
-          console.log(result.code)
-          if (result.code == 200) {
+          if (result.statuscode == 200) {
             this.router.navigate(['/login']);
             alert("تم إنشاء الحساب بنجاح");
           } 
         },
         (result) => {
-          if (result.code == 422) {
+          if (result.statuscode == 422) {
             let errorMessage = "";
             for (const key in result.errors) {
               if (result.errors.hasOwnProperty(key)) {
@@ -65,12 +64,11 @@ export class RegisterComponent implements OnInit {
               }
             }
             alert(errorMessage);
-          } else if (result.code == 401 || result.code == 400 || result.code == 500) {
+          } else if (result.statuscode == 401 || result.statuscode == 400 || result.statuscode == 500) {
             alert(result.message);
           } else {
             alert("عذرا, حدث خطأ غير معروف");
           }
-          console.log(result);
         }
       );
     } else {

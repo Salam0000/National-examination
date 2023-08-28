@@ -14,7 +14,7 @@ export class ProfileService {
     const header = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
-    return this.http.get(enviroment.baseApi + '/UserProfile/Info', { headers: header });
+    return this.http.get(enviroment.baseApi + 'my-profile', { headers: header });
   }
 
   UpdateProfile(model: any) {

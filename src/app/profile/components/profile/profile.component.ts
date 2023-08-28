@@ -26,10 +26,10 @@ export class ProfileComponent {
     });
     this.profileSevice.getProfile().subscribe((result: any) => {
       console.log(result);
-      if (result.code == 200) {
+      if (result.statuscode == 200) {
         this.personalInfoForm.setValue({
-          username: result.data.name,
-          mobileNumber: '0' + result.data.mobile_phone,
+          username: result.data.profile.name,
+          mobileNumber: result.data.profile.phone,
         });
       }
       this.isFetching = false;
@@ -44,18 +44,18 @@ export class ProfileComponent {
   saveChanges() {
     if (this.personalInfoForm.valid) {
       this.isFetching = true;
-      // let model = new FormData();
-      // model.append('name', this.personalInfoForm.value.username);
-      // model.append('mobile_phone', this.personalInfoForm.value.mobileNumber);
+      let model = new FormData();
+      model.append('name', this.personalInfoForm.value.username);
+      model.append('phone', this.personalInfoForm.value.mobileNumber);
       // the back wants it to be json not a formdata
-      let model = {
-        'name': this.personalInfoForm.value.username,
-        'mobile_phone': this.personalInfoForm.value.mobileNumber
-      }
+      // let model = {
+      //   'name': this.personalInfoForm.value.username,
+      //   'mobile_phone': this.personalInfoForm.value.mobileNumber
+      // }
       this.profileSevice.UpdateProfile(model).subscribe(
         (result: any) => {
           console.log(result);
-          if (result.code == 200) {
+          if (result.statuscode == 200) {
             console.log(result.data)
             alert('تم تعديل البروفايل بنجاح');
           } else {

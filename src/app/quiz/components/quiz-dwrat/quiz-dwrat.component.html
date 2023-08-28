@@ -7,19 +7,14 @@
         <div class="back">
             <div class="icondiv">
                 <a routerLink="specializationSelection"><img src="../../../assets/ic_arrow_back.svg" alt=""></a>
-
             </div>
-
             <h4>العودة</h4>
-
         </div>
         <div class="container2">
-            <div class="question d-flex">
+            <div class="question d-flex" *ngFor="let dwrat of dwrats;let i=index" [ngClass]="{'blue': i % 2 !== 0}">
                 <div class="ref d-flex">
                     <img src="../../../assets/ic_book.svg">
-                    <span>دورة تشرين 2023</span>
-
-
+                    <span>{{dwrat.name}}</span>
                 </div>
                 <div class="arrow">
                     <a><img src="../../../assets/ic_arrow.svg"></a>
@@ -30,6 +25,6 @@
 
         </div>
     </div>
-   
+
     <!-- <app-footer></app-footer> -->
 </div>

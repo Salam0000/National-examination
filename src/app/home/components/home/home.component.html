@@ -14,14 +14,14 @@
                     من مكان واحد فقط “اطلع - اختبر - احصل على النتيجة
                 </span>
             </div>
-            <button routerLink="/QuizStart">
+            <button routerLink="/QuizStart/بنك الأسئلة">
                 ابدأ الأن
             </button>
         </div>
         <!-- <div *ngIf="adverts.length==0">
-            <img src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png"
-                class="w-100 h-100" alt="عذرا حدث خطأ ما">
-        </div> -->
+                <img src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png"
+                    class="w-100 h-100" alt="عذرا حدث خطأ ما">
+            </div> -->
         <app-carousel *ngIf="adverts.length>0" [adverts]="getTotalAdverts()"></app-carousel>
     </div>
     <div class="second_section_holder">
@@ -39,10 +39,10 @@
             <button *ngFor="let specialization of specializations" class="second_section_container"
                 (click)="moveToSpecilazationById(specialization.uuid)">
                 <div class="image_container">
-                    <img src="{{url + specialization.image}}" class="w-100 h-100" alt="عذرا حدث خطأ ما">
+                    <img src="{{specialization.logo}}" class="w-100 h-100" alt="عذرا حدث خطأ ما">
                 </div>
                 <h3 [ngClass]="{'choose':specialization.id.toString()===specializationsId}">
-                    {{specialization.specialization_name}}</h3>
+                    {{specialization.name}}</h3>
 
             </button>
         </div>

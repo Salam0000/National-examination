@@ -1,3 +1,7 @@
+.container {
+    margin-top: 50px;
+}
+
 .back {
     display: flex;
     gap: 1rem;
@@ -12,15 +16,19 @@
 }
 
 .container .container2 {
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 
 .container .container2 .question {
     justify-content: space-between;
-    background-color: #B989BD;
+    background-color: var(--light-purple-color);
     padding: 00.5rem;
+    border-radius: 3px;
+    margin-bottom: 30px;
 }
+
+
 
 .container .container2 .question .ref {
     gap: 0.5rem;
@@ -34,7 +42,12 @@
     .back {
         display: none;
     }
+
     .container .container2 .question {
         width: 90%;
     }
+}
+
+.blue {
+    background-color: var(--light-blue-color);
 }

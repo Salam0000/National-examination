@@ -14,12 +14,17 @@ export class QuizService {
     const header = new HttpHeaders().set('authentication', token ?? '');
     return this.http.get(enviroment.baseApi + `quiz/?perPage=${limit}&pageNumber=${currentPageOrder}`, { headers: header });
   }
-
   getAllQuizes() {
+    return this.http.get(enviroment.baseApi + 'question/all');
+  }
+  getQuizesById(uuid: string) {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
-    return this.http.get(enviroment.baseApi + '/Quizs/getAll', { headers: header });
+    return this.http.get(enviroment.baseApi + `question/${uuid}`, { headers: header });
+  }
+  getAllDwrats() {
+    return this.http.get(enviroment.baseApi + 'term/all');
   }
 }

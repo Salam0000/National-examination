@@ -53,7 +53,7 @@
                 <div class="specializations">
                     <div *ngFor="let specialization of specializations; index as i">
                         <input type="radio" formControlName="specialization" [value]="specialization.id">
-                        {{specialization.specialization_name}}
+                        {{specialization.name}}
                     </div>
                     <!-- <div class="row" *ngFor="let specialization of specializations; index as i">
                         <ng-container *ngIf="i % 3 === 0">

@@ -4,17 +4,22 @@ import { SpecializationSelectionComponent } from './components/specialization-se
 import { SharedModule } from '../shared/shared.module';
 // import { CarouselComponent } from '../home/components/carousel/carousel.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { PopUpClassificationComponent } from './components/pop-up-classification/pop-up-classification.component';
+import { MatDialogModule } from '@angular/material/dialog';
 // import { CarouselComponent } from './components/specialization-selection/carousel/carousel.component';
 
 @NgModule({
   declarations: [
     SpecializationSelectionComponent,
-    CarouselComponent
+    CarouselComponent,
+    PopUpClassificationComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-  ], exports: [
+    MatDialogModule
+  ], 
+  exports: [
     SpecializationSelectionComponent
   ]
 })

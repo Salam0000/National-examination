@@ -3,17 +3,19 @@
 </div>
 <div class="isFetching" *ngIf="!isFetching">
     <app-header></app-header>
-    <div class="container" *ngFor="let quiz of paginateData()">
-        <h1>{{quiz.id}}.</h1>
-        <div class="question">{{quiz.questionText}}</div>
-        <div class="options" *ngFor="let option of quiz!.options">
-            <div class="answer" [id]="'option'+option.id">
+    <div class="container" *ngFor="let quiz of paginateData();let i=index">
+        <h1>{{currentPage}}.</h1>
+        <div class="question">{{quiz.content}}</div>
+        <div class="options" *ngFor="let option of quiz!.answers">
+            <div class="answer" [id]="'option'+option.uuid">
                 <span>
-                    <input [value]="'option'+option.id" type="radio" name="option"
-                        (click)="addQuizToLocalStorage(quiz.id,option)" [checked]="checkLH(option)">
+                    <!-- [attr.disabled]="isChecked == true" -->
+                    <input  [value]="'option'+option.uuid" type="radio"
+                        name="option" (click)="addQuizToLocalStorage(quiz.uuid,option)"
+                        [checked]="checkLH(quiz.uuid,option)">
                 </span>
                 <span>
-                    {{option.text}}
+                    {{option.content}}
                 </span>
             </div>
         </div>
@@ -25,14 +27,14 @@
                 <i class='bx bx-book-bookmark'></i>
             </div>
             <div class="button_row">
-                <button (click)="previousPage()">السابق</button>
-                <button (click)="nextPage()">التالي</button>
+                <button *ngIf="currentPage!=1" (click)="previousPage()">السابق</button>
+                <button *ngIf="lastPage!=currentPage" (click)="nextPage()">التالي</button>
             </div>
 
         </div>
     </div>
     <div class="end">
-        <button (click)="moveToQuizEnd()">إنهاء الاختبار</button>
+        <button *ngIf="lastPage==currentPage" (click)="moveToQuizEnd()">إنهاء الاختبار</button>
     </div>
     <!-- <app-footer></app-footer> -->
 </div>

@@ -10,11 +10,16 @@ export class SpecializationSelectionService {
   constructor(private http: HttpClient) { }
 
   getAllAdverts() {
+    // let token = localStorage.getItem('token');
+    // const header = new HttpHeaders().set('authentication', token ?? '');
+    return this.http.get(enviroment.baseApi + 'slider/all');
+  }
+  getAllClassifications() {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders().set('authentication', token ?? '');
-    return this.http.get(enviroment.baseApi + 'Sliders/getAll', { headers: header });
+    let id = localStorage.getItem('specialization_id');
+    return this.http.get(enviroment.baseApi + `specializations-of-college/${id}`, { headers: header });
   }
-
   getAllSpecializationsBytype(type: string) {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders().set('authentication', token ?? '');

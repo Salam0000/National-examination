@@ -3,15 +3,14 @@
     <app-carousel [adverts]="getTotalAdverts()"></app-carousel>
 </div>
 <div class="button_row">
-    <button routerLink="/QuizDwrat">الدورات</button>
-    <button>بنك الأسئلة</button>
+    <button (click)="moveToDwrat()">الدورات</button>
+    <button (click)="moveToQuizStart()">بنك الأسئلة</button>
 </div>
 <div class="second_section_holder">
     <div class="main_title">التصنيفات</div>
     <div class="second_section">
-        <button *ngFor="let item of [0,1,2,3,5,8,9];let i=index" class="second_section_container"
-            (click)="moveToQuizById(i)">
-            <h1>التمريض</h1>
+        <button *ngFor="let Classification of Classifications;let i=index" class="second_section_container" (click)="showPopUp()">
+            <h1>{{Classification.name}}</h1>
         </button>
         <!-- <div *ngFor="let Classification of Classifications" class="second_section_container">
             <h1>{{Classification.title}}</h1>

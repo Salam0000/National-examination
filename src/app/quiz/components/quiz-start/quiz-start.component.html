@@ -7,23 +7,16 @@
         <div class="back d-flex ">
             <div class="iconDiv">
                 <a routerLink="specializationSelection"><img src="../../../assets/ic_arrow_back.svg" alt=""></a>
-
-
             </div>
-
             <h4>العودة</h4>
         </div>
         <div class="container2">
-            <h1>اختبار الشبكات</h1>
-            <div class="question d-flex">
+            <h1>{{title}}</h1>
+            <div class="question d-flex" *ngIf="specializationsId!='undefined'">
                 <div class="number d-flex">
                     <h3>50</h3>
-
                     <h3> سؤال </h3>
-
                 </div>
-
-
                 <h3>علامة النجاح 100</h3>
             </div>
             <h1 class="directions">تعليمات هامة</h1>
@@ -37,7 +30,7 @@
                 </ul>
             </div>
             <div class="start">
-                <button (click)="moveToQuizById(1)">ابدأ الاختبار</button>
+                <button (click)="moveToQuizById()">ابدأ الاختبار</button>
             </div>
         </div>
     </div>

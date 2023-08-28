@@ -1,6 +1,6 @@
 export const enviroment = {
-    baseApi: 'http://192.168.31.177:8000/api/Darrebni',
-    base: 'http://192.168.31.177:8000/',
+    baseApi: 'https://backendsp01.000webhostapp.com/api/',
+    base: 'https://backendsp01.000webhostapp.com',
     // https://darrebniproject.000webhostapp.com/api/Darrebni
     production: true
 }
