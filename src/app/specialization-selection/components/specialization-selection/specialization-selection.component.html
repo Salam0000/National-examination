@@ -12,8 +12,8 @@
         لا يوجد تصنيفات
     </div>
     <ng-container class="second_section">
-        <button *ngFor="let Classification of [0,9,8,7,6];let i=index" class="second_section_container"
-            (click)="showPopUp()">
+        <button *ngFor="let Classification of [1,9,8,7,6];let i=index" class="second_section_container"
+            (click)="showPopUp(Classification)">
             <h1>{{Classification}}</h1>
         </button>
     </ng-container>

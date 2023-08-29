@@ -23,11 +23,11 @@ export class SpecializationSelectionComponent {
 
   ngOnInit(): void {
     this.isFetching = true;
-    // this.specializationId = this.route.snapshot.params['id'];
+    // this.specializationId = this.route.snapshot.params['id'];c
     // this.specializationType = this.route.snapshot.params['type'];
     this.specializationSelectionService.getAllAdverts().subscribe(
       (result: any) => {
-        this.adverts = result.data.sliders.splice(0, 3);
+        this.adverts = result.data.sliders;
       },
       (_) => {
         alert('الرجاء التحقق من سلامة الاتصال لديك');
@@ -73,15 +73,16 @@ export class SpecializationSelectionComponent {
     return this.adverts;
   }
   moveToDwrat() {
-    this.router.navigate([`/QuizDwrat`]);
+    this.router.navigate([`/QuizDwrat/دورات`]);
   }
   moveToQuizStart() {
-    this.router.navigate([`/QuizStart/بنك الأسئلة`]);
+    this.router.navigate(['QuizStart', { id: -1, type: "بنك الأسئلة" }]);
   }
-  showPopUp() {
+  showPopUp(id: number) {
     this.dialog.open(PopUpClassificationComponent, {
       width: '50%',
-      height: '60vh'
+      height: '60vh',
+      data: { 'classification': id }
     })
   }
 

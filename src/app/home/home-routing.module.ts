@@ -13,10 +13,14 @@ const routes: Routes = [
   { path: 'specialization', component: SpecializationSelectionComponent },
   { path: 'QuizStart', component: QuizStartComponent },
   { path: 'QuizStart/:id', component: QuizStartComponent },
+  { path: 'QuizStart/:id/:type', component: QuizStartComponent },
   { path: 'QuizEnd', component: QuizEndComponent },
   { path: 'QuizDwrat', component: QuizDwratComponent },
+  { path: 'QuizDwrat/:id', component: QuizDwratComponent },
   { path: 'specialization/:id', component: SpecializationSelectionComponent },
+  { path: 'Quiz', component: QuizComponent },
   { path: 'Quiz/:id', component: QuizComponent },
+  { path: 'Quiz/:id/:type', component: QuizComponent },
   { path: 'QuizCorrection', component: QuizCorrectionComponent }
 ];
 

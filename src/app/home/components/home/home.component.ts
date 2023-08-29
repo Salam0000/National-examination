@@ -32,7 +32,7 @@ export class HomeComponent {
     this.homeService.getAllAdverts().subscribe(
       (result: any) => {
         if (result.statuscode == 200) {
-          this.adverts = result.data.sliders.splice(0, 3);
+          this.adverts = result.data.sliders;
           // this.adverts = result.data.sliders;
           if (this.adverts.length == 0) {
             document.getElementById("carousel")?.setAttribute("style", "display:none;");
@@ -71,7 +71,7 @@ export class HomeComponent {
   }
   moveToQuizStart() {
     if ('token' in localStorage) {
-      this.router.navigate(["/QuizStart/بنك الأسئلة"]);
+      this.router.navigate(['QuizStart', { id: -1, type: "بنك الأسئلة" }]);
     } else {
       alert('يرجى تسجيل الدخول')
     }

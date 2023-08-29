@@ -11,25 +11,43 @@ import { QuizService } from '../../services/quiz.service';
 export class QuizDwratComponent {
   isFetching: boolean = false;
   dwrats: Dwrat[] = [];
+  id: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService) { }
 
   ngOnInit(): void {
     this.isFetching = true;
-    this.quizService.getAllDwrats().subscribe(
-      (result: any) => {
-        this.dwrats = result.data.term;
-        console.log(result);
-        this.isFetching = false;
-      },
-      (error) => {
-        alert(error.message);
-        this.isFetching = false;
-      }
-    );
+    this.id = this.route.snapshot.params['id'];
+    if (this.id != 'undefined' && !isNaN(this.id) ) {
+      this.quizService.getDwratsByClassificationId(this.id).subscribe(
+        (result: any) => {
+          this.dwrats = result.data.terms;
+          console.log(result);
+          this.isFetching = false;
+        },
+        (error) => {
+          alert(error.message);
+          this.isFetching = false;
+        }
+      );
+    } else {
+      this.quizService.getAllDwrats().subscribe(
+        (result: any) => {
+          this.dwrats = result.data.term;
+          console.log(result);
+          this.isFetching = false;
+        },
+        (error) => {
+          alert(error.message);
+          this.isFetching = false;
+        }
+      );
+    }
   }
   moveToQuizById(uuid: number) {
-    console.log('quiz')
-    this.router.navigate([`/Quiz/${uuid}`]);
+    this.router.navigate( ['Quiz', {id: uuid, type: "دورات"}]);
+  }
+  moveToQuizStart(uuid: number) {
+    this.router.navigate(['QuizStart', { id: uuid, type:"دورات" }]);
   }
 }

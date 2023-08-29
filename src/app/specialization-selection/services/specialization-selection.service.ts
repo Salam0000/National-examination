@@ -32,6 +32,10 @@ export class SpecializationSelectionService {
     return this.http.get(enviroment.baseApi + `/Specialization/filters/collage=${id}`, { headers: header });
   }
 
+  getAllSpecializationByid(id: number) {
+    return this.http.get(enviroment.baseApi + `specialization/${id}`);
+  }
+
   checkButtons() {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders().set('authentication', token ?? '');

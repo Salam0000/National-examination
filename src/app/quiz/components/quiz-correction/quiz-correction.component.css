@@ -72,6 +72,21 @@
     border-color: var(--dark-blue-color);
 }
 
+.end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.end button {
+    text-align: center;
+    color: white;
+    background-color: var(--dark-purple-color);
+    border-radius: 3px;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px;
+}
 
 @media (max-width: 767px) {
     .container {

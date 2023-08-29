@@ -18,7 +18,8 @@ export class QuizComponent {
   isCorrect: boolean = false;
   isChecked: boolean = false;
   selectOption: any;
-  id?: string;
+  id?: number;
+  type?: string;
   currentPage = 1;
   lastPage!: number;
   itemsPerPage = 1;
@@ -28,7 +29,10 @@ export class QuizComponent {
   ngOnInit(): void {
     this.isFetching = true;
     this.id = this.route.snapshot.params['id'];
-    if (this.id != 'undefined' && this.id == 'بنك الأسئلة') {
+    this.type = this.route.snapshot.params['type'];
+    console.log(this.id);
+    if (this.type != 'undefined' && this.type == 'بنك الأسئلة') {
+      console.log('1');
       this.quizService.getAllQuizes().subscribe(
         (result: any) => {
           console.log(result);
@@ -43,8 +47,30 @@ export class QuizComponent {
           this.isFetching = false;
         }
       );
+    } else if (this.type != 'undefined' && this.type == 'أسئلة الكتاب') {
+      console.log('2');
+      this.isFetching = false;
+    } else if (this.type != 'undefined' && this.type == "دورات") {
+      console.log('3');
+      this.quizService.getQuizesByDwratId(this.id!.toString()).subscribe(
+        (result: any) => {
+          console.log(result);
+          if (result.statuscode == 200) {
+            this.quizes = result.data.questions;
+            this.isFetching = false;
+          } else {
+            this.isFetching = false;
+            alert('حدث خطأ في جلب البيانات')
+          }
+        },
+        (error) => {
+          alert(error.message);
+          this.isFetching = false;
+        }
+      );
     } else {
-      this.quizService.getQuizesById(this.id!).subscribe(
+      console.log('4');
+      this.quizService.getQuizesById(this.id!.toString()).subscribe(
         (result: any) => {
           console.log(result);
           if (result.statuscode == 200) {
@@ -71,10 +97,14 @@ export class QuizComponent {
     return this.quizes.slice(startIndex, endIndex);
   }
   nextPage() {
-    this.clear();
-    const totalPages = Math.ceil(this.quizes.length / this.itemsPerPage);
-    if (this.currentPage < totalPages) {
-      this.currentPage++;
+    if (this.selectOption != undefined) {
+      this.clear();
+      const totalPages = Math.ceil(this.quizes.length / this.itemsPerPage);
+      if (this.currentPage < totalPages) {
+        this.currentPage++;
+      }
+    } else {
+      alert("يرجى تحديد إجابة");
     }
   }
   previousPage() {
@@ -100,7 +130,6 @@ export class QuizComponent {
     return false;
   }
   addQuizToLocalStorage(quizId: any, currentQuiz: Quiz, option: Answer) {
-    this.isChecked = true;
     this.selectOption = option;
     let quiz = {
       'uuid': quizId,
@@ -140,13 +169,13 @@ export class QuizComponent {
             }
           });
         }
+        this.isChecked = true;
       } else {
         alert('عذرا, تم تصحيح السؤال مسبقا');
       }
     } else {
       alert("يرجى تحديد إجابة");
     }
-    this.isChecked = true;
   }
   checkAnswer(option?: any) {
     if (option.is_true == true) {

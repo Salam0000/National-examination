@@ -17,6 +17,9 @@ export class QuizService {
   getAllQuizes() {
     return this.http.get(enviroment.baseApi + 'question/all');
   }
+  getQuizesBook() {
+    return this.http.get(enviroment.baseApi + 'question/all');
+  }
   getQuizesById(uuid: string) {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders({
@@ -24,7 +27,13 @@ export class QuizService {
     });
     return this.http.get(enviroment.baseApi + `question/${uuid}`, { headers: header });
   }
+  getQuizesByDwratId(id: string) {
+    return this.http.get(enviroment.baseApi + `questions-of-term/${id}`);
+  }
   getAllDwrats() {
     return this.http.get(enviroment.baseApi + 'term/all');
+  }
+  getDwratsByClassificationId(id: number) {
+    return this.http.get(enviroment.baseApi + `specialization/${id}`);
   }
 }

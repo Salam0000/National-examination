@@ -52,4 +52,8 @@ export class QuizCorrectionComponent {
       this.currentPage--;
     }
   }
+  moveToEnd() {
+    localStorage.removeItem('quizes');
+    this.router.navigate(['/home']);
+  }
 }
