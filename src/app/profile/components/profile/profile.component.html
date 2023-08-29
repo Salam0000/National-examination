@@ -8,9 +8,12 @@
         <h3>اسم المستخدم</h3>
     </div> -->
     <div class="avatar">
-        <span class="add-icon" (click)="fileInput.click()">+</span>
-        <img [src]="selectedImage ? selectedImage : '../../../../assets/avatar.jpg'" alt="">
-        <h3>{{currentUser.name ? currentUser.name:'اسم المستخدم'}}</h3>
+        <div class="border-plus">
+            <span class="add-icon" (click)="fileInput.click()">+</span>
+        </div>
+        <div class="image"><img [src]="selectedImage ? selectedImage : '../../../../assets/avatar.jpg'" alt=""></div>
+
+        <!-- <h3>{{currentUser.name ? currentUser.name:'اسم المستخدم'}}</h3> -->
     </div>
     <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)">
 
