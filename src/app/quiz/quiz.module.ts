@@ -6,6 +6,8 @@ import { QuizEndComponent } from './components/quiz-end/quiz-end.component';
 import { QuizDwratComponent } from './components/quiz-dwrat/quiz-dwrat.component';
 import { SharedModule } from '../shared/shared.module';
 import { QuizCorrectionComponent } from './components/quiz-correction/quiz-correction.component';
+import { ReferenceComponent } from './components/reference/reference.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -15,11 +17,13 @@ import { QuizCorrectionComponent } from './components/quiz-correction/quiz-corre
     QuizStartComponent,
     QuizEndComponent,
     QuizDwratComponent,
-    QuizCorrectionComponent
+    QuizCorrectionComponent,
+    ReferenceComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
+    MatDialogModule,
   ]
   , 
   exports: [

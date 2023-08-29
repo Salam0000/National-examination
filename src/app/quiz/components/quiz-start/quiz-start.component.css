@@ -16,11 +16,11 @@
 
 .container2 {
     margin: auto;
-    width: 70%;
+    width: 80%;
 }
 
 .question {
-    width: 30%;
+    /* width: 30%; */
     justify-content: space-between;
 }
 
@@ -33,13 +33,12 @@
 }
 
 .container2 button {
-    width: 20%;
     text-align: center;
     color: white;
     background-color: #6F2877;
     border-radius: 3px;
     border: none;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
 }
 
 .start {
@@ -52,28 +51,29 @@ ul li {
     color: #B989BD;
 }
 
-.bottom {
-    margin-top: 200px;
-}
-
-@media (max-width:995px) {
-    .question {
-        width: 45%;
-    }
-}
-
 @media (max-width:576px) {
+    .question {
+        gap: 0.5rem;
+    }
+
+    .container2 {
+        width: 100%;
+    }
+
     .steps {
         width: 100%;
     }
 
-    .container2 button {
-        width: 40%;
+    ul li,
+    button {
+        font-size: 0.8rem;
     }
-
-    .question {
-        background-color: red;
-        width: 60%;
-        gap: 0.5rem;
+    h1{
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    ul{
+        width: 100%;
+        padding: 10px;
     }
 }

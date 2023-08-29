@@ -64,13 +64,12 @@
 }
 
 .container .container2 .validate button {
-    width: 40%;
     text-align: center;
     color: white;
     background-color: #6F2877;
     border-radius: 3px;
     border: none;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     font-size: 1rem;
 }
 
@@ -82,7 +81,6 @@
 
 .mobile .validate button {
     padding: 0.5rem;
-    width: 40%;
     text-align: center;
     color: white;
     background-color: #6F2877;
@@ -108,6 +106,17 @@
 }
 
 @media (max-width: 576px) {
+
+    .validate button,
+    h4 {
+        font-size: 0.8rem !important;
+    }
+
+    h1 {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
     .container {
         display: none;
     }

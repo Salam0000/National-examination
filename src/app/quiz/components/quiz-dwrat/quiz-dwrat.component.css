@@ -49,5 +49,5 @@
 }
 
 .blue {
-    background-color: var(--light-blue-color);
+    background-color: var(--light-blue-color)!important;
 }

@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { SpecializationSelectionModule } from './specialization-selection/specialization-selection.module';
 import { ProfileModule } from './profile/profile.module';
 import { QuizModule } from './quiz/quiz.module';
+import { FavouriteModule } from './favourite/favourite.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { QuizModule } from './quiz/quiz.module';
     SpecializationSelectionModule,
     ProfileModule,
     QuizModule,
+    FavouriteModule,
   ],
   providers: [
   ],

@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from 'src/app/models/quiz';
 import { QuizService } from '../../services/quiz.service';
 import { Answer } from 'src/app/models/answer';
+import { MatDialog } from '@angular/material/dialog';
+import { ReferenceComponent } from '../reference/reference.component';
 
 @Component({
   selector: 'app-quiz',
@@ -21,7 +23,7 @@ export class QuizComponent {
   lastPage!: number;
   itemsPerPage = 1;
 
-  constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.isFetching = true;
@@ -156,5 +158,13 @@ export class QuizComponent {
   }
   moveToQuizEnd() {
     this.router.navigate(['/QuizEnd']);
+  }
+  showPopUp() {
+    let quiz = this.paginateData();
+    this.dialog.open(ReferenceComponent, {
+      width: '50%',
+      height: '50vh',
+      data: { 'reference': quiz[0].reference }
+    })
   }
 }

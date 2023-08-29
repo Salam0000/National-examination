@@ -23,7 +23,7 @@
             <div class="last_row_icons">
                 <i class='bx bxs-check-circle check_circle' (click)="correctAnswer(quiz)"></i>
                 <i class='bx bx-star'></i>
-                <i class='bx bx-book-bookmark'></i>
+                <i class='bx bx-book-bookmark' (click)="showPopUp()"></i>
             </div>
             <div class="button_row">
                 <button *ngIf="currentPage!=1" (click)="previousPage()">السابق</button>

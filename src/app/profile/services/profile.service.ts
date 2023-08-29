@@ -12,16 +12,17 @@ export class ProfileService {
   }
 
   getProfile() {
-    const header = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`,
-    });
-    return this.http.get(enviroment.baseApi + 'my-profile', { headers: header });
+    return this.http.get(`${enviroment.baseApi}profile/${JSON.parse(localStorage.getItem('user')!).uuid}`);
   }
 
   UpdateProfile(model: any) {
     const header = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
+    // const headers = new Headers({
+    //   'Content-Type': 'application/json',
+    //   'Authorization': `Bearer ${this.token}`
+    // })
     return this.http.post(enviroment.baseApi + 'profile/update', model, { headers: header });
   }
 
