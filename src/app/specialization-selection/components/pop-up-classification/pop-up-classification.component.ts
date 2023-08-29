@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pop-up-classification',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./pop-up-classification.component.css']
 })
 export class PopUpClassificationComponent {
-
+  constructor(private dialog: MatDialog) { }
+  closePopup() {
+    this.dialog.closeAll();
+  }
 }

@@ -81,7 +81,7 @@ export class SpecializationSelectionComponent {
   showPopUp() {
     this.dialog.open(PopUpClassificationComponent, {
       width: '50%',
-      height: '50vh'
+      height: '60vh'
     })
   }
 

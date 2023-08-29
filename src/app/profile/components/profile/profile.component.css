@@ -1,8 +1,8 @@
 .profile {
     width: 60%;
-    height: 95%;
+    height: 90%;
     border: 3px dashed #6F2877;
-    margin: 12px auto;
+    margin: 25px auto;
 
 }
 
@@ -13,16 +13,33 @@
 
 .avatar {
     text-align: center;
+    position: relative;
 }
-.avatar span{
-    /* position: absolute; */
+
+.border-plus{
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    position: absolute;
+    /* border:2px solid; */
+    background-color:var(--light-purple-color) ;
+    left: 40%;
+    /* left: 2rem; */
+    bottom: 0; 
+    text-align: center;
+    color: #6F2877;
+} 
+.avatar .border-plus span{
     /* left: 0;
     bottom: 0; */
+    /* left: 35%;
+    bottom: 0; */
+    /* left: -2rem; */
     font-size: 2rem;
 }
 .avatar img{
-width: 50px;
-height: 50px
+width: 100px;
+height: 100px
 }
 
 .username,
@@ -73,7 +90,7 @@ label {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.4rem;
     justify-content: center;
     align-items: center;
 }
@@ -101,12 +118,15 @@ small {
     color: red;
 }
 
-
-@media (max-width: 900px) {
-
 a {
     cursor: pointer;
 }
+@media (max-width: 900px) {
+
+
+ .profile h2{
+        font-size: 14px;
+    }
 }
 @media (max-width: 576px) {
 
@@ -115,6 +135,9 @@ a {
     }
     .profile h2{
         font-size: 14px;
+    }
+    .border-plus{
+        left: 60%;
     }
 }
  .close-button {

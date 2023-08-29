@@ -100,6 +100,7 @@ export class ProfileComponent {
         model.append('photo2', e.target.result);
         this.profileSevice.UpdatePhoto(model).subscribe((result: any) => {
           if (result.statuscode == 200) {
+            this.selectedImage = e.target.result;
             alert('تمت إضافة الصورة بنجاح');
             this.isFetching = false;
           } else if (result.statuscode == 422) {
