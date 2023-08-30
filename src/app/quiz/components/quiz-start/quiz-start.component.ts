@@ -13,6 +13,7 @@ export class QuizStartComponent {
   title!: string;
   id!: number;
   type!: string;
+  class!: string;
   isFetching: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private specializationSelectionService: SpecializationSelectionService) { }
@@ -20,11 +21,12 @@ export class QuizStartComponent {
   ngOnInit(): void {
     this.isFetching = true;
     this.id = this.route.snapshot.params['id'];
+    this.class = this.route.snapshot.params['class'];
     this.type = this.route.snapshot.params['type'];
-    if (this.id == -1) {
+    if (this.id == -1 || this.type == 'دورات' || this.type == 'أسئلة الكتاب') {
       console.log(this.id)
       this.title = this.type;
-      // this.id = 'undefined';
+      this.isFetching = false;
     } else {
       this.specializationSelectionService.getAllSpecializationByid(this.id).subscribe(
         (result: any) => {
@@ -37,11 +39,11 @@ export class QuizStartComponent {
         }
       );
     }
-    this.isFetching = false;
   }
-
+  moveBack() {
+    this.router.navigate(['specialization']);
+  }
   moveToQuizById() {
-    console.log('quiz');
-    this.router.navigate(['Quiz', { id: this.id, type: this.type }]);
+    this.router.navigate(['Quiz', { id: this.id, type: this.type, class: this.class ?? 'أسئلة عامة' }]);
   }
 }

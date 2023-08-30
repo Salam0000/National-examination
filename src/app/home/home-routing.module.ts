@@ -7,20 +7,23 @@ import { QuizStartComponent } from '../quiz/components/quiz-start/quiz-start.com
 import { QuizEndComponent } from '../quiz/components/quiz-end/quiz-end.component';
 import { QuizDwratComponent } from '../quiz/components/quiz-dwrat/quiz-dwrat.component';
 import { QuizCorrectionComponent } from '../quiz/components/quiz-correction/quiz-correction.component';
+import { FavouriteComponent } from '../favourite/components/favourite/favourite.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'specialization', component: SpecializationSelectionComponent },
+  { path: 'favourite', component: FavouriteComponent },
   { path: 'QuizStart', component: QuizStartComponent },
   { path: 'QuizStart/:id', component: QuizStartComponent },
   { path: 'QuizStart/:id/:type', component: QuizStartComponent },
+  { path: 'QuizStart/:id/:type/:class', component: QuizStartComponent },
   { path: 'QuizEnd', component: QuizEndComponent },
   { path: 'QuizDwrat', component: QuizDwratComponent },
   { path: 'QuizDwrat/:id', component: QuizDwratComponent },
   { path: 'specialization/:id', component: SpecializationSelectionComponent },
   { path: 'Quiz', component: QuizComponent },
   { path: 'Quiz/:id', component: QuizComponent },
-  { path: 'Quiz/:id/:type', component: QuizComponent },
+  { path: 'Quiz/:id/:type/:class', component: QuizComponent },
   { path: 'QuizCorrection', component: QuizCorrectionComponent }
 ];
 

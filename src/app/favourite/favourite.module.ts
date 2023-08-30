@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FavouriteComponent } from './components/favourite/favourite.component';
+import { QuizModule } from '../quiz/quiz.module';
 
 
 
@@ -9,7 +10,8 @@ import { FavouriteComponent } from './components/favourite/favourite.component';
     FavouriteComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    QuizModule
   ]
 })
 export class FavouriteModule { }

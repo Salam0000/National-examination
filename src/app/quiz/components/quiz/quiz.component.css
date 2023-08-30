@@ -72,6 +72,10 @@
     border-color: var(--dark-blue-color);
 }
 
+.yellow {
+    color: yellow;
+}
+
 @media (max-width: 767px) {
     .container {
         margin-top: 40px;
@@ -92,7 +96,8 @@
     .last_row {
         flex-direction: column;
     }
-    .last_row button{
+
+    .last_row button {
         font-size: 0.8rem;
     }
 }

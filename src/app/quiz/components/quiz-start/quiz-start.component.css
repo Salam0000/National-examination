@@ -1,5 +1,7 @@
 .back {
     gap: 1rem;
+    background-color: transparent;
+    border: none;
 }
 
 .container {
@@ -68,11 +70,13 @@ ul li {
     button {
         font-size: 0.8rem;
     }
-    h1{
+
+    h1 {
         font-size: 1rem;
         font-weight: bold;
     }
-    ul{
+
+    ul {
         width: 100%;
         padding: 10px;
     }

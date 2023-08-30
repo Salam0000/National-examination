@@ -22,7 +22,8 @@
         <div class="last_row">
             <div class="last_row_icons">
                 <i class='bx bxs-check-circle check_circle' (click)="correctAnswer(quiz)"></i>
-                <i class='bx bx-star'></i>
+                <i class='bx bx-star' [ngClass]="{'yellow':favouritesQuizes!=undefined}"
+                    (click)="addToFavourite(quiz.id)"></i>
                 <i class='bx bx-book-bookmark' (click)="showPopUp()"></i>
             </div>
             <div class="button_row">

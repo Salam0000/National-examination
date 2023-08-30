@@ -24,7 +24,7 @@ export class SpecializationSelectionComponent {
   ngOnInit(): void {
     this.isFetching = true;
     // this.specializationId = this.route.snapshot.params['id'];c
-    // this.specializationType = this.route.snapshot.params['type'];
+    this.specializationType = this.route.snapshot.params['id'];
     this.specializationSelectionService.getAllAdverts().subscribe(
       (result: any) => {
         this.adverts = result.data.sliders;
@@ -82,7 +82,7 @@ export class SpecializationSelectionComponent {
     this.dialog.open(PopUpClassificationComponent, {
       width: '50%',
       height: '60vh',
-      data: { 'classification': id }
+      data: { 'classification': id, 'master': this.specializationType }
     })
   }
 

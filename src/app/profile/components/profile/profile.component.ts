@@ -28,7 +28,9 @@ export class ProfileComponent {
     this.profileSevice.getProfile().subscribe((result: any) => {
       if (result.statuscode == 200) {
         this.currentUser = result.data.profile;
-        this.selectedImage = this.currentUser.photo;
+        if (this.currentUser.photo != '' && this.currentUser.photo != undefined) {
+          this.selectedImage = this.currentUser.photo;
+        }
         this.personalInfoForm.setValue({
           username: this.currentUser.name,
           mobileNumber: this.currentUser.phone,

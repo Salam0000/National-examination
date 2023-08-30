@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
 })
 export class PopUpClassificationComponent {
   id!: number;
-  
+  type!: string;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog, private router: Router,) { }
 
   ngOnInit() {
-    this.id = this.data.id;
+    this.id = this.data.classification;
+    this.type = this.data.master;
   }
   closePopup() {
     this.dialog.closeAll();
@@ -23,7 +25,7 @@ export class PopUpClassificationComponent {
     this.closePopup();
   }
   moveToQuizStart() {
-    this.router.navigate(['QuizStart', { id: this.id, type: "أسئلة الكتاب" }]);
+    this.router.navigate(['QuizStart', { id: this.id, type: "أسئلة الكتاب", class: this.type }]);
     this.closePopup();
   }
 }

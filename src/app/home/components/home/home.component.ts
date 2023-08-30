@@ -76,10 +76,14 @@ export class HomeComponent {
       alert('يرجى تسجيل الدخول')
     }
   }
-  moveToSpecilazationById(uuid: number) {
+  moveToSpecilazationById(special: Specialization) {
     if ('token' in localStorage) {
-      if ('college' in localStorage && JSON.parse(localStorage.getItem('college')!)!.uuid == uuid) {
-        this.router.navigate([`/specialization/${uuid}`]);
+      if ('college' in localStorage && JSON.parse(localStorage.getItem('college')!)!.uuid == special.uuid) {
+      if (special.is_master != true) {
+        this.router.navigate([`/specialization/${special.uuid}`]);
+      }else{
+        alert('يرجى اختيار النوع')
+      }
       } else {
         alert('عذرا, لا يمكنك الدخول  لهذا التخصص')
       }

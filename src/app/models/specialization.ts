@@ -6,6 +6,7 @@ export class Specialization {
     logo!: string;
     name!: string;
     collage!: Collage;
+    is_master!: boolean;
     created_at!: string;
     updated_at!: string;
 }

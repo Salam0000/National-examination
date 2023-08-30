@@ -14,7 +14,7 @@ export class QuizEndComponent {
   falseQuestions: number = 0;
   quizesInLocalHost!: any;
 
-  constructor( private router: Router, private quizService: QuizService) { }
+  constructor(private router: Router, private quizService: QuizService) { }
 
 
   ngOnInit(): void {
@@ -30,6 +30,30 @@ export class QuizEndComponent {
           this.falseQuestions++;
         }
       });
+      let list: any[] = [];
+      this.quizesInLocalHost.forEach((element: any) => {
+        list.push({
+          "question_uuid": element.option.uuid,
+          "answer_uuid": element.quiz.uuid,
+        })
+      });
+      let model = { 'answers': list };
+      console.log(model)
+      this.quizService.getMark(model).subscribe(
+        (result: any) => {
+          if (result.statuscode == 200) {
+            this.finalGrade = result.data.marks;
+            this.isFetching = false;
+          } else {
+            alert(result.message);
+            this.isFetching = false;
+          }
+        },
+        (_) => {
+          alert('الرجاء التحقق من سلامة الاتصال لديك');
+          this.isFetching = false;
+        }
+      );
     }
   }
   moveToQuizCorrection() {

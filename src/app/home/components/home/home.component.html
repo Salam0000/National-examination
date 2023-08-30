@@ -19,9 +19,9 @@
             </button>
         </div>
         <div class="imageNotFound" *ngIf="adverts.length==0">
-                <img src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png"
-                    class="w-100 h-100" alt="عذرا حدث خطأ ما">
-            </div>
+            <img src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png"
+                class="w-100 h-100" alt="عذرا حدث خطأ ما">
+        </div>
         <app-carousel *ngIf="adverts.length>0" [adverts]="getTotalAdverts()" id="carousel"></app-carousel>
     </div>
     <div class="second_section_holder">
@@ -36,20 +36,23 @@
                 </div>
                 <h3>التمريض</h3>
             </div> -->
-            <button *ngFor="let specialization of specializations" class="second_section_container"
-                (click)="moveToSpecilazationById(specialization.uuid)">
-                <div class="image_container">
-                    <img src="{{specialization.logo}}" class="w-100 h-100" alt="عذرا حدث خطأ ما">
+            <div *ngFor="let specialization of specializations" class="content">
+                <button class="second_section_container" (click)="moveToSpecilazationById(specialization)">
+                    <div class="image_container">
+                        <img src="{{specialization.logo}}" class="w-100 h-100" alt="عذرا حدث خطأ ما">
+                    </div>
+                    <h3 [ngClass]="{'choose':specialization.id.toString()===specializationsId}">
+                        {{specialization.name}}</h3>
+                </button>
+                <div class="button_row"
+                    *ngIf="specializationsId==specialization.id.toString()&&specialization.is_master==true">
+                    <button (click)="moveToSpecilazationByType('graduate')">تخرج</button>
+                    <button (click)="moveToSpecilazationByType('master')">ماستر</button>
                 </div>
-                <h3 [ngClass]="{'choose':specialization.id.toString()===specializationsId}">
-                    {{specialization.name}}</h3>
+            </div>
 
-            </button>
         </div>
-        <div class="button_row" *ngIf="isButton">
-            <button (click)="moveToSpecilazationByType('graduate')">تخرج</button>
-            <button (click)="moveToSpecilazationByType('master')">ماستر</button>
-        </div>
+
     </div>
     <div class="box-rectangle">
         <app-rectangle></app-rectangle>

@@ -19,6 +19,7 @@
 }
 
 .button_row button {
+    border-radius: 3px;
     border: none;
     padding: 20px;
     color: var(--white-color);

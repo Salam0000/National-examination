@@ -5,6 +5,7 @@ import { QuizService } from '../../services/quiz.service';
 import { Answer } from 'src/app/models/answer';
 import { MatDialog } from '@angular/material/dialog';
 import { ReferenceComponent } from '../reference/reference.component';
+import { FavouriteService } from 'src/app/favourite/serveics/favourite.service';
 
 @Component({
   selector: 'app-quiz',
@@ -23,68 +24,102 @@ export class QuizComponent {
   currentPage = 1;
   lastPage!: number;
   itemsPerPage = 1;
+  @Input('favouritesQuizes') favouritesQuizes?: Quiz[];
 
-  constructor(private route: ActivatedRoute, private router: Router, private quizService: QuizService, private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private quizService: QuizService,
+    private dialog: MatDialog,
+    private favouriteService: FavouriteService) { }
 
   ngOnInit(): void {
     this.isFetching = true;
     this.id = this.route.snapshot.params['id'];
     this.type = this.route.snapshot.params['type'];
     console.log(this.id);
-    if (this.type != 'undefined' && this.type == 'بنك الأسئلة') {
-      console.log('1');
-      this.quizService.getAllQuizes().subscribe(
-        (result: any) => {
-          console.log(result);
-          if (result.statuscode == 200) {
-            this.quizes = result.data.questions;
-            this.lastPage = this.quizes.length;
+    if (this.favouriteService!=undefined) {
+      if (this.type != 'undefined' && this.type == 'بنك الأسئلة') {
+        console.log('1');
+        this.quizService.getAllQuizes().subscribe(
+          (result: any) => {
+            console.log(result);
+            if (result.statuscode == 200) {
+              this.quizes = result.data.questions;
+              this.lastPage = this.quizes.length;
+              this.isFetching = false;
+            } else {
+              this.isFetching = false;
+              alert('حدث خطأ في جلب البيانات')
+            }
+          },
+          (error) => {
+            alert(error.message);
             this.isFetching = false;
           }
-        },
-        (error) => {
-          alert(error.message);
-          this.isFetching = false;
-        }
-      );
-    } else if (this.type != 'undefined' && this.type == 'أسئلة الكتاب') {
-      console.log('2');
-      this.isFetching = false;
-    } else if (this.type != 'undefined' && this.type == "دورات") {
-      console.log('3');
-      this.quizService.getQuizesByDwratId(this.id!.toString()).subscribe(
-        (result: any) => {
-          console.log(result);
-          if (result.statuscode == 200) {
-            this.quizes = result.data.questions;
-            this.isFetching = false;
-          } else {
-            this.isFetching = false;
-            alert('حدث خطأ في جلب البيانات')
-          }
-        },
-        (error) => {
-          alert(error.message);
-          this.isFetching = false;
-        }
-      );
-    } else {
-      console.log('4');
-      this.quizService.getQuizesById(this.id!.toString()).subscribe(
-        (result: any) => {
-          console.log(result);
-          if (result.statuscode == 200) {
-            this.quizes = result.data.questions;
+        );
+      } else if (this.type != 'undefined' && this.type == 'أسئلة الكتاب') {
+        console.log('2');
+        this.quizService.getQuizesByBookQuestion(this.id!.toString()).subscribe(
+          (result: any) => {
+            console.log(result);
+            if (result.statuscode == 200) {
+              this.quizes = result.data.questions;
+              this.lastPage = this.quizes.length;
+              this.isFetching = false;
+            } else {
+              this.isFetching = false;
+              alert('حدث خطأ في جلب البيانات')
+            }
+          },
+          (error) => {
+            alert(error.message);
             this.isFetching = false;
           }
-        },
-        (error) => {
-          alert(error.message);
-          this.isFetching = false;
-        }
-      );
+        );
+        this.isFetching = false;
+      } else if (this.type != 'undefined' && this.type == "دورات") {
+        console.log('3');
+        this.quizService.getQuizesByDwratId(this.id!.toString()).subscribe(
+          (result: any) => {
+            console.log(result);
+            if (result.statuscode == 200) {
+              this.quizes = result.data.questions;
+              this.lastPage = this.quizes.length;
+              this.isFetching = false;
+            } else {
+              this.isFetching = false;
+              alert('حدث خطأ في جلب البيانات')
+            }
+          },
+          (error) => {
+            alert(error.message);
+            this.isFetching = false;
+          }
+        );
+      }
+      // else {
+      //   console.log('4');
+      //   this.quizService.getQuizesById(this.id!.toString()).subscribe(
+      //     (result: any) => {
+      //       console.log(result);
+      //       if (result.statuscode == 200) {
+      //         this.quizes = result.data.questions;
+      //         this.lastPage = this.quizes.length;
+      //         this.isFetching = false;
+      //       } else {
+      //         this.isFetching = false;
+      //         alert('حدث خطأ في جلب البيانات')
+      //       }
+      //     },
+      //     (error) => {
+      //       alert(error.message);
+      //       this.isFetching = false;
+      //     }
+      //   );
+      // }
+    }else{
+      this.quizes=this.favouritesQuizes!;
     }
-
   }
   clear() {
     this.selectOption = undefined;
@@ -195,5 +230,16 @@ export class QuizComponent {
       height: '50vh',
       data: { 'reference': quiz[0].reference }
     })
+  }
+  addToFavourite(questionId: number) {
+    this.favouriteService.addToFavorite(questionId).subscribe((result: any) => {
+      if (result.statuscode == 200) {
+        alert(result.message);
+      } else {
+        alert(result.message);
+      }
+    }, (_) => {
+      alert('الرجاء التحقق من سلامة الاتصال لديك');
+    });
   }
 }

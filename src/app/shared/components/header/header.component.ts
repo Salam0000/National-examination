@@ -25,6 +25,9 @@ export class HeaderComponent {
   moveToHome() {
     this.route.navigate(['/home']);
   }
+  moveToFavourite() {
+    this.route.navigate(['/favourite']);
+  }
   moveToٍpecialization() {
     this.route.navigate(['/specialization']);
   }
@@ -35,19 +38,22 @@ export class HeaderComponent {
     });
   }
   logout() {
-    this.authService.logout().subscribe(
-      (result: any) => {
-        if (result.statuscode == 200) {
-          alert('تم تسجيل الخروج بنجاح');
-          localStorage.removeItem('token');
-          this.route.navigate(['/login']);
-        } else {
-          alert(result.message);
-        }
-      },
-      (_) => {
-        alert('الرجاء التحقق من سلامة الاتصال لديك');
-      }
-    )
+    alert('تم تسجيل الخروج بنجاح');
+    localStorage.removeItem('token');
+    this.route.navigate(['/login']);
+    // this.authService.logout().subscribe(
+    //   (result: any) => {
+    //     if (result.statuscode == 200) {
+    //       alert('تم تسجيل الخروج بنجاح');
+    //       localStorage.removeItem('token');
+    //       this.route.navigate(['/login']);
+    //     } else {
+    //       alert(result.message);
+    //     }
+    //   },
+    //   (_) => {
+    //     alert('الرجاء التحقق من سلامة الاتصال لديك');
+    //   }
+    // );
   }
 }

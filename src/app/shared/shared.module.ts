@@ -17,7 +17,8 @@ import { RectangleComponent } from './components/rectangle/rectangle.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent, RectangleComponent
+    FooterComponent, 
+    RectangleComponent
   ]
 })
 export class SharedModule { }
