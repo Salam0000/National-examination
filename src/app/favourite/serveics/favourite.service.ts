@@ -10,16 +10,17 @@ export class FavouriteService {
 
   addToFavorite(model: any) {
     let token = localStorage.getItem('token');
-    const header = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
+    const header = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
     });
-    return this.http.post(enviroment.baseApi + 'favourite/create', model, { headers: header });
+    return this.http.post(enviroment.baseApi + 'favourite/create', model);
   }
   getQuizesFromFavorite() {
     let token = localStorage.getItem('token');
     const header = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
-    return this.http.get(enviroment.baseApi + 'my_favourite', { headers: header });
+    return this.http.get(enviroment.baseApi + 'my_favourite');
   }
 }

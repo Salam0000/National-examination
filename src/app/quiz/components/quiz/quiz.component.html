@@ -3,7 +3,10 @@
 </div>
 <div class="isFetching" *ngIf="!isFetching">
     <app-header></app-header>
-    <div class="container" *ngFor="let quiz of paginateData();let i=index">
+    <div class="zero_length" *ngIf="quizes.length==0">
+        لا يوجد أسئلة
+    </div>
+    <div  class="container" *ngFor="let quiz of paginateData();let i=index">
         <h1>{{currentPage}}.</h1>
         <div class="question">{{quiz.content}}</div>
         <div class="options" *ngFor="let option of quiz!.answers">
@@ -23,7 +26,7 @@
             <div class="last_row_icons">
                 <i class='bx bxs-check-circle check_circle' (click)="correctAnswer(quiz)"></i>
                 <i class='bx bx-star' [ngClass]="{'yellow':favouritesQuizes!=undefined}"
-                    (click)="addToFavourite(quiz.id)"></i>
+                    (click)="addToFavourite(quiz.uuid)"></i>
                 <i class='bx bx-book-bookmark' (click)="showPopUp()"></i>
             </div>
             <div class="button_row">

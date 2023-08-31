@@ -12,9 +12,7 @@ export class FavouriteComponent {
   quizes: Quiz[] = [];
   isFetching: boolean = false;
 
-  constructor(
-    private router: Router,
-    private favouriteService: FavouriteService) { }
+  constructor(private favouriteService: FavouriteService) { }
 
   ngOnInit(): void {
     this.favouriteService.getQuizesFromFavorite().subscribe(
@@ -22,14 +20,24 @@ export class FavouriteComponent {
         console.log(result);
         if (result.statuscode == 200) {
           this.quizes = result.data.questions;
-          this.isFetching = false;
+        } else if (result.statuscode == 422) {
+          alert('الرجاء التحقق من صحة المعلومات');
+          let errorMessage = "";
+          for (const key in result.errors) {
+            if (result.errors.hasOwnProperty(key)) {
+              errorMessage += `${key}: ${result.errors[key].join(" ")}\n`;
+            }
+          }
+          alert(errorMessage);
+        } else if (result.statuscode == 401 || result.statuscode == 409 || result.statuscode == 400 || result.statuscode == 500) {
+          alert(result.message);
         } else {
-          this.isFetching = false;
-          alert('حدث خطأ في جلب البيانات')
+          alert("عذرا, حدث خطأ غير معروف");
         }
+        this.isFetching = false;
       },
-      (error) => {
-        alert(error.message);
+      (_) => {
+        alert('الرجاء التحقق من سلامة الاتصال لديك');
         this.isFetching = false;
       }
     );

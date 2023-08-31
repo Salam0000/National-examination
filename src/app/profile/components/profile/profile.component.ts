@@ -104,7 +104,6 @@ export class ProfileComponent {
           if (result.statuscode == 200) {
             this.selectedImage = e.target.result;
             alert('تمت إضافة الصورة بنجاح');
-            this.isFetching = false;
           } else if (result.statuscode == 422) {
             alert('الرجاء التحقق من صحة المعلومات');
             let errorMessage = "";
@@ -119,6 +118,7 @@ export class ProfileComponent {
           } else {
             alert("عذرا, حدث خطأ غير معروف");
           }
+          this.isFetching = false;
         },
           (_) => {
             alert('الرجاء التحقق من سلامة الاتصال لديك');

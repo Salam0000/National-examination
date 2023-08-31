@@ -27,7 +27,11 @@ export class HeaderComponent {
     this.route.navigate(['/home']);
   }
   moveToFavourite() {
-    this.route.navigate(['/favourite']);
+    if ('token' in localStorage) {
+      this.route.navigate(['/favourite']);
+    } else {
+      alert('يرجى تسجيل الدخول');
+    }
   }
   moveToٍpecialization() {
     this.route.navigate(['/specialization']);
@@ -46,7 +50,7 @@ export class HeaderComponent {
   }
   logout() {
     alert('تم تسجيل الخروج بنجاح');
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.route.navigate(['/login']);
     // this.authService.logout().subscribe(
     //   (result: any) => {

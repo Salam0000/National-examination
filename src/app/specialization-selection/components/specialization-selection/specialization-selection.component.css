@@ -21,7 +21,7 @@
 .button_row button {
     border-radius: 3px;
     border: none;
-    padding: 20px;
+    padding: 15px 30px;
     color: var(--white-color);
 }
 
@@ -81,7 +81,7 @@
         height: 40vh;
         margin-top: 0px;
     }
-  
+
     .second_section_holder {
         padding-top: 40px;
     }

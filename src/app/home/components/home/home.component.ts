@@ -39,15 +39,12 @@ export class HomeComponent {
             document.getElementById("container")?.setAttribute("style", "display: block");
             document.getElementById("container")?.setAttribute("style", "grid-template-columns: repeat(1, 80%)");
           }
-          this.isFetching = false;
         } else {
           alert(result.message);
-          this.isFetching = false;
         }
       },
       (_) => {
         alert('الرجاء التحقق من سلامة الاتصال لديك');
-        this.isFetching = false;
       }
     );
     this.homeService.getAllSpecializations().subscribe(
@@ -82,13 +79,13 @@ export class HomeComponent {
       if (special.is_master != true) {
         this.router.navigate([`/specialization/${special.uuid}`]);
       }else{
-        alert('يرجى اختيار النوع')
+        alert('يرجى اختيار النوع');
       }
       } else {
-        alert('عذرا, لا يمكنك الدخول  لهذا التخصص')
+        alert('عذرا, لا يمكنك الدخول  لهذا التخصص');
       }
     } else {
-      alert('يرجى تسجيل الدخول')
+      alert('يرجى تسجيل الدخول');
     }
   }
   moveToSpecilazationByType(type: string) {

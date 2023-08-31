@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { enviroment } from 'src/app/enviroment';
+import { Specialization } from 'src/app/models/specialization';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,11 @@ export class SpecializationSelectionService {
     // const header = new HttpHeaders().set('authentication', token ?? '');
     return this.http.get(enviroment.baseApi + 'slider/all');
   }
-  getAllClassifications() {
-    let token = localStorage.getItem('token');
-    const header = new HttpHeaders().set('authentication', token ?? '');
-    let id = localStorage.getItem('specialization_id');
-    return this.http.get(enviroment.baseApi + `specializations-of-college/${id}`, { headers: header });
+  getAllClassificationsGraduate() {
+    return this.http.get(enviroment.baseApi + `specializations-of-college/${JSON.parse(localStorage.getItem('college')!)!.uuid}`);
+  }
+  getAllClassificationsMaster() {
+    return this.http.get(enviroment.baseApi + `master-spec/${JSON.parse(localStorage.getItem('college')!)!.uuid}`);
   }
   getAllSpecializationsBytype(type: string) {
     let token = localStorage.getItem('token');

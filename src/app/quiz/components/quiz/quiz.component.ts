@@ -97,26 +97,6 @@ export class QuizComponent {
           }
         );
       }
-      // else {
-      //   console.log('4');
-      //   this.quizService.getQuizesById(this.id!.toString()).subscribe(
-      //     (result: any) => {
-      //       console.log(result);
-      //       if (result.statuscode == 200) {
-      //         this.quizes = result.data.questions;
-      //         this.lastPage = this.quizes.length;
-      //         this.isFetching = false;
-      //       } else {
-      //         this.isFetching = false;
-      //         alert('حدث خطأ في جلب البيانات')
-      //       }
-      //     },
-      //     (error) => {
-      //       alert(error.message);
-      //       this.isFetching = false;
-      //     }
-      //   );
-      // }
     } else {
       this.quizes = this.favouritesQuizes!;
       this.isFetching = false;
@@ -222,7 +202,11 @@ export class QuizComponent {
     return null;
   }
   moveToQuizEnd() {
-    this.router.navigate(['/QuizEnd']);
+    if (this.selectOption != undefined) {
+      this.router.navigate(['/QuizEnd']);
+    } else {
+      alert("يرجى تحديد إجابة");
+    }
   }
   showPopUp() {
     let quiz = this.paginateData();
@@ -233,14 +217,29 @@ export class QuizComponent {
     })
   }
   addToFavourite(questionId: number) {
-    this.favouriteService.addToFavorite(questionId).subscribe((result: any) => {
+    this.isFetching = true;
+    let model = new FormData();
+    model.append('question_id', questionId.toString());
+    this.favouriteService.addToFavorite(model).subscribe((result: any) => {
       if (result.statuscode == 200) {
         alert(result.message);
-      } else {
+        this.isFetching = false;
+      } else if (result.statuscode == 422) {
+        let errorMessage = "";
+        for (const key in result.message) {
+          if (result.message.hasOwnProperty(key)) {
+            errorMessage += `${key}: ${result.message[key].join(" ")}\n`;
+          }
+        }
+        alert(errorMessage);
+      } else if (result.statuscode == 401 || result.statuscode == 409 || result.statuscode == 400 || result.statuscode == 500) {
         alert(result.message);
+      } else {
+        alert("عذرا, حدث خطأ غير معروف");
       }
     }, (_) => {
       alert('الرجاء التحقق من سلامة الاتصال لديك');
+      this.isFetching = false;
     });
   }
 }

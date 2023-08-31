@@ -23,14 +23,14 @@ export class ProfileService {
     //   'Content-Type': 'application/json',
     //   'Authorization': `Bearer ${this.token}`
     // })
-    return this.http.post(enviroment.baseApi + 'profile/update', model, { headers: header });
+    return this.http.post(enviroment.baseApi + 'profile/update', model);
   }
 
   UpdatePhoto(model: any) {
     const header = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
     });
-    return this.http.post(enviroment.baseApi + 'profile/update-photo', model, { headers: header });
+    return this.http.post(enviroment.baseApi + 'profile/update-photo', model);
   }
 
 }

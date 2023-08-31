@@ -1,6 +1,6 @@
 .about-us {
     margin: 0 auto;
-    width: 50%;
+    width: 80%;
 }
 
 .project-details {
@@ -18,6 +18,12 @@
 
 .programmers ul li {
     margin-bottom: 5px;
+}
+
+.imgDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .icon-x {

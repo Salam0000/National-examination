@@ -18,14 +18,14 @@
 }
 
 .container button {
-    width: 35%;
+    /* width: 35%; */
     border-radius: 3px;
     border: none;
     text-align: center;
     color: white;
-    /* padding: 1rem; */
+    padding: 15px 30px;
     font-size: 1rem;
-    height: 4rem;
+    /* height: 4rem; */
 }
 
 .container .btn1 {

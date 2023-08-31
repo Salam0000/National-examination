@@ -13,11 +13,21 @@ export class FooterComponent {
   goToHome() {
     this.route.navigate(['/home'])
   }
-  GoToProfile() {
-    this.dialog.open(ProfileComponent, {
-      width: '70%',
-      height: '93vh'
-    })
-    // this.route.navigate(['/profile'])
+  goToProfile() {
+    if ('token' in localStorage) {
+      this.dialog.open(ProfileComponent, {
+        width: '70%',
+        height: '93vh'
+      });
+    } else {
+      alert('يرجى تسجيل الدخول');
+    }
+  }
+  goToFavourite() {
+    if ('token' in localStorage) {
+      this.route.navigate(['/favourite']);
+    } else {
+      alert('يرجى تسجيل الدخول');
+    }
   }
 }
