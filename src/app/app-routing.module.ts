@@ -5,7 +5,6 @@ import { HomeComponent } from './home/components/home/home.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 
 import { SpecializationSelectionComponent } from './specialization-selection/components/specialization-selection/specialization-selection.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/components/profile/profile.component';
 
 const routes: Routes = [
