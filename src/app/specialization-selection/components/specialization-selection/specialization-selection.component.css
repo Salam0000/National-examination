@@ -78,18 +78,33 @@
 
 @media (max-width: 576px) {
     .container {
-        height: 40vh;
+        height: 45vh !important;
         margin-top: 0px;
     }
 
     .second_section_holder {
-        padding-top: 40px;
+        padding-top: 0px;
     }
 
     .second_section {
         padding: 20px;
-        gap: 50px;
+        gap: 10px;
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .second_section_container h1,
+    .button_row button {
+        font-size: 0.8rem;
+    }
+    .button_row button {
+        margin: 0;
+        padding: 5px 10px;
+    }
+    .main_title {
+        font-size: 1rem;
+        margin: auto;
+        text-align: center;
+        margin-top: 0px;
     }
 
     .second_section button,

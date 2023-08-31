@@ -104,7 +104,8 @@
         flex-direction: column;
     }
 
-    .last_row button {
+    .last_row button,
+    .end button {
         font-size: 0.8rem;
     }
 }

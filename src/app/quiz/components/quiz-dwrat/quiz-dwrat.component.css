@@ -47,8 +47,12 @@
     .container .container2 .question {
         width: 90%;
     }
+
+    .container .container2 .question span {
+        font-size: 0.8rem;
+    }
 }
 
 .blue {
-    background-color: var(--light-blue-color)!important;
+    background-color: var(--light-blue-color) !important;
 }

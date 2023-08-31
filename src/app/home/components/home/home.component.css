@@ -80,7 +80,7 @@
     grid-template-columns: repeat(4, 1fr);
     width: 80%;
     margin: auto;
-    padding-top: 20px;
+    padding-top: 50px;
     position: relative;
 }
 
@@ -113,7 +113,7 @@
 
 .button_row {
     position: absolute;
-    bottom: -4rem;
+    bottom: -6rem;
     /* left:30%; */
     display: flex;
     justify-content: space-around;
@@ -139,7 +139,7 @@
 
 .choose {
     font-weight: bold;
-    text-decoration: underline;
+    border-bottom: 3px black solid;
 }
 
 img[alt] {
@@ -210,7 +210,7 @@ img[alt] {
 
     .button_row button {
         font-size: 0.8rem;
-        padding: 4px 8px;
+        padding: 5px 10px;
     }
 
     .second_section {
@@ -230,7 +230,7 @@ img[alt] {
         font-size: 1rem;
         margin: auto;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 0px;
     }
 
     .right_column {

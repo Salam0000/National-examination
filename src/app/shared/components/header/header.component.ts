@@ -38,7 +38,7 @@ export class HeaderComponent {
   }
   GoToProfile() {
     this.dialog.open(ProfileComponent, {
-      width: '70%',
+      width: '50%',
       height: '93vh'
     });
   }

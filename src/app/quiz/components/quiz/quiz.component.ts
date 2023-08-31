@@ -146,25 +146,30 @@ export class QuizComponent {
     return false;
   }
   addQuizToLocalStorage(quizId: any, currentQuiz: Quiz, option: Answer) {
-    this.selectOption = option;
-    let quiz = {
-      'uuid': quizId,
-      'quiz': currentQuiz,
-      'option': option,
-    };
-    if ('quizes' in localStorage) {
-      this.quizesInLocalHost = JSON.parse(localStorage.getItem('quizes')!);
-      let existIndex = this.quizesInLocalHost.findIndex((element) => {
-        return element.uuid == quizId;
-      });
-      if (existIndex != -1) {
-        this.quizesInLocalHost.splice(existIndex, 1);
+    if (this.isChecked == false) {
+      this.selectOption = option;
+      let quiz = {
+        'uuid': quizId,
+        'quiz': currentQuiz,
+        'option': option,
+      };
+      if ('quizes' in localStorage) {
+        this.quizesInLocalHost = JSON.parse(localStorage.getItem('quizes')!);
+        let existIndex = this.quizesInLocalHost.findIndex((element) => {
+          return element.uuid == quizId;
+        });
+        if (existIndex != -1) {
+          this.quizesInLocalHost.splice(existIndex, 1);
+        }
+        this.quizesInLocalHost.push(quiz);
+        localStorage.setItem('quizes', JSON.stringify(this.quizesInLocalHost));
+      } else {
+        this.quizesInLocalHost.push(quiz);
+        localStorage.setItem('quizes', JSON.stringify(this.quizesInLocalHost));
       }
-      this.quizesInLocalHost.push(quiz);
-      localStorage.setItem('quizes', JSON.stringify(this.quizesInLocalHost));
     } else {
-      this.quizesInLocalHost.push(quiz);
-      localStorage.setItem('quizes', JSON.stringify(this.quizesInLocalHost));
+      // document.getElementById(`option${this.selectOption.uuid}`)?.setAttribute("style", "checked:true;");
+      alert('عذرا, تم تصحيح السؤال مسبقا');
     }
   }
   correctAnswer(quiz?: any) {

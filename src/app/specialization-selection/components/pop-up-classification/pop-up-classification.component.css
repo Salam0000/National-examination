@@ -49,3 +49,15 @@
         width: 80%;
     }
 }
+
+@media (max-width: 576px) {
+    .container {
+        width: 95%;
+    }
+
+    .container button {
+        width: 90%;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+}
