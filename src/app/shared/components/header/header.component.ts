@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { ProfileComponent } from 'src/app/profile/components/profile/profile.component';
+import { AboutUsComponent } from '../about-us/about-us.component';
 
 @Component({
   selector: 'app-header',
@@ -36,6 +37,12 @@ export class HeaderComponent {
       width: '70%',
       height: '93vh'
     });
+  }
+  showPopUp() {
+    this.dialog.open(AboutUsComponent, {
+      width: '50%',
+      height: '80vh',
+    })
   }
   logout() {
     alert('تم تسجيل الخروج بنجاح');

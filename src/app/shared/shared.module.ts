@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RectangleComponent } from './components/rectangle/rectangle.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 
@@ -10,7 +11,8 @@ import { RectangleComponent } from './components/rectangle/rectangle.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    RectangleComponent
+    RectangleComponent,
+    AboutUsComponent
   ],
   imports: [
     CommonModule

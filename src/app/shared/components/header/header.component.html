@@ -7,8 +7,8 @@
                 </div>
                 <ul class="menu">
                     <li><i class="bx bxs-home icon-home"></i><a (click)="moveToHome()">الرئيسية</a></li>
-                    <li><a (click)="moveToFavourite()" routerLink="/favourite">المفضلة</a></li>
-                    <li><a routerLink="/">من نحن</a></li>
+                    <li><a (click)="moveToFavourite()">المفضلة</a></li>
+                    <li><a (click)="showPopUp()">من نحن</a></li>
                 </ul>
             </div>
             <div class="profile" *ngIf="token!=''">

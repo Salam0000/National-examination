@@ -37,7 +37,7 @@ export class QuizComponent {
     this.id = this.route.snapshot.params['id'];
     this.type = this.route.snapshot.params['type'];
     console.log(this.id);
-    if (this.favouriteService!=undefined) {
+    if (this.favouritesQuizes == undefined) {
       if (this.type != 'undefined' && this.type == 'بنك الأسئلة') {
         console.log('1');
         this.quizService.getAllQuizes().subscribe(
@@ -117,8 +117,9 @@ export class QuizComponent {
       //     }
       //   );
       // }
-    }else{
-      this.quizes=this.favouritesQuizes!;
+    } else {
+      this.quizes = this.favouritesQuizes!;
+      this.isFetching = false;
     }
   }
   clear() {

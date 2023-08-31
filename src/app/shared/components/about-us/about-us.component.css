@@ -1,0 +1,29 @@
+.about-us {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.project-details {
+    margin-left: 20px;
+}
+
+.programmers {
+    margin-top: 20px;
+}
+
+.programmers ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.programmers ul li {
+    margin-bottom: 5px;
+}
+
+.icon-x {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
